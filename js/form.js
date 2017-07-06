@@ -15,11 +15,11 @@ let send_request = (function () {
         .then(
           function (response){
             if (response.ok){
-              response.text().then(function (data){
+              response.json().then(function (data){
                 let cookie = Cookies.set('cookie_name',data);
                 console.log(cookie);
               })} else {
-                response.text().then(function (data){
+                response.json().then(function (data){
                   console.log(data);
                 })
               }
