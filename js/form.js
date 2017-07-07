@@ -21,8 +21,8 @@ let send_request = (function () {
                 forMsg.classList.remove('alert-danger');
                 forMsg.classList.add('alert-success');
                 forMsg.style.display = 'block';
-                forMsg.innerHTML = 'Здесь будет redirect';
-                console.log(cookie);
+                forMsg.innerHTML = 'Вы вошли в систему';
+                setTimeout(function(){window.location.replace('accounts.html')},2000)
               })} else {
                 response.json().then(function (data){
                   let error = data.message;
