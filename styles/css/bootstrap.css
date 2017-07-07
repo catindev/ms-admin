@@ -1588,7 +1588,7 @@ pre code {
   margin-left: auto;
 }
 .container .form-horizontal{
-  margin-top: 50%;
+  margin-top: 23%;
   background-color: #fff;
   padding:50px;
   border-radius: 20px;
@@ -5050,6 +5050,7 @@ a.thumbnail.active {
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
+  display: none;
 }
 .alert h4 {
   margin-top: 0;
@@ -5113,6 +5114,10 @@ a.thumbnail.active {
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
+  display: none;
+  width: 105%;
+  margin-top: 0;
+  margin-bottom:10px;
 }
 .alert-danger hr {
   border-top-color: #e4b9c0;

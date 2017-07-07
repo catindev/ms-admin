@@ -16,11 +16,19 @@ let send_request = (function () {
           function (response){
             if (response.ok){
               response.json().then(function (data){
-                let cookie = Cookies.set('cookie_name',data);
+                let date = new Date(new Date().getTime() + 60*1000)
+                let cookie = Cookies.set('cookie_name',data,{expires:date});
+                forMsg.classList.remove('alert-danger');
+                forMsg.classList.add('alert-success');
+                forMsg.style.display = 'block';
+                forMsg.innerHTML = 'Здесь будет redirect';
                 console.log(cookie);
               })} else {
                 response.json().then(function (data){
-                  console.log(data);
+                  let error = data.message;
+                  forMsg.classList.add('alert-danger');
+                  forMsg.style.display = 'block';
+                  forMsg.innerHTML = error;
                 })
               }
         }
