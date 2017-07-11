@@ -15,7 +15,7 @@
           <a class="navbar-brand" href="#">Mindsales</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span>Username</a></li>
+          <li><a href="#" id='user'><span class="glyphicon glyphicon-user"></span></a></li>
           <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Выход</a></li>
         </ul>
       </div>
@@ -24,12 +24,13 @@
   <div class="container-fluid">
     <div class="accounts">
       <h1 class='accounnts__head'>Аккаунты</h1>
-      <ul id='accList' class="nav nav-pills nav-stacked">
+      <ul id='accountsList' class="nav nav-pills nav-stacked">
       </ul>
     </div>
   </div>
 </nav>
+<div id='errorBlock'></div>
 <script type="text/javascript" src='static/js.cookie.js'></script>
-<script type="text/javascript" src='static/user.js'></script>
+<script type="text/javascript" src='static/accounts.js'></script>
   </body>
 </html>
