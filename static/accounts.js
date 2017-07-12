@@ -1,13 +1,13 @@
 (function functionName() {
-const user = document.getElementById('user');
+const adminName = document.getElementById('adminName');
 const errorBlock = document.getElementById('errorBlock');
 
 //пользователь
 const userSession = Cookies.get('user_session');
 if (!userSession){
-  setTimeout(() => {window.location.replace('index.html')},1500);
+  window.location.replace('index.html');
 }else {
-  fetch('server/user.php/'+{userSession},{
+  fetch('server/user.php/'+userSession,{
     credentials: 'include',
   })
   .then(response => response.json())
@@ -16,14 +16,14 @@ if (!userSession){
     return jsonResponse;
   })
   .then( userData => {
-    user.innerHTML += ' ' + userData.username;
+    adminName.innerHTML += ' ' + userData.username;
   })
   .catch(error => {
     setTimeout(() => {window.location.replace('index.html')},1500);
   });
 
   //аккаунты
-  fetch('server/accounts.php?user_session='+{userSession})
+  fetch('server/accounts.php?user_session='+userSession)
   .then(response => response.json())
   .then(jsonResponse => {
     if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
