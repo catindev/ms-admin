@@ -12,7 +12,6 @@
       login: login.value,
       password: password.value
     });
-
     fetch('server/login.php', {
       method: 'post',
       headers: { "Content-type":"application/json" },
