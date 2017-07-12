@@ -19,7 +19,7 @@ if (!userSession){
     adminName.innerHTML += ' ' + userData.username;
   })
   .catch(error => {
-    setTimeout(() => {window.location.replace('index.html')},1500);
+    window.location.replace('index.html');
   });
 
   //аккаунты
