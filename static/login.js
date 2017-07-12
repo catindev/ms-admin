@@ -25,7 +25,7 @@
     .then( sessionData => {
       const expires = new Date(new Date().getTime() + 60 * 1000);
       Cookies.set('user_session', sessionData.session ,{ expires });
-      window.location.replace('accounts.html')}
+      window.location.replace('accounts.html');
     })
     .catch(error => {
       errorMessage.style.display = 'block';

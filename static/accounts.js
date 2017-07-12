@@ -5,7 +5,7 @@ const errorBlock = document.getElementById('errorBlock');
 //пользователь
 const userSession = Cookies.get('user_session');
 if (!userSession){
-  window.location.replace('index.html');
+  //window.location.replace('index.html');
 }else {
   fetch('server/user.php/'+userSession,{
     credentials: 'include',
@@ -19,7 +19,8 @@ if (!userSession){
     adminName.innerHTML += ' ' + userData.username;
   })
   .catch(error => {
-    window.location.replace('index.html');
+    errorBlock.style.display = 'block';
+    errorBlock.innerHTML = error.message;
   });
 
   //аккаунты
@@ -37,16 +38,16 @@ if (!userSession){
       let a = document.createElement('a');
       for(let companyData in companies[index]){
         if (companyData === 'id'){
-          a.href = companies[index]['id']}
+          a.href = companies[index]['id'] }
         else if (companyData === 'name'){
-          a.innerHTML = companies[index]['name']}
+          a.innerHTML = companies[index]['name'] }
       }
       accountsList.appendChild(li);
       li.appendChild(a);
     }
   })
   .catch(error => {
-    errorBlock.style.block = 'block';
+    errorBlock.style.display = 'block';
     errorBlock.innerHTML = error.message;
   });
 }
