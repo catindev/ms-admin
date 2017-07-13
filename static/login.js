@@ -12,7 +12,7 @@
       login: login.value,
       password: password.value
     });
-    fetch('server/login.php', {
+    fetch(' https://fake-admin-api.glitch.me/login', {
       method: 'post',
       headers: { "Content-type":"application/json" },
       body

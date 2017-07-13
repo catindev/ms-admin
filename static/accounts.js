@@ -5,11 +5,9 @@ const errorBlock = document.getElementById('errorBlock');
 //пользователь
 const userSession = Cookies.get('user_session');
 if (!userSession){
-  //window.location.replace('index.html');
+  window.location.replace('index.html');
 }else {
-  fetch('server/user.php/'+userSession,{
-    credentials: 'include',
-  })
+  fetch('https://fake-admin-api.glitch.me/users/'+userSession)
   .then(response => response.json())
   .then(jsonResponse => {
     if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
@@ -24,7 +22,7 @@ if (!userSession){
   });
 
   //аккаунты
-  fetch('server/accounts.php?user_session='+userSession)
+  fetch('https://fake-admin-api.glitch.me/accounts?user_session='+userSession)
   .then(response => response.json())
   .then(jsonResponse => {
     if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
@@ -50,6 +48,6 @@ if (!userSession){
     errorBlock.style.display = 'block';
     errorBlock.innerHTML = error.message;
   });
-}
+};
 
 }())
