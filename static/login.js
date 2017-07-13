@@ -12,8 +12,7 @@
       login: login.value,
       password: password.value
     });
-
-    fetch('https://fake-admin-api.glitch.me/login', {
+    fetch('server/login.php', {
       method: 'post',
       headers: { "Content-type":"application/json" },
       body
@@ -26,7 +25,7 @@
     .then( sessionData => {
       const expires = new Date(new Date().getTime() + 60 * 1000);
       Cookies.set('user_session', sessionData.session ,{ expires });
-      alert('redirect!');
+      window.location.replace('accounts.html');
     })
     .catch(error => {
       errorMessage.style.display = 'block';
@@ -42,4 +41,3 @@
   }
 
 })();
-
