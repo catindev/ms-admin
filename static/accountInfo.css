@@ -1,0 +1,29 @@
+.header{
+  margin-top:20px;
+}
+
+#accountForm {
+  float: right;
+  width: 70%;
+}
+#sidebar{
+  width: 30%;
+  margin-top: 29.5px;
+}
+
+#companyName{
+  text-align: center;
+}
+
+.nav>li>a:hover{
+  background:none;
+}
+
+@media screen and (min-width:1024px) {
+  #accountForm{
+    width: 85%;
+  }
+  #sidebar{
+    width: 15%;
+  }
+}

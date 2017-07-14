@@ -2,7 +2,7 @@ body{
   background-color: #fff;
 }
 .accounts {
-  width: 150px;
+  width: 100%;
 }
 .accounts__link {
   color: inherit;
@@ -16,6 +16,9 @@ body{
   text-align: center;
   font-size: 17px;
   margin-top:50px;
+}
+.nav>li>a:hover{
+  background:none;
 }
 @media screen and (min-width:1024px) {
   #errorBlock{
