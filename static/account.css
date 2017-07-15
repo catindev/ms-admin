@@ -1,0 +1,60 @@
+
+#accountForm {
+  float: right;
+  width: 100%;
+
+  padding-right: 10%;
+  padding-left: 10%;
+}
+#header{
+  margin-bottom:0;
+}
+#sidebar{
+  text-align: center;
+}
+.menuBtn{
+  margin-top: 0;
+  width: 100%;
+  height: 50px;
+  border: none;
+  outline: none;
+}
+.fieldsetHeader{
+  padding-top: 15px;
+  margin-bottom:5px;
+}
+
+@media screen and (min-width:768px){
+  #accountForm{
+    width: 85%;
+    padding-right: 42.5%;
+  }
+  .menuBtn{
+    display: none;
+  }
+  #sidebar{
+    display:block;
+    background-color:#333;
+    border-color:#101010;
+    margin-top: 75px;
+    margin-left: 15px;
+    width: 15%;
+    float: left;
+  }
+  .nav>li>a{
+    color: #9d9d9d;
+  }
+  .nav>li>a:focus{
+    background: none;
+  }
+  .nav>li>a:hover{
+    background: none;
+    color:#fff;
+  }
+  #containerForm{
+    margin-left:15%;
+  }
+  #adminSettings{
+    float: right;
+  }
+}

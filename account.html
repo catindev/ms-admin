@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Аккаунт</title>
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="static/account.css">
+  </head>
+  <body>
+
+          <nav id='header' class="navbar navbar-inverse">
+          <div class="navbar-header">
+              <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a href="#" class="navbar-brand">Mindsales</a>
+          </div>
+          <div id="navbarCollapse" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                  <li><a href="#">Пункт 1</a></li>
+                  <li><a href="#">Пункт 2</a></li>
+                  <li><a href="#">Пункт 3</a></li>
+              </ul>
+              <ul class="nav navbar-nav" id='adminSettings'>
+                <li><a href="#" id='adminName'><span class="glyphicon glyphicon-user"></span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Выход</a></li>
+              </ul>
+          </div>
+      </nav>
+
+
+        <div class="navbar-header">
+            <button class='menuBtn btn-primary' type="button" data-target="#sidebar" data-toggle="collapse" class="navbar-toggle">
+                Меню
+            </button>
+        </div>
+        <div id="sidebar" class="collapse navbar-collapse">
+          <ul class="nav navbar">
+              <li><a href="#">Пункт 1</a></li>
+              <li><a href="#">Пункт 2</a></li>
+              <li><a href="#">Пункт 3</a></li>
+          </ul>
+        </div>
+
+      <div id='containerForm'>
+        <form id="accountForm">
+          <h3>Название компании</h3>
+          <div class="form-group">
+            <fieldset>
+              <legend class="fieldsetHeader">Настройки 1</legend>
+              <label>Поле 1</label>
+              <input type="text" class="form-control"/>
+              <label>Поле 2</label>
+              <input type="text" class="form-control"/>
+            </fieldset>
+            <fieldset>
+              <legend class="fieldsetHeader">Настройки 2</legend>
+              <label>Поле 1</label>
+              <input type="text" class="form-control"/>
+              <label>Поле 2</label>
+              <input type="text" class="form-control"/>
+            </fieldset>
+          </div>
+          <button type="submit" class="btn btn-primary">Сохранить</button>
+        </form>
+      </div>
+
+
+
+  </body>
+</html>
