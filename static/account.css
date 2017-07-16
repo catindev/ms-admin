@@ -2,7 +2,6 @@
 #accountForm {
   float: right;
   width: 100%;
-
   padding-right: 10%;
   padding-left: 10%;
 }
@@ -12,6 +11,22 @@
 #sidebar{
   text-align: center;
 }
+.sidebar__links{
+  border: 1px solid;
+  color:#333;
+}
+
+.nav>li>a:focus{
+  background: #EE82EE;
+  color:#333;
+  border: none;
+}
+.nav>li>a:hover{
+  background: #EE82EE;
+  color:#333;
+  transition: all 1s;
+}
+
 .menuBtn{
   margin-top: 0;
   width: 100%;
@@ -34,23 +49,17 @@
   }
   #sidebar{
     display:block;
-    background-color:#333;
-    border-color:#101010;
+    text-align: left;
     margin-top: 75px;
-    margin-left: 15px;
     width: 15%;
     float: left;
+    margin-left: -15px;
+    padding-right: 0;
   }
-  .nav>li>a{
-    color: #9d9d9d;
+  .sidebar__links{
+    border-left: none;
   }
-  .nav>li>a:focus{
-    background: none;
-  }
-  .nav>li>a:hover{
-    background: none;
-    color:#fff;
-  }
+
   #containerForm{
     margin-left:15%;
   }
