@@ -1,4 +1,3 @@
-
 #accountForm {
   float: right;
   width: 100%;
@@ -10,21 +9,26 @@
 }
 #sidebar{
   text-align: center;
+  background-color: #333;
 }
 .sidebar__links{
-  border: 1px solid;
-  color:#333;
+  color:#fff;
 }
 
-.nav>li>a:focus{
-  background: #EE82EE;
-  color:#333;
-  border: none;
+
+.nav-stacked>li>a:active{
+  color: blue;
 }
-.nav>li>a:hover{
-  background: #EE82EE;
-  color:#333;
-  transition: all 1s;
+.nav-stacked>li>a:focus{
+  background:#fff;
+}
+.nav-stacked>li>a:hover{
+  background:#fff;
+  transition: all 0.7s;
+}
+
+.label-form{
+  margin-top: 5px;
 }
 
 .menuBtn{
@@ -48,9 +52,7 @@
     display: none;
   }
   #sidebar{
-    display:block;
     text-align: left;
-    margin-top: 75px;
     width: 15%;
     float: left;
     margin-left: -15px;
@@ -58,6 +60,10 @@
   }
   .sidebar__links{
     border-left: none;
+  }
+  .nav-stacked{
+    height: 100vh;
+    margin-top: 15px;
   }
 
   #containerForm{

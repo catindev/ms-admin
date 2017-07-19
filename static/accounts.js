@@ -36,7 +36,7 @@ if (!userSession){
       let a = document.createElement('a');
       for(let companyData in companies[index]){
         if (companyData === 'id'){
-          a.href = companies[index]['id'] }
+          a.href = companies[index]['id']}
         else if (companyData === 'name'){
           a.innerHTML = companies[index]['name'] }
       }
