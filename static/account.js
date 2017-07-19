@@ -1,7 +1,8 @@
 (function () {
-  const companyId = 222;
+  const companyId = 111;
   const userSession = Cookies.get('user_session');
-  const companyName = document.getElementById('companyName');
+  const formHeader = document.getElementById('formHeader');
+  const fieldset = document.getElementsByTagName('fieldset')[0];
   fetch('server/account.php/'+companyId+'?user_session='+userSession)
   .then(response => response.json())
   .then(jsonResponse => {
@@ -9,7 +10,18 @@
     return jsonResponse;
   })
   .then(account =>{
-    companyName.innerHTML = account.name;
+    formHeader.innerHTML = account.name;
+    let accountForm = document.getElementById('accountForm');
+    for (let key in account) {
+      if (accountForm[key] && typeof accountForm[key] !== 'string') {
+          let fields = document.getElementsByName(key);
+          for (let field = 0; field < fields.length; field++){
+            fields[field].value = account[key];
+          }
+      }
+    }
+
+
   })
   .catch(error => console.log(error.message))
 }());

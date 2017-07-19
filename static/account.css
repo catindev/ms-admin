@@ -14,8 +14,6 @@
 .sidebar__links{
   color:#fff;
 }
-
-
 .nav-stacked>li>a:active{
   color: blue;
 }
@@ -26,11 +24,12 @@
   background:#fff;
   transition: all 0.7s;
 }
-
 .label-form{
   margin-top: 5px;
 }
-
+.label-form::first-letter{
+  text-transform: uppercase;
+}
 .menuBtn{
   margin-top: 0;
   width: 100%;
