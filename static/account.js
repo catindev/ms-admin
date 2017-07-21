@@ -6,7 +6,7 @@
   if(!userSession){
     window.location.replace('index.html');
   }else {
-    fetch('server/account.php/'+companyId+'?user_session='+userSession)
+    fetch('https://fake-admin-api.glitch.me/accounts/'+companyId+'?user_session='+userSession)
     .then(response => response.json())
     .then(jsonResponse => {
       if (jsonResponse.status !== 200) throw Error(jsonResponse.message)
