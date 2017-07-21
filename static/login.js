@@ -1,7 +1,10 @@
 (function() {
   const loginForm = document.getElementById("loginForm");
   const errorMessage = document.getElementById("errorMessage");
-
+  const userSession = Cookies.get('user_session');
+  if (userSession) {
+    window.location.replace("/accounts");
+  }
   loginForm.addEventListener("submit", function(event) {
     event.preventDefault();
     const { login, password } = loginForm;
@@ -22,7 +25,7 @@
         return jsonResponse;
       })
       .then(sessionData => {
-        const expires = new Date(new Date().getTime() + 60 * 1000);
+        const expires = new Date(new Date().getTime() + 31536000000);
         Cookies.set("user_session", sessionData.session, { expires });
         window.location.replace("/accounts");
       })

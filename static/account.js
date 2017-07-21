@@ -4,7 +4,7 @@
   const formHeader = document.getElementById("formHeader");
   const adminName = document.getElementById("adminName");
   if (!userSession) {
-    window.location.replace("index.html");
+    window.location.replace("/");
   } else {
     fetch(
         Config.API_HOST + '/accounts/' +

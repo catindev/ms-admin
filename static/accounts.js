@@ -5,7 +5,7 @@
   //пользователь
   const userSession = Cookies.get("user_session");
   if (!userSession) {
-    window.location.replace("index.html");
+    window.location.replace("/");
   } else {
     fetch(Config.API_HOST + '/users/' + userSession)
       .then(response => response.json())
