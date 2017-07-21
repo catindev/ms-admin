@@ -7,6 +7,9 @@ body{
 .accounts__link {
   color: inherit;
 }
+.navbar-inverse{
+  border-radius: 1px;
+}
 #errorBlock{
   display: none;
   background-color:lightgrey;

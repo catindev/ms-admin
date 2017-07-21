@@ -14,8 +14,11 @@
 .sidebar__links{
   color:#fff;
 }
+.navbar-inverse{
+  border-radius: 1px;
+}
 .nav-stacked>li>a:active{
-  color: blue;
+  background:#fff;
 }
 .nav-stacked>li>a:focus{
   background:#fff;
