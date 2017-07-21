@@ -7,7 +7,7 @@
     window.location.replace("index.html");
   } else {
     fetch(
-      "https://fake-admin-api.glitch.me/accounts/" +
+        Config.API_HOST + '/accounts/' +
         companyId +
         "?user_session=" +
         userSession
@@ -31,7 +31,7 @@
       })
       .catch(error => console.log(error.message));
 
-    fetch("https://fake-admin-api.glitch.me/users/" + userSession)
+    fetch(Config.API_HOST + '/users/' + userSession)
       .then(response => response.json())
       .then(jsonResponse => {
         if (jsonResponse.status !== 200) throw Error(jsonResponse.message);

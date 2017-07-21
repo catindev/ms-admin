@@ -11,7 +11,7 @@
       login: login.value,
       password: password.value
     });
-    fetch(" https://fake-admin-api.glitch.me/login", {
+    fetch(Config.API_HOST + '/login', {
       method: "post",
       headers: { "Content-type": "application/json" },
       body
@@ -24,7 +24,7 @@
       .then(sessionData => {
         const expires = new Date(new Date().getTime() + 60 * 1000);
         Cookies.set("user_session", sessionData.session, { expires });
-        window.location.replace("accounts.html");
+        window.location.replace("/accounts");
       })
       .catch(error => {
         errorMessage.style.display = "block";

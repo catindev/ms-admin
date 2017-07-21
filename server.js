@@ -11,7 +11,15 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/index.html');
 });
 
-app.get("/users/:session_id", function (request, response) {
+app.get("/accounts", function (request, response) {
+  response.sendFile(__dirname + '/accounts.html');
+});
+
+app.get("/accounts/:accountID", function (request, response) {
+  response.sendFile(__dirname + '/account.html');
+});
+
+app.get("/api/users/:session_id", function (request, response) {
   const { session_id } = request.params;
   if (session_id) response.json({ status: 200, username: 'Василий Пупкин' })
   else response.status(403).json({
@@ -19,7 +27,7 @@ app.get("/users/:session_id", function (request, response) {
   });
 });
 
-app.get("/accounts", function (request, response) {
+app.get("/api/accounts", function (request, response) {
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
     status:403, message: 'Ошибка аутентификации'
@@ -36,7 +44,7 @@ app.get("/accounts", function (request, response) {
   });
 });
 
-app.get("/accounts/:accountID", function (request, response) {
+app.get("/api/accounts/:accountID", function (request, response) {
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
     status:403, message: 'Ошибка аутентификации'
@@ -49,7 +57,7 @@ app.get("/accounts/:accountID", function (request, response) {
   });
 });
 
-app.post("/login", function (request, response) {
+app.post("/api/login", function (request, response) {
   const { login, password } = request.body;
 
   if (login === 'badass') return response.status(500).json({
