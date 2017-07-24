@@ -1,10 +1,6 @@
 (function() {
   const loginForm = document.getElementById("loginForm");
   const errorMessage = document.getElementById("errorMessage");
-  const userSession = Cookies.get('user_session');
-  if (userSession) {
-    window.location.replace("/accounts");
-  }
   loginForm.addEventListener("submit", function(event) {
     event.preventDefault();
     const { login, password } = loginForm;
@@ -14,7 +10,7 @@
       login: login.value,
       password: password.value
     });
-    fetch(Config.API_HOST + '/login', {
+    fetch(Config.API_HOST + "/login", {
       method: "post",
       headers: { "Content-type": "application/json" },
       body
