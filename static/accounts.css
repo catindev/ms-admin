@@ -2,10 +2,17 @@ body{
   background-color: #fff;
 }
 .accounts {
-  width: 150px;
+  width: 100%;
 }
 .accounts__link {
   color: inherit;
+}
+.navbar-inverse{
+  border-radius: 1px;
+}
+.label-form{
+  font-size: 18px;
+  font-weight: normal;
 }
 #errorBlock{
   display: none;
