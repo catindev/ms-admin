@@ -21,5 +21,8 @@
         }
       }
     })
-    .catch(error => console.log(error.message));
+    .catch(error => {
+      errorBlock.style.display = 'block';
+      errorBlock.innerHTML = error.message;
+    });
 })();
