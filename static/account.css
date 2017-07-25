@@ -4,6 +4,9 @@
   padding-right: 10%;
   padding-left: 10%;
 }
+#accountForm .btn{
+  margin-top: 10px;
+}
 #header{
   margin-bottom:0;
 }
@@ -67,11 +70,7 @@
     height: 100vh;
     margin-top: 15px;
   }
-
   #containerForm{
     margin-left:15%;
-  }
-  #adminSettings{
-    float: right;
   }
 }

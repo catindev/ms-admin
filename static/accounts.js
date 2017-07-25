@@ -1,5 +1,4 @@
 (function () {
-  const errorBlock = document.getElementById("errorBlock");
   fetch(Config.API_HOST + "/accounts?user_session=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
@@ -31,7 +30,7 @@
     const field = document.querySelector('.form-inline .form-control');
     const btn = document.querySelector('.form-inline .btn');
     btn.disabled = true;
-    field.addEventListener('input',function (event) {
+    field.addEventListener('input',function () {
       btn.disabled = false;
       if (field.value.length === 0) {
         btn.disabled = true;
