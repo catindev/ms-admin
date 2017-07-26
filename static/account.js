@@ -1,8 +1,10 @@
 (function() {
-  const companyId = 222;
+  const companyId = location.pathname;
   const formHeader = document.getElementById("formHeader");
+  const form = document.getElementById('containerForm');
+  const sidebar = document.querySelector('.nav-stacked');
   fetch(
-    Config.API_HOST + "/accounts/" + companyId + "?user_session=" + userSession
+    Config.API_HOST + companyId + "?user_session=" + userSession
   )
     .then(response => response.json())
     .then(jsonResponse => {
@@ -21,8 +23,5 @@
         }
       }
     })
-    .catch(error => {
-      errorBlock.style.display = 'block';
-      errorBlock.innerHTML = error.message;
-    });
+    .catch(error => showError(error,form,sidebar));
 })();

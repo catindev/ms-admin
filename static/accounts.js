@@ -1,4 +1,8 @@
 (function() {
+  const field = document.querySelector(".form-inline .form-control");
+  const btn = document.querySelector(".form-inline .btn");
+  const addAccountForm = document.querySelector(".form-inline");
+  const accounts = document.querySelector('.accounts');
   fetch(Config.API_HOST + "/accounts?user_session=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
@@ -22,11 +26,8 @@
         li.appendChild(a);
       }
     })
-    .catch(error => showError(error));
+    .catch(error => showError(error,addAccountForm,accountsList));
 
-  const field = document.querySelector(".form-inline .form-control");
-  const btn = document.querySelector(".form-inline .btn");
-  const addAccountForm = document.querySelector(".form-inline");
   btn.disabled = true;
   field.addEventListener("input", function() {
     btn.disabled = false;
@@ -51,21 +52,14 @@
         if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
         return jsonResponse;
       })
-      .then(({status,id}) => {
-        setTimeout(() => window.location.replace("/accounts/" + id),2000)
+      .then(accountData => {
+        window.location.replace("/accounts/" + accountData.id);
       })
       .catch(error => {
-          setTimeout(() => {
-          showError(error);
+          showError(error,addAccountForm,accountsList);
           field.disabled = false;
           btn.disabled = false;
           btn.innerHTML = "Добавить";
-        },2000);
       });
   });
 })();
-
-function showError(error) {
-  errorBlock.style.display = "block";
-  errorBlock.innerHTML = error.message;
-}

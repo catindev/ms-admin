@@ -58,13 +58,20 @@
             <legend class="fieldsetHeader">Настройки</legend>
             <label class="label-form">Название компании</label>
             <input class="form-control" type="text" name="name"\>
-            <label class="label-form">Поле 2</label>
-            <input class="form-control" type="text" name=""\>
-            <label class="label-form">Поле 3</label>
-            <input class="form-control" type="text" name=""\>
+            <label class="label-form">Время ожидания</label>
+            <input class="form-control" type="text" name="maxWaitingTime"\>
+            <label class="label-form">Время разговора</label>
+            <input class="form-control" type="text" name="maxAnswerTime"\>
+            <label class="label-form">Вопрос</label>
+            <input class="form-control" type="text" name="targetQuestion"\>
           </fieldset>
           <button type="submit" class="btn btn-primary">Сохранить</button>
         </form>
+      </div>
+      <div class="errorWrapper">
+          <fieldset id='errorBlock'><legend>Ошибка</legend></fieldset>
+          <p id="errorMessage"></p>
+          <p>Обновите страницу и попробуйте еще раз</p>
       </div>
   <script src="static/config.js"></script>
   <script type="text/javascript" src='/static/js.cookie.js'></script>
