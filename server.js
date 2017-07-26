@@ -53,7 +53,10 @@ app.get("/api/accounts/:accountID", function (request, response) {
   response.json({
     status: 200,
     id: '111',
-    name: 'ТОО Рога и копыта'
+    name: 'ТОО Рога и копыта',
+    maxWaitingTime: 12,
+    maxAnswerTime: 120,
+    targetQuestion: 'Клиент хотел купить?'
   });
 });
 
