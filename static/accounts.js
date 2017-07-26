@@ -12,19 +12,19 @@
     .then(accounts => {
       let companies = accounts.items;
       const accountsList = document.getElementById("accountsList");
-      for (let index = 0; index < companies.length; index++) {
+      companies.map( (company) => {
         let li = document.createElement("li");
         let a = document.createElement("a");
-        for (let companyData in companies[index]) {
+        for (let companyData in company) {
           if (companyData === "id") {
-            a.href = "/accounts/" + companies[index]["id"];
+            a.href = "/accounts/" + company["id"];
           } else if (companyData === "name") {
-            a.innerHTML = companies[index]["name"];
+            a.innerHTML = company["name"];
           }
         }
         accountsList.appendChild(li);
         li.appendChild(a);
-      }
+      });
     })
     .catch(error => showError(error,addAccountForm,accountsList));
 
