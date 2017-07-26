@@ -1,10 +1,10 @@
 (function() {
-  const companyId = location.pathname.replace(/[^0-9]/gim,'');
+  const url = location.pathname;
   const formHeader = document.getElementById("formHeader");
   const form = document.getElementById('containerForm');
   const sidebar = document.querySelector('.nav-stacked');
   fetch(
-    Config.API_HOST + '/accounts/' + companyId + "?user_session=" + userSession
+    Config.API_HOST + url + "?user_session=" + userSession
   )
     .then(response => response.json())
     .then(jsonResponse => {
