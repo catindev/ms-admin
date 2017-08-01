@@ -76,6 +76,23 @@ app.post("/api/login", function (request, response) {
   });
 });
 
+app.post("/api/accounts",function (request,response) {
+  const { user_session } = request.query;
+  const { name } = request.body;
+
+  if (!user_session) return response.status(403).json({
+    status: 403, message: 'Ошибка аутентификации'
+  });
+  if (!name) return response.status(400).json({
+    status:400, message: "Название аккаунта не заполнено"
+  });
+
+  response.json({
+    status:200,
+    id: "индентификатор"
+  });
+})
+
 var listener = app.listen(9999, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
