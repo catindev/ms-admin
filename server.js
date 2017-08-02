@@ -89,9 +89,141 @@ app.post("/api/accounts",function (request,response) {
 
   response.json({
     status:200,
-    id: "индентификатор"
+    id: "111"
   });
-})
+});
+
+app.put("/api/accounts/:accountID", function (request, response) {
+  const { user_session } = request.query;
+  if (!user_session) return response.status(403).json({
+    status:403, message: 'Ошибка аутентификации'
+  });
+
+  response.json({ status: 200 });
+});
+
+app.get("/api/accounts/:accountID/users", function (request, response) {
+  const { user_session } = request.query;
+  if (!user_session) return response.status(403).json({
+    status:403, message: 'Ошибка аутентификации'
+  });
+
+  response.json({
+    status: 200,
+    items:[
+      {
+        id: '111',
+        name: 'Иван'
+      },
+      {
+        id: '222',
+        name: 'Арай'
+      },
+      {
+        id: '333',
+        name: 'Елена'
+      },
+    ]
+  });
+});
+
+app.post("/api/accounts/:accountID/users",function (request,response) {
+  const { user_session } = request.query;
+  const { name } = request.body;
+
+  if (!user_session) return response.status(403).json({
+    status: 403, message: 'Ошибка аутентификации'
+  });
+
+  if (!name) return response.status(400).json({
+    status:400, message: "Имя пользователя не заполнено"
+  });
+
+  response.json({
+    status:200,
+    id: "111"
+  });
+});
+
+app.get("/api/accounts/:accountID/users/:userID", function (request, response) {
+  const { user_session } = request.query;
+  if (!user_session) return response.status(403).json({
+    status:403, message: 'Ошибка аутентификации'
+  });
+
+  response.json({
+    status: 200,
+    id: '111',
+    name: 'Иван',
+    phones: ['+77771234567', '+77785553311'],
+    type: 'manager',
+    email:'ivan@example.com'
+  });
+});
+
+app.put("/api/accounts/:accountID/users/:userID", function (request, response) {
+  const { user_session } = request.query;
+  if (!user_session) return response.status(403).json({
+    status:403, message: 'Ошибка аутентификации'
+  });
+
+  response.json({
+    status: 200
+  });
+});
+
+app.get("/api/accounts/:accountID/numbers", function (request, response) {
+  const { user_session } = request.query;
+  if (!user_session) return response.status(403).json({
+    status:403, message: 'Ошибка аутентификации'
+  });
+
+  response.json({
+    status: 200,
+    items:[
+      {
+        id: '111',
+        name: 'Google',
+        phone: '+77770007722'
+      },
+      {
+        id: '222',
+        name: 'Яндекс',
+        phone: '+77058816622'
+      },
+      {
+        id: '333',
+        name: 'Instagram',
+        phone: '+7701113456'
+      },
+    ]
+  });
+});
+
+app.get("/api/accounts/:accountID/numbers/:numberID", function (request, response) {
+  const { user_session } = request.query;
+  if (!user_session) return response.status(403).json({
+    status:403, message: 'Ошибка аутентификации'
+  });
+
+  response.json({
+    status: 200,
+    id: '111',
+    name: 'Google',
+    phone: '+77770007722'
+  });
+});
+
+app.put("/api/accounts/:accountID/numbers/:numberID", function (request, response) {
+  const { user_session } = request.query;
+  if (!user_session) return response.status(403).json({
+    status:403, message: 'Ошибка аутентификации'
+  });
+
+  response.json({
+    status: 200
+  });
+});
 
 var listener = app.listen(9999, function () {
   console.log('Your app is listening on port ' + listener.address().port);
