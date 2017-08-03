@@ -1,8 +1,10 @@
 (function() {
   const field = document.querySelector(".form-inline .form-control");
   const btn = document.querySelector(".form-inline .btn");
+  const errorBlock = document.querySelector(".errorWrapper");
+  const errorMessage = document.getElementById('errorMessage');
   const addAccountForm = document.querySelector(".form-inline");
-  const accounts = document.querySelector('.accounts');
+  const accounts = document.querySelector(".accounts");
   fetch(Config.API_HOST + "/accounts?user_session=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
@@ -12,7 +14,7 @@
     .then(accounts => {
       let companies = accounts.items;
       const accountsList = document.getElementById("accountsList");
-      companies.map( (company) => {
+      companies.map(company => {
         let li = document.createElement("li");
         let a = document.createElement("a");
         for (let companyData in company) {
@@ -26,8 +28,13 @@
         li.appendChild(a);
       });
     })
-    .catch(error => showError(error,addAccountForm,accountsList));
-
+    .catch(error => {
+      addAccountForm.style.display = "none";
+      accountsList.style.display = "none";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.6)";
+      errorMessage.innerHTML = error.message;
+      errorBlock.style.display = "block";
+    });
   btn.disabled = true;
   field.addEventListener("input", function() {
     btn.disabled = false;
@@ -56,10 +63,11 @@
         window.location.replace("/accounts/" + accountData.id);
       })
       .catch(error => {
-          showError(error,addAccountForm,accountsList);
-          field.disabled = false;
+          errorMessage.style.display = 'block';
+          errorMessage.innerHTML = error.message;
           btn.disabled = false;
-          btn.innerHTML = "Добавить";
+          btn.innerHTML = 'Добавить';
+          field.disabled = false;
       });
   });
 })();

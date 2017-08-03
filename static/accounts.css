@@ -30,6 +30,10 @@ body{
   background: url('/static/images/error.png') center no-repeat;
   font-size: 17px;
 }
+#errorMessage{
+  display: none;
+  margin-top:15px;
+}
 .form-inline .btn{
   margin-top: 10px;
 }

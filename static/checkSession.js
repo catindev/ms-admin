@@ -27,10 +27,3 @@ if (userSession && location.pathname === "/") {
 } else if (!userSession && location.pathname !== '/'){
   window.location.replace("/");
 }
-function showError(error,form,sidebarLinks) {
-  form.style.display = 'none';
-  sidebarLinks.style.display = 'none';
-  document.body.style.backgroundColor ='rgba(0,0,0,0.6)';
-  errorMessage.innerHTML = error.message;
-  errorBlock.style.display = "block";
-}
