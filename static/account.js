@@ -4,8 +4,8 @@
   const errorMessage = document.getElementById("errorMessage");
   const accountForm = document.getElementById("accountForm");
   const sidebar = document.querySelector(".nav-stacked");
-  const saveBtn = document.querySelector(".form-group .btn");
-  const fieldset = document.querySelector('.form-group fieldset');
+  const saveBtn = document.querySelector("#accountForm .btn");
+  const fieldset = document.querySelector('#accountForm fieldset');
   fetch(Config.API_HOST + url + "?user_session=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
@@ -24,16 +24,15 @@
       }
     })
     .catch(error => {
-      accountForm.style.display = "none";
-      sidebar.style.display = "none";
-      document.body.style.backgroundColor = "rgba(0,0,0,0.6)";
+      let hiddenElements = [accountForm,sidebar];
+      hiddenElements.map((element)=>element.classList.add('hide'));
+      document.body.classList.add('darken');
       errorMessage.innerHTML = error.message;
-      errorBlock.style.display = "block";
+      errorBlock.classList.add('show');
     });
 
   accountForm.addEventListener("submit", function(event) {
     event.preventDefault();
-    saveBtn.disabled = true;
     fieldset.disabled = true;
     saveBtn.innerHTML = "Сохраняем...";
     const fields = accountForm.getElementsByTagName("input");
@@ -42,6 +41,7 @@
       // Вставляет в body имя поля и значение поля
       body[fields[i]["name"]] = fields[i].value;
     }
+
     fetch(Config.API_HOST + url + "?user_session=" + userSession, {
       method: "put",
       headers: { "Content-type": "application/json" },
@@ -54,20 +54,20 @@
       })
       .then(response => {
         console.log(response);
-        saveBtn.disabled = false;
         fieldset.disabled = false;
         saveBtn.innerHTML = "Сохранить";
       })
       .catch(error => {
         errorMessage.innerHTML = error.message;
-        errorMessage.style.display = 'block';
-        error.fields.map( (name) => {
-          let field = document.getElementsByName(name)[0];
-          field.style.borderColor = 'red';
-        });
-        saveBtn.disabled = false;
+        errorMessage.classList.add('show');
         fieldset.disabled = false;
         saveBtn.innerHTML = "Сохранить";
+        if (error.status === 400) {
+          error.fields.map( (name) => {
+            let field = document.getElementsByName(name)[0];
+            field.parentElement.classList.add('has-error');
+          });
+        }
       });
   });
 })();

@@ -11,10 +11,9 @@
       if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
       return jsonResponse;
     })
-    .then(accounts => {
-      let companies = accounts.items;
+    .then(({items}) => {
       const accountsList = document.getElementById("accountsList");
-      companies.map(company => {
+      items.map(company => {
         let li = document.createElement("li");
         let a = document.createElement("a");
         for (let companyData in company) {
@@ -29,11 +28,10 @@
       });
     })
     .catch(error => {
-      addAccountForm.style.display = "none";
-      accountsList.style.display = "none";
-      document.body.style.backgroundColor = "rgba(0,0,0,0.6)";
+      addAccountForm.classList.add('hide');
+      document.body.classList.add('darken');
       errorMessage.innerHTML = error.message;
-      errorBlock.style.display = "block";
+      errorBlock.classList.add('show');
     });
   btn.disabled = true;
   field.addEventListener("input", function() {
@@ -63,7 +61,7 @@
         window.location.replace("/accounts/" + accountData.id);
       })
       .catch(error => {
-          errorMessage.style.display = 'block';
+          errorMessage.classList.add('show');
           errorMessage.innerHTML = error.message;
           btn.disabled = false;
           btn.innerHTML = 'Добавить';

@@ -51,22 +51,30 @@
           </ul>
         </div>
 
-      <div id='containerForm'>
-        <form id="accountForm" class="form-group">
+      <div class='containerForm'>
+        <form id="accountForm">
           <h3 id='accountName'></h3>
           <div id="errorMessage" class="alert alert-danger"></div>
           <fieldset>
             <legend class="fieldsetHeader">Настройки</legend>
-            <label class="label-form">Название компании</label>
-            <input class="form-control" type="text" name="name"\>
-            <label class="label-form">Время ожидания</label>
-            <input class="form-control" type="text" name="maxWaitingTime"\>
-            <label class="label-form">Время разговора</label>
-            <input class="form-control" type="text" name="maxAnswerTime"\>
-            <label class="label-form">Вопрос</label>
-            <input class="form-control" type="text" name="targetQuestion"\>
+            <div class="form-group">
+              <label class="label-form">Название компании</label>
+              <input class="form-control" type="text" name="name"\>
+            </div>
+            <div class="form-group">
+              <label class="label-form">Время ожидания</label>
+              <input class="form-control" type="text" name="maxWaitingTime"\>
+            </div>
+            <div class="form-group">
+              <label class="label-form">Время разговора</label>
+              <input class="form-control" type="text" name="maxAnswerTime"\>
+            </div>
+            <div class="form-group">
+              <label class="label-form">Вопрос</label>
+              <input class="form-control" type="text" name="targetQuestion"\>
+            </div>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
           </fieldset>
-          <button type="submit" class="btn btn-primary">Сохранить</button>
         </form>
       </div>
       <div class="errorWrapper">
