@@ -1,44 +1,44 @@
 const express = require('express');
 const app = express();
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
-app.get("/", function (request, response) {
+app.get('/', function (request, response) {
   response.sendFile(__dirname + '/index.html');
 });
 
-app.get("/accounts", function (request, response) {
+app.get('/accounts', function (request, response) {
   response.sendFile(__dirname + '/accounts.html');
 });
 
-app.get("/accounts/:accountID", function (request, response) {
+app.get('/accounts/:accountID', function (request, response) {
   response.sendFile(__dirname + '/account.html');
 });
 
-app.get("/accounts/:accountID/users", function (request, response) {
+app.get('/accounts/:accountID/users', function (request, response) {
   response.sendFile(__dirname + '/users.html');
 });
 
-app.get("/accounts/:accountID/users/:userID", function (request, response) {
+app.get('/accounts/:accountID/users/:userID', function (request, response) {
   response.sendFile(__dirname + '/user.html');
 });
 
-app.get("/api/users/:session_id", function (request, response) {
+app.get('/api/users/:session_id', function (request, response) {
   const { session_id } = request.params;
-  if (session_id) response.json({ status: 200, username: 'Василий Пупкин' })
+  if (session_id) response.json({ status: 200, username: 'Василий Пупкин' });
   else response.status(403).json({
-    status:403, message: 'Сессия устарела или не создавалась'
+    status:403, message: 'Сессия устарела или не создавалась',
   });
 });
 
-app.get("/api/accounts", function (request, response) {
+app.get('/api/accounts', function (request, response) {
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
-    status:403, message: 'Ошибка аутентификации'
+    status:403, message: 'Ошибка аутентификации',
   });
 
   response.json({
@@ -48,14 +48,14 @@ app.get("/api/accounts", function (request, response) {
       { id: '222', name: 'Агенство GPeople' },
       { id: '333', name: 'Зона отдыха Слобода' },
       { id: '444', name: 'Магазин Carpets' },
-    ]
+    ],
   });
 });
 
-app.get("/api/accounts/:accountID", function (request, response) {
+app.get('/api/accounts/:accountID', function (request, response) {
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
-    status:403, message: 'Ошибка аутентификации'
+    status:403, message: 'Ошибка аутентификации',
   });
 
   response.json({
@@ -64,56 +64,62 @@ app.get("/api/accounts/:accountID", function (request, response) {
     name: 'ТОО Рога и копыта',
     maxWaitingTime: 12,
     maxAnswerTime: 120,
-    targetQuestion: 'Клиент хотел купить?'
+    targetQuestion: 'Клиент хотел купить?',
   });
 });
 
-app.post("/api/login", function (request, response) {
+app.post('/api/login', function (request, response) {
   const { login, password } = request.body;
 
   if (login === 'badass') return response.status(500).json({
-    status: 500, message: "Техническая ошибка. Попробуйте позже или обратитесь в поддержку"
+    status: 500, message: 'Техническая ошибка. Попробуйте позже или обратитесь в поддержку',
   });
 
   if (login === 'test' && password === '111') return response.status(200).json({
-    status: 200, session: 'fb21257948461a14d065f414762517df'
+    status: 200, session: 'fb21257948461a14d065f414762517df',
   });
 
   response.status(400).json({
-    status: 400, message: "Неверный логин или пароль"
+    status: 400, message: 'Неверный логин или пароль',
   });
 });
 
-app.post("/api/accounts",function (request,response) {
+app.post('/api/accounts',function (request,response) {
   const { user_session } = request.query;
   const { name } = request.body;
 
   if (!user_session) return response.status(403).json({
-    status: 403, message: 'Ошибка аутентификации'
+    status: 403, message: 'Ошибка аутентификации',
   });
   if (!name) return response.status(400).json({
-    status:400, message: "Название аккаунта не заполнено"
+    status:400, message: 'Название аккаунта не заполнено',
   });
 
   response.json({
     status:200,
-    id: "111"
+    id: '111',
   });
 });
 
-app.put("/api/accounts/:accountID", function (request, response) {
-  const { user_session } = request.query;
+app.put('/api/accounts/:accountID', function (request, response) {
+  setTimeout(() => {
+    const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
     status:403, message: 'Ошибка аутентификации'
   });
 
-  response.json({ status: 200 });
+  response.json({
+    status:400,
+    message: "Неправильно заполнен один из параметров",
+    fields: [ "maxWaitingTime" ]
+  });
+}, 4000);
 });
 
-app.get("/api/accounts/:accountID/users", function (request, response) {
+app.get('/api/accounts/:accountID/users', function (request, response) {
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
-    status:403, message: 'Ошибка аутентификации'
+    status:403, message: 'Ошибка аутентификации',
   });
 
   response.json({
@@ -121,42 +127,42 @@ app.get("/api/accounts/:accountID/users", function (request, response) {
     items:[
       {
         id: '111',
-        name: 'Иван'
+        name: 'Иван',
       },
       {
         id: '222',
-        name: 'Арай'
+        name: 'Арай',
       },
       {
         id: '333',
-        name: 'Елена'
+        name: 'Елена',
       },
-    ]
+    ],
   });
 });
 
-app.post("/api/accounts/:accountID/users",function (request,response) {
+app.post('/api/accounts/:accountID/users',function (request,response) {
   const { user_session } = request.query;
   const { name } = request.body;
 
   if (!user_session) return response.status(403).json({
-    status: 403, message: 'Ошибка аутентификации'
+    status: 403, message: 'Ошибка аутентификации',
   });
 
   if (!name) return response.status(400).json({
-    status:400, message: "Имя пользователя не заполнено"
+    status:400, message: 'Имя пользователя не заполнено',
   });
 
   response.json({
     status:200,
-    id: "111"
+    id: '111',
   });
 });
 
-app.get("/api/accounts/:accountID/users/:userID", function (request, response) {
+app.get('/api/accounts/:accountID/users/:userID', function (request, response) {
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
-    status:403, message: 'Ошибка аутентификации'
+    status:403, message: 'Ошибка аутентификации',
   });
 
   response.json({
@@ -165,25 +171,25 @@ app.get("/api/accounts/:accountID/users/:userID", function (request, response) {
     name: 'Иван',
     phones: ['+77771234567', '+77785553311'],
     type: 'manager',
-    email:'ivan@example.com'
+    email:'ivan@example.com',
   });
 });
 
-app.put("/api/accounts/:accountID/users/:userID", function (request, response) {
+app.put('/api/accounts/:accountID/users/:userID', function (request, response) {
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
-    status:403, message: 'Ошибка аутентификации'
+    status:403, message: 'Ошибка аутентификации',
   });
 
   response.json({
-    status: 200
+    status: 200,
   });
 });
 
-app.get("/api/accounts/:accountID/numbers", function (request, response) {
+app.get('/api/accounts/:accountID/numbers', function (request, response) {
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
-    status:403, message: 'Ошибка аутентификации'
+    status:403, message: 'Ошибка аутентификации',
   });
 
   response.json({
@@ -192,44 +198,44 @@ app.get("/api/accounts/:accountID/numbers", function (request, response) {
       {
         id: '111',
         name: 'Google',
-        phone: '+77770007722'
+        phone: '+77770007722',
       },
       {
         id: '222',
         name: 'Яндекс',
-        phone: '+77058816622'
+        phone: '+77058816622',
       },
       {
         id: '333',
         name: 'Instagram',
-        phone: '+7701113456'
+        phone: '+7701113456',
       },
-    ]
+    ],
   });
 });
 
-app.get("/api/accounts/:accountID/numbers/:numberID", function (request, response) {
+app.get('/api/accounts/:accountID/numbers/:numberID', function (request, response) {
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
-    status:403, message: 'Ошибка аутентификации'
+    status:403, message: 'Ошибка аутентификации',
   });
 
   response.json({
     status: 200,
     id: '111',
     name: 'Google',
-    phone: '+77770007722'
+    phone: '+77770007722',
   });
 });
 
-app.put("/api/accounts/:accountID/numbers/:numberID", function (request, response) {
+app.put('/api/accounts/:accountID/numbers/:numberID', function (request, response) {
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
-    status:403, message: 'Ошибка аутентификации'
+    status:403, message: 'Ошибка аутентификации',
   });
 
   response.json({
-    status: 200
+    status: 200,
   });
 });
 

@@ -4,37 +4,30 @@
   padding-right: 10%;
   padding-left: 10%;
 }
-#accountForm .btn{
-  margin-top: 10px;
-}
 #header{
   margin-bottom:0;
+  border-radius: 1px;
 }
 #sidebar{
   text-align: center;
   background-color: #333;
 }
+#alertMessage{
+  display: none;
+  margin-bottom: 0;
+}
 .sidebar__links{
   color:#fff;
 }
-.navbar-inverse{
-  border-radius: 1px;
+.sidebar__links:active{
+  background:#fff !important;
 }
-.nav-stacked>li>a:active{
-  background:#fff;
+.sidebar__links:focus{
+  background:#fff !important;
 }
-.nav-stacked>li>a:focus{
-  background:#fff;
-}
-.nav-stacked>li>a:hover{
-  background:#fff;
-  transition: all 0.7s;
-}
-.label-form{
-  margin-top: 5px;
-}
-.label-form::first-letter{
-  text-transform: uppercase;
+.sidebar__links:hover{
+  background:#fff !important;
+  transition: all 0.7s !important;
 }
 .menuBtn{
   margin-top: 0;
@@ -45,7 +38,7 @@
 }
 .fieldsetHeader{
   padding-top: 15px;
-  margin-bottom:5px;
+  margin-bottom: 15px;
 }
 .errorWrapper{
   display: none;
@@ -62,6 +55,9 @@
   height: 100px;
   background: url('/static/images/error.png') center no-repeat;
   font-size: 17px;
+}
+.darken{
+  background: rgba(0,0,0,0.6);
 }
 @media screen and (min-width:768px){
   #accountForm{
@@ -80,15 +76,13 @@
     float: left;
     margin-left: -15px;
     padding-right: 0;
+    padding-top: 15px;
+    height: 100vh !important;
   }
   .sidebar__links{
     border-left: none;
   }
-  .nav-stacked{
-    height: 100vh;
-    margin-top: 15px;
-  }
-  #containerForm{
+  .containerForm{
     margin-left:15%;
   }
 }

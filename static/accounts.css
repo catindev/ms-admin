@@ -30,10 +30,16 @@ body{
   background: url('/static/images/error.png') center no-repeat;
   font-size: 17px;
 }
+#errorMessage{
+  display: none;
+  margin-top:15px;
+}
 .form-inline .btn{
   margin-top: 10px;
 }
-
+.darken{
+  background: rgba(0,0,0,0.6);
+}
 @media screen and (min-width:1024px) {
   .errorWrapper{
     width: 400px;
