@@ -40,6 +40,7 @@
     const body = {};
     for (var i = 0; i < fields.length; i++) {
       // Вставляет в body имя поля и значение поля
+      fields[i].parentElement.classList.remove('has-error');
       body[fields[i]["name"]] = fields[i].value;
     }
 
