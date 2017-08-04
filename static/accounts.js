@@ -13,7 +13,7 @@
     })
     .then(({items}) => {
       const accountsList = document.getElementById("accountsList");
-      items.map(company => {
+      items.forEach(company => {
         let li = document.createElement("li");
         let a = document.createElement("a");
         for (let companyData in company) {
@@ -28,10 +28,10 @@
       });
     })
     .catch(error => {
-      addAccountForm.classList.add('hide');
+      addAccountForm.style.display = 'none';
       document.body.classList.add('darken');
       errorMessage.innerHTML = error.message;
-      errorBlock.classList.add('show');
+      errorBlock.style.display = 'block';
     });
   btn.disabled = true;
   field.addEventListener("input", function() {
@@ -61,7 +61,7 @@
         window.location.replace("/accounts/" + accountData.id);
       })
       .catch(error => {
-          errorMessage.classList.add('show');
+          errorMessage.style.display = 'block';
           errorMessage.innerHTML = error.message;
           btn.disabled = false;
           btn.innerHTML = 'Добавить';

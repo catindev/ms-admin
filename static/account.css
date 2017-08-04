@@ -4,9 +4,6 @@
   padding-right: 10%;
   padding-left: 10%;
 }
-#accountForm .btn{
-  margin-top: 10px;
-}
 #header{
   margin-bottom:0;
   border-radius: 1px;
@@ -15,7 +12,7 @@
   text-align: center;
   background-color: #333;
 }
-#errorMessage{
+#alertMessage{
   display: none;
   margin-bottom: 0;
 }

@@ -1,7 +1,7 @@
 (function() {
   const url = location.pathname;
   const accountName = document.getElementById("accountName");
-  const errorMessage = document.getElementById("errorMessage");
+  const alertMessage = document.getElementById("alertMessage");
   const accountForm = document.getElementById("accountForm");
   const sidebar = document.querySelector(".nav-stacked");
   const saveBtn = document.querySelector("#accountForm .btn");
@@ -25,14 +25,15 @@
     })
     .catch(error => {
       let hiddenElements = [accountForm,sidebar];
-      hiddenElements.map((element)=>element.classList.add('hide'));
+      hiddenElements.forEach((element) => element.style.display = 'none');
       document.body.classList.add('darken');
-      errorMessage.innerHTML = error.message;
-      errorBlock.classList.add('show');
+      alertMessage.innerHTML = error.message;
+      errorBlock.style.display = 'block';
     });
 
   accountForm.addEventListener("submit", function(event) {
     event.preventDefault();
+    alertMessage.style.display = 'none';
     fieldset.disabled = true;
     saveBtn.innerHTML = "Сохраняем...";
     const fields = accountForm.getElementsByTagName("input");
@@ -53,17 +54,22 @@
         return jsonResponse;
       })
       .then(response => {
-        console.log(response);
+        alertMessage.style.display = 'block';
+        alertMessage.classList.remove('alert-danger');
+        alertMessage.classList.add('alert-success');
+        alertMessage.innerHTML = 'Изменения сохранены';
         fieldset.disabled = false;
         saveBtn.innerHTML = "Сохранить";
       })
       .catch(error => {
-        errorMessage.innerHTML = error.message;
-        errorMessage.classList.add('show');
+        alertMessage.innerHTML = error.message;
+        alertMessage.style.display = 'block';
+        alertMessage.classList.remove('alert-success');
+        alertMessage.classList.add('alert-danger');
         fieldset.disabled = false;
         saveBtn.innerHTML = "Сохранить";
         if (error.status === 400) {
-          error.fields.map( (name) => {
+          error.fields.forEach( (name) => {
             let field = document.getElementsByName(name)[0];
             field.parentElement.classList.add('has-error');
           });
