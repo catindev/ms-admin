@@ -1,8 +1,22 @@
+#addUserForm{
+  margin-top: 20px;
+  padding-right: 25px;
+  padding-left: 25px;
+}
 #usersList{
   text-align: center;
 }
+.form-inline .btn{
+  margin-top:5px;
+}
 .users{
+  margin-top: 20px;
   width: 200px;
+}
+#alertMessage{
+  display: none;
+  text-align: center;
+  margin-top: 20px;
 }
 .errorWrapper{
   display: none;
@@ -26,5 +40,19 @@
 @media screen and (min-width:768px){
   .errorWrapper{
     width: 400px;
+  }
+  .users{
+    margin-top: 40px;
+  }
+  .form-inline .btn{
+    margin-top:0;
+  }
+  #addUserForm{
+    margin-left: 40%;
+  }
+  #alertMessage{
+    margin: auto;
+    margin-top: 20px;
+    width: 25%
   }
 }

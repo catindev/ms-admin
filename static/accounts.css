@@ -14,6 +14,10 @@ body{
   font-size: 18px;
   font-weight: normal;
 }
+#alertMessage{
+  display: none;
+  margin-top: 20px;
+}
 .errorWrapper{
   display: none;
   background: white;

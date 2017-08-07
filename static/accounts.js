@@ -4,7 +4,6 @@
   const errorBlock = document.querySelector(".errorWrapper");
   const errorMessage = document.getElementById('errorMessage');
   const addAccountForm = document.querySelector(".form-inline");
-  const accounts = document.querySelector(".accounts");
   fetch(Config.API_HOST + "/accounts?user_session=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
@@ -61,8 +60,10 @@
         window.location.replace("/accounts/" + accountData.id);
       })
       .catch(error => {
-          errorMessage.style.display = 'block';
-          errorMessage.innerHTML = error.message;
+          alertMessage.innerHTML = error.message;
+          alertMessage.style.display = "block";
+          alertMessage.classList.remove("alert-success");
+          alertMessage.classList.add("alert-danger");
           btn.disabled = false;
           btn.innerHTML = 'Добавить';
           field.disabled = false;
