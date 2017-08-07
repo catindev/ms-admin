@@ -1,0 +1,30 @@
+#usersList{
+  text-align: center;
+}
+.users{
+  width: 200px;
+}
+.errorWrapper{
+  display: none;
+  background: white;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+#errorBlock{
+  display: block;
+  height: 100px;
+  background: url('/static/images/error.png') center no-repeat;
+  font-size: 17px;
+}
+.darken{
+  background: rgba(0,0,0,0.6);
+}
+@media screen and (min-width:768px){
+  .errorWrapper{
+    width: 400px;
+  }
+}

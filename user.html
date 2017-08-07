@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="static/account.css">
+    <link rel="stylesheet" href="static/user.css">
     <link rel="stylesheet" href="static/sidebar.css">
   </head>
   <body>
 
-          <nav id='header' class="navbar navbar-inverse">
+      <nav id='header' class="navbar navbar-inverse">
           <div class="navbar-header">
               <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
                   <span class="icon-bar"></span>
@@ -36,38 +36,40 @@
           </div>
       </nav>
 
-
-        <div class="navbar-header">
-            <button class='menuBtn btn-primary' type="button" data-target="#sidebar" data-toggle="collapse" class="navbar-toggle">
-                Меню
-            </button>
-        </div>
-        <div id="sidebar" class="collapse navbar-collapse">
-          <ul id="sidebarList" class="nav nav-pills nav-stacked">
-          </ul>
-        </div>
+      <div class="navbar-header">
+          <button class='menuBtn btn-primary' type="button" data-target="#sidebar" data-toggle="collapse" class="navbar-toggle">
+              Меню
+          </button>
+      </div>
+      <div id="sidebar" class="collapse navbar-collapse">
+        <ul id="sidebarList" class="nav nav-pills nav-stacked">
+        </ul>
+      </div>
 
       <div class='containerForm'>
-        <form id="accountForm">
-          <h3 id='accountName'></h3>
+        <form id="userForm">
+          <h3 id='username'></h3>
           <div id="alertMessage" class="alert"></div>
           <fieldset>
             <legend class="fieldsetHeader">Настройки</legend>
             <div class="form-group">
-              <label class="label-form">Название компании</label>
+              <label class="label-form">Имя</label>
               <input class="form-control" type="text" name="name"\>
             </div>
             <div class="form-group">
-              <label class="label-form">Время ожидания</label>
-              <input class="form-control" type="text" name="maxWaitingTime"\>
+              <label for="phones">Номера телефонов</label>
+              <textarea class="form-control" rows="4" name="phones"></textarea>
             </div>
             <div class="form-group">
-              <label class="label-form">Время разговора</label>
-              <input class="form-control" type="text" name="maxAnswerTime"\>
+              <label for="type">Должность</label>
+              <select class="form-control" name="type">
+                <option value="boss">начальник</option>
+                <option value="manager">менеджер</option>
+              </select>
             </div>
             <div class="form-group">
-              <label class="label-form">Вопрос</label>
-              <input class="form-control" type="text" name="targetQuestion"\>
+              <label class="label-form">Почта</label>
+              <input class="form-control" type="text" name="email"\>
             </div>
             <button type="submit" class="btn btn-primary">Сохранить</button>
           </fieldset>
@@ -76,7 +78,8 @@
   <script src="static/config.js"></script>
   <script type="text/javascript" src='/static/js.cookie.js'></script>
   <script type="text/javascript" src='/static/checkSession.js'></script>
-  <script type="text/javascript" src='/static/account.js'></script>
+  <script type="text/javascript" src='/static/user.js'></script>
   <script type="text/javascript" src="/static/sidebar.js"></script>
+
   </body>
-</html>
+  </html>
