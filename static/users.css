@@ -1,21 +1,21 @@
-body{
-  background-color: #fff;
+#addUserForm{
+  margin-top: 20px;
+  padding-right: 25px;
+  padding-left: 25px;
 }
-.accounts {
-  width: 100%;
+#usersList{
+  text-align: center;
 }
-.accounts__link {
-  color: inherit;
+.form-inline .btn{
+  margin-top:5px;
 }
-.navbar-inverse{
-  border-radius: 1px;
-}
-.label-form{
-  font-size: 18px;
-  font-weight: normal;
+.users{
+  margin-top: 20px;
+  width: 200px;
 }
 #alertMessage{
   display: none;
+  text-align: center;
   margin-top: 20px;
 }
 .errorWrapper{
@@ -34,25 +34,25 @@ body{
   background: url('/static/images/error.png') center no-repeat;
   font-size: 17px;
 }
-#errorMessage{
-  display: none;
-  margin-top:15px;
-}
-.form-inline .btn{
-  margin-top: 10px;
-}
 .darken{
   background: rgba(0,0,0,0.6);
 }
-@media screen and (min-width:1024px) {
+@media screen and (min-width:768px){
   .errorWrapper{
     width: 400px;
   }
+  .users{
+    margin-top: 40px;
+  }
   .form-inline .btn{
     margin-top:0;
-    margin-left: 5px;
   }
-  .accounts{
-    padding-right: 80%;
+  #addUserForm{
+    margin-left: 40%;
+  }
+  #alertMessage{
+    margin: auto;
+    margin-top: 20px;
+    width: 25%
   }
 }

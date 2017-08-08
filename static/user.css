@@ -1,25 +1,21 @@
-#accountForm {
+#userForm {
   float: right;
   width: 100%;
   padding-right: 10%;
   padding-left: 10%;
 }
+#alertMessage{
+  display: none;
+  margin-bottom: 10px;
+}
 #header{
   margin-bottom:0;
   border-radius: 1px;
 }
-#alertMessage{
-  display: none;
-  margin-bottom: 0;
-}
-.fieldsetHeader{
-  padding-top: 15px;
-  margin-bottom: 15px;
-}
 @media screen and (min-width:768px){
-  #accountForm{
+  #userForm{
     width: 80%;
-    padding-right: 42.5%;
+    padding-right: 40%;
   }
   .containerForm{
     margin-left:15%;
