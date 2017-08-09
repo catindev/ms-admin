@@ -27,6 +27,10 @@ app.get('/accounts/:accountID/users/:userID', function (request, response) {
   response.sendFile(__dirname + '/user.html');
 });
 
+app.get('/accounts/:accountID/trunks', function (request, response) {
+  response.sendFile(__dirname + '/trunks.html');
+});
+
 app.get('/api/users/:session_id', function (request, response) {
   const { session_id } = request.params;
   if (session_id) response.json({ status: 200, username: 'Василий Пупкин' });
