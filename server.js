@@ -186,7 +186,7 @@ app.put('/api/accounts/:accountID/users/:userID', function (request, response) {
   });
 });
 
-app.get('/api/accounts/:accountID/numbers', function (request, response) {
+app.get('/api/accounts/:accountID/trunks', function (request, response) {
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
     status:403, message: 'Ошибка аутентификации',
@@ -214,7 +214,31 @@ app.get('/api/accounts/:accountID/numbers', function (request, response) {
   });
 });
 
-app.get('/api/accounts/:accountID/numbers/:numberID', function (request, response) {
+app.post('/api/accounts/:accountID/trunks', function (request, response) {
+  const { user_session } = request.query;
+  const { name, phone } = request.body;
+  if (!user_session) return response.status(403).json({
+    status:403, message: 'Ошибка аутентификации',
+  });
+
+  if (!name) return response.status(400).json({
+    status:400,
+    message: "Не заполнено название транка",
+    fields: [ "name" ]
+  });
+
+  if (!phone) return response.status(400).json({
+    status:400,
+    message: "Не заполнен номер транка",
+    fields: [ "phone" ]
+  });
+
+  response.json({
+    status: 200, id: '888'
+  });
+});
+
+app.get('/api/accounts/:accountID/trunks/:trunkID', function (request, response) {
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
     status:403, message: 'Ошибка аутентификации',
@@ -228,7 +252,18 @@ app.get('/api/accounts/:accountID/numbers/:numberID', function (request, respons
   });
 });
 
-app.put('/api/accounts/:accountID/numbers/:numberID', function (request, response) {
+app.put('/api/accounts/:accountID/trunks/:trunkID', function (request, response) {
+  const { user_session } = request.query;
+  if (!user_session) return response.status(403).json({
+    status:403, message: 'Ошибка аутентификации',
+  });
+
+  response.json({
+    status: 200,
+  });
+});
+
+app.delete('/api/accounts/:accountID/trunks/:trunkID', function (request, response) {
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
     status:403, message: 'Ошибка аутентификации',
