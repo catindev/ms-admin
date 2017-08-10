@@ -40,32 +40,34 @@
             Меню
         </button>
     </div>
+
     <div id="sidebar" class="collapse navbar-collapse">
       <ul id="sidebarList" class="nav nav-pills nav-stacked">
       </ul>
     </div>
-    <form id='addTrunkForm' class="form-inline">
-      <h3 style="margin-bottom:25px">Транки</h3>
-      <h4>Добавить транк</h4>
-      <fieldset>
-        <div class="form-group">
-          <label>Номер</label>
-          <br>
-          <input type="tel" class="form-control" id='phone' name="phone">
-        </div>
-        <div class="form-group">
-          <label>Название</label>
-          <br>
-          <input type="text" class="form-control" id='name' name="name">
-          <button type="submit" class="btn btn-primary">Добавить транк</button>
-        </div>
-      </fieldset>
-      <div id="addTrunkMessage" class="alert"></div>
-    </form>
-    <hr>
-    <div id='editTrunkForm' class="form-inline">
-      <div id="editTrunkMessage" class="alert"></div>
-    </div>
+
+      <form id='addTrunkForm' class="form-inline">
+        <h3 style="margin-bottom:25px">Транки</h3>
+        <div id='alertMessage' class="alert"></div>
+        <h4>Добавить транк</h4>
+        <fieldset>
+          <div class="form-group">
+            <label>Номер</label>
+            <br>
+            <input type="tel" class="form-control" id='phone' name="phone">
+          </div>
+          <div class="form-group">
+            <label>Название</label>
+            <br>
+            <input type="text" class="form-control" id='name' name="name">
+            <button type="submit" class="btn btn-primary">Добавить транк</button>
+          </div>
+        </fieldset>
+      </form>
+      <hr>
+      <div id='editTrunkForm' class="form-inline">
+      </div>
+
 
     <script src="static/config.js"></script>
     <script type="text/javascript" src='/static/js.cookie.js'></script>
