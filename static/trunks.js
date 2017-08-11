@@ -38,9 +38,6 @@ const url = location.pathname;
         <button onclick=clicked='delete' type="submit" class="btn btn-danger deleteBtn">
           Удалить
         </button>
-        <small style='display:none' class="text-muted">
-          Сохранено
-        </small>
         </fieldset>
       </form>`
     });
@@ -91,9 +88,6 @@ const url = location.pathname;
           <button onclick=clicked='delete' type="submit" class="btn btn-danger deleteBtn">
             Удалить
           </button>
-          <small style='display:none' class="text-muted">
-            Сохранено
-          </small>
           </fieldset>
         </form>` + editTrunkForm.innerHTML;
         newTrunkForm = document.getElementById(id);
@@ -117,17 +111,14 @@ const url = location.pathname;
 })();
 function checkBtn(form,event) {
   event.preventDefault();
-  const saveMsgs = document.getElementsByClassName('text-muted');
+  const saveMsg = document.getElementsByName('saveMsg')[0];
   const editTrunkFieldset = form.querySelector('fieldset');
-  const saveMsg = form.getElementsByClassName('text-muted')[0];
+  //const saveMsg = form.getElementsByClassName('text-muted')[0];
   alertMessage.style.display = 'none';
   form['phone'].parentElement.classList.remove('has-error');
   form['name'].parentElement.classList.remove('has-error');
   if (clicked === 'edit') {
-    saveMsg.style.display = 'none';
-    for (var i = 0; i < saveMsgs.length; i++) {
-      saveMsgs[i].style.display = 'none';
-    }
+    //setTimeout(() => saveMsg.style.display = 'none',2000)
     const { phone,name } = form;
     const editBtn = form.querySelector('.editBtn');
     const body = {phone:phone.value, name:name.value};
@@ -146,7 +137,21 @@ function checkBtn(form,event) {
       .then(response => {
         editTrunkFieldset.disabled = false;
         editBtn.innerHTML = 'Сохранить';
-        saveMsg.style.display = 'inline-block';
+        if (saveMsg) {
+          saveMsg.classList.add('saveMsg');
+          setTimeout(() => {
+            saveMsg.parentElement.removeChild(saveMsg);
+            editTrunkFieldset.innerHTML +=
+            `<small name='saveMsg' class="text-muted">
+              Сохранено
+              </small>`
+          },500);
+        }else {
+            editTrunkFieldset.innerHTML +=
+            `<small name='saveMsg' class="text-muted">
+              Сохранено
+              </small>`;
+          }
       })
       .catch(error => {
         editBtn.innerHTML = 'Сохранить';
