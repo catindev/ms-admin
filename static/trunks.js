@@ -145,7 +145,8 @@ function checkBtn(form,event) {
         })
         .then(response => {
           deleteBtn.innerHTML = 'Удалить';
-          showMessage('alert-success','Транк удален',editTrunkFieldset);
+          editTrunkFieldset.classList.add('disappearance');
+          setTimeout(() => form.style.display = 'none',1200);
         })
         .catch(error => {
           deleteBtn.innerHTML = 'Удалить';
