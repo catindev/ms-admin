@@ -7,6 +7,13 @@ const url = location.pathname;
   const addTrunkBtn = document.querySelector('#addTrunkForm .btn');
   const addTrunkFieldset = addTrunkForm.querySelector('fieldset');
   const addTrunkFields = addTrunkForm.getElementsByTagName('input');
+  const numberField = document.getElementById('phone');
+  numberField.addEventListener('keyup', () => {
+    numberField.value = numberField.value.replace(/\D/,'')
+  });
+  numberField.addEventListener('keydown',() => {
+    numberField.value = numberField.value.replace(/\D/,'')
+  });
   let clicked = '';
   fetch(Config.API_HOST + url + "?user_session=" + userSession)
   .then(response => response.json())
@@ -31,6 +38,9 @@ const url = location.pathname;
         <button onclick=clicked='delete' type="submit" class="btn btn-danger deleteBtn">
           Удалить
         </button>
+        <small style='display:none' class="text-muted">
+          Сохранено
+        </small>
         </fieldset>
       </form>`
     });
@@ -81,6 +91,9 @@ const url = location.pathname;
           <button onclick=clicked='delete' type="submit" class="btn btn-danger deleteBtn">
             Удалить
           </button>
+          <small style='display:none' class="text-muted">
+            Сохранено
+          </small>
           </fieldset>
         </form>` + editTrunkForm.innerHTML;
         newTrunkForm = document.getElementById(id);
@@ -104,11 +117,17 @@ const url = location.pathname;
 })();
 function checkBtn(form,event) {
   event.preventDefault();
-  alertMessage.style.display = 'none';
+  const saveMsgs = document.getElementsByClassName('text-muted');
   const editTrunkFieldset = form.querySelector('fieldset');
+  const saveMsg = form.getElementsByClassName('text-muted')[0];
+  alertMessage.style.display = 'none';
   form['phone'].parentElement.classList.remove('has-error');
   form['name'].parentElement.classList.remove('has-error');
   if (clicked === 'edit') {
+    saveMsg.style.display = 'none';
+    for (var i = 0; i < saveMsgs.length; i++) {
+      saveMsgs[i].style.display = 'none';
+    }
     const { phone,name } = form;
     const editBtn = form.querySelector('.editBtn');
     const body = {phone:phone.value, name:name.value};
@@ -125,8 +144,9 @@ function checkBtn(form,event) {
         return jsonResponse;
       })
       .then(response => {
+        editTrunkFieldset.disabled = false;
         editBtn.innerHTML = 'Сохранить';
-        showMessage('alert-success','Сохранено',editTrunkFieldset);
+        saveMsg.style.display = 'inline-block';
       })
       .catch(error => {
         editBtn.innerHTML = 'Сохранить';
