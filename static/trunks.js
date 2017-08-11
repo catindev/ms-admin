@@ -66,9 +66,8 @@ const url = location.pathname;
         return jsonResponse;
       })
       .then(({id}) => {
-        showMessage('alert-success','Транк добавлен',addTrunkFieldset);
         editTrunkForm.innerHTML =
-        `<form onsubmit=checkBtn(this,event) id=${id} class="form-group edit-form new-trunk">
+        `<form onsubmit=checkBtn(this,event) id=${id} class="form-group edit-form">
           <fieldset>
           <div class="form-group">
           <input type="text" class="form-control" name="phone" value=${phone.value}>
@@ -84,7 +83,15 @@ const url = location.pathname;
           </button>
           </fieldset>
         </form>` + editTrunkForm.innerHTML;
-
+        newTrunkForm = document.getElementById(id);
+        newTrunkForm.classList.add('new-trunk');
+        setTimeout(() => newTrunkForm.classList.remove('new-trunk'),400);
+        let addingFields = addTrunkForm.getElementsByTagName('input');
+        addTrunkFieldset.disabled = false;
+        addTrunkBtn.disabled = true;
+        for (var i = 0; i < addingFields.length; i++) {
+          addingFields[i].value = '';
+        }
       })
       .catch(error => {
         showMessage('alert-danger',error.message,addTrunkFieldset);
@@ -97,6 +104,7 @@ const url = location.pathname;
 })();
 function checkBtn(form,event) {
   event.preventDefault();
+  alertMessage.style.display = 'none';
   const editTrunkFieldset = form.querySelector('fieldset');
   form['phone'].parentElement.classList.remove('has-error');
   form['name'].parentElement.classList.remove('has-error');
@@ -130,7 +138,7 @@ function checkBtn(form,event) {
       });
 
   }else if (clicked === 'delete') {
-      confirm('Удалить транк?');
+      if( confirm('Удалить транк?') ){
       const deleteBtn = form.querySelector('.deleteBtn');
       editTrunkFieldset.disabled = true;
       deleteBtn.innerHTML = 'Удаляем...';
@@ -151,7 +159,8 @@ function checkBtn(form,event) {
         .catch(error => {
           deleteBtn.innerHTML = 'Удалить';
           showMessage('alert-danger',error.message,editTrunkFieldset);
-        });
+        })}
+        return false;
   };
 };
 function showMessage(messageType,message,fieldset) {
@@ -161,7 +170,6 @@ function showMessage(messageType,message,fieldset) {
     alertMessage.classList.add('alert-success');
     alertMessage.innerHTML = message;
     alertMessage.style.display = 'block';
-    setTimeout(() => {alertMessage.style.display = 'none'},5000);
   }else if (messageType === 'alert-danger') {
     alertMessage.classList.remove('alert-success');
     alertMessage.classList.add('alert-danger');
