@@ -67,8 +67,8 @@ const url = location.pathname;
       })
       .then(({id}) => {
         showMessage('alert-success','Транк добавлен',addTrunkFieldset);
-        editTrunkForm.innerHTML +=
-        `<form onsubmit=checkBtn(this,event) id=${id} class="form-group edit-form">
+        editTrunkForm.innerHTML =
+        `<form onsubmit=checkBtn(this,event) id=${id} class="form-group edit-form new-trunk">
           <fieldset>
           <div class="form-group">
           <input type="text" class="form-control" name="phone" value=${phone.value}>
@@ -83,7 +83,7 @@ const url = location.pathname;
             Удалить
           </button>
           </fieldset>
-        </form>`
+        </form>` + editTrunkForm.innerHTML;
 
       })
       .catch(error => {
@@ -145,8 +145,8 @@ function checkBtn(form,event) {
         })
         .then(response => {
           deleteBtn.innerHTML = 'Удалить';
-          editTrunkFieldset.classList.add('disappearance');
-          setTimeout(() => form.style.display = 'none',1200);
+          editTrunkFieldset.classList.add('delete-trunk');
+          setTimeout(() => form.style.display = 'none',400);
         })
         .catch(error => {
           deleteBtn.innerHTML = 'Удалить';

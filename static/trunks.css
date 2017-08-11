@@ -24,9 +24,27 @@ hr{
 #addTrunkForm .btn{
   width: 176px;
 }
-.disappearance{
-  transition: all 1.5s;
-  opacity: 0;
+.delete-trunk{
+  animation: delete-trunk-animation 0.4s linear;
+}
+.new-trunk{
+  animation: new-trunk-animation 0.5s linear;
+}
+@keyframes new-trunk-animation {
+  0%{
+    transform: scale(0);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+@keyframes delete-trunk-animation {
+  0%{
+    transform:scale(1);
+  }
+  100%{
+    transform: scale(0);
+  }
 }
 @media screen and (min-width:768px){
   #addTrunkForm,#editTrunkForm{
