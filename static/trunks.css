@@ -6,6 +6,7 @@
 }
 #addTrunkForm .btn{
   margin-top: 10px;
+  width: 176px;
 }
 .edit-form{
   margin-bottom: 30px !important;
@@ -20,9 +21,6 @@ hr{
 }
 #alertMessage{
   display: none;
-}
-#addTrunkForm .btn{
-  width: 176px;
 }
 .delete-trunk{
   animation: delete-trunk-animation 0.4s linear;
@@ -56,6 +54,9 @@ hr{
   }
   #addTrunkForm{
     margin-bottom: 20px;
+  }
+  #addTrunkForm .btn{
+    margin-top: 0;
   }
   .btn{
     margin-top:0;
