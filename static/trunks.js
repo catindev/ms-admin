@@ -113,21 +113,19 @@ function checkBtn(form,event) {
   event.preventDefault();
   const saveMsg = document.getElementsByName('saveMsg')[0];
   const editTrunkFieldset = form.querySelector('fieldset');
-  //const saveMsg = form.getElementsByClassName('text-muted')[0];
   alertMessage.style.display = 'none';
   form['phone'].parentElement.classList.remove('has-error');
   form['name'].parentElement.classList.remove('has-error');
   if (clicked === 'edit') {
-    //setTimeout(() => saveMsg.style.display = 'none',2000)
     const { phone,name } = form;
     const editBtn = form.querySelector('.editBtn');
-    const body = {phone:phone.value, name:name.value};
+    const body = JSON.stringify({phone:phone.value, name:name.value});
     editTrunkFieldset.disabled = true;
     editBtn.innerHTML = 'Сохраняем...';
     fetch(Config.API_HOST + url + '/'+ form.id + "?user_session=" + userSession, {
       method: "put",
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify(body)
+      body
     })
       .then(response => response.json())
       .then(jsonResponse => {
@@ -135,22 +133,21 @@ function checkBtn(form,event) {
         return jsonResponse;
       })
       .then(response => {
-        editTrunkFieldset.disabled = false;
-        editBtn.innerHTML = 'Сохранить';
         if (saveMsg) {
           saveMsg.classList.add('saveMsg');
+          //Время за которое сообщение "Сохранено" исчезнет при пересохранении
           setTimeout(() => {
-            saveMsg.parentElement.removeChild(saveMsg);
+            editTrunkFieldset.disabled = false;
+            editBtn.innerHTML = 'Сохранить';
+            saveMsg.parentNode.removeChild(saveMsg);
             editTrunkFieldset.innerHTML +=
-            `<small name='saveMsg' class="text-muted">
-              Сохранено
-              </small>`
+            `<small name='saveMsg' class="text-muted">Сохранено</small>`
           },500);
         }else {
+            editBtn.innerHTML = 'Сохранить';
+            editTrunkFieldset.disabled = false;
             editTrunkFieldset.innerHTML +=
-            `<small name='saveMsg' class="text-muted">
-              Сохранено
-              </small>`;
+            `<small name='saveMsg' class="text-muted">Сохранено</small>`;
           }
       })
       .catch(error => {
