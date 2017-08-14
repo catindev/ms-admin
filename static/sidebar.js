@@ -12,17 +12,18 @@
     {
       title: "Пользователи",
       url: "/accounts/" + companyId + "/users"
+    },
+    {
+      title: "Транки",
+      url: "/accounts/" + companyId + "/trunks"
     }
   ];
-  sidebarList.innerHTML = linksSettings.reduce((links, link) => {
-    return (
-      `<li>
-      <a class='sidebar__links' href=${links.url}>${links.title}</a>
-    </li>` +
-      `<li>
-      <a class='sidebar__links' href=${link.url}>${link.title}</a>
-    </li>`
-    );
+
+  linksSettings.map(link => {
+    sidebarList.innerHTML +=
+       `<li>
+        <a class='sidebar__links' href=${link.url}>${link.title}</a>
+       </li>`;
   });
   for (var i = 0; i < sidebarLinks.length; i++) {
     if (sidebarLinks[i].href === url) {

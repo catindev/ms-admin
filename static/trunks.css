@@ -1,0 +1,75 @@
+#addTrunkForm,#editTrunkForm {
+  float: right;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+#addTrunkForm .btn{
+  margin-top: 10px;
+  width: 176px;
+}
+.edit-form{
+  margin-bottom: 30px !important;
+}
+.edit-form input[type='text']{
+  margin-bottom: 20px;
+}
+hr{
+  width: 100%;
+  border-color:rgb(128,128,128);
+  margin-top:200px;
+}
+#alertMessage{
+  display: none;
+}
+.delete-trunk{
+  animation: delete-trunk-animation 0.4s linear;
+}
+.new-trunk{
+  animation: new-trunk-animation 0.5s linear;
+}
+.saveMsg{
+  transition: all 0.6s;
+  opacity: 0;
+}
+@keyframes new-trunk-animation {
+  0%{
+    transform: scale(0);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+@keyframes delete-trunk-animation {
+  0%{
+    transform:scale(1);
+  }
+  100%{
+    transform: scale(0);
+  }
+}
+@media screen and (min-width:768px){
+  #addTrunkForm,#editTrunkForm{
+    width:66%;
+  }
+  #addTrunkForm{
+    margin-bottom: 20px;
+  }
+  #addTrunkForm .btn{
+    margin-top: 0;
+  }
+  .btn{
+    margin-top:0;
+  }
+  #alertMessage{
+    text-align: center;
+    width: 397px;
+  }
+  hr{
+    width: 75%;
+    margin-bottom: 40px;
+  }
+  .edit-form input[type='text']{
+    margin-bottom: 0;
+  }
+}

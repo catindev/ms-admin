@@ -117,7 +117,7 @@ app.put('/api/accounts/:accountID', function (request, response) {
     message: "Неправильно заполнен один из параметров",
     fields: [ "maxWaitingTime" ]
   });
-}, 4000);
+}, 1100);
 });
 
 app.get('/api/accounts/:accountID/users', function (request, response) {
@@ -238,7 +238,7 @@ app.post('/api/accounts/:accountID/trunks', function (request, response) {
   });
 
   response.json({
-    status: 200, id: '888'
+    status: 200, id: new Date().getTime()
   });
 });
 

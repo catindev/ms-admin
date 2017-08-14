@@ -19,7 +19,7 @@
         for (var i = 0; i < fields.length; i++) {
           if (key === "phones") {
             userData[key].forEach(phone => {
-              fields[i].innerHTML += phone + "\n";
+              fields[i].value += phone + "\n";
             });
           } else if (key === "type") {
             fields[i].querySelector(
