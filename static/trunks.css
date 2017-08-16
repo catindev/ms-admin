@@ -77,4 +77,8 @@ hr{
   #addTrunkForm,#editTrunkForm{
     width:80%;
   }
+  input{
+    width:150px !important;
+  }
+  }
 }

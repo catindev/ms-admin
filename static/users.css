@@ -8,7 +8,7 @@
 }
 .users{
   margin-top: 10px;
-  text-align: center;
+  padding-left:25px;
 }
 #alertMessage{
   display: none;
@@ -40,7 +40,7 @@
   }
   .users{
     position: absolute;
-    left: 50%;
+    left: 48%;
   }
   .form-inline .btn{
     margin-top:0;
@@ -48,6 +48,9 @@
   .label-form{
     display:block;
     margin-right:120px;
+  }
+  .users{
+    padding-left:0;
   }
   #addUserForm{
     text-align: center;
