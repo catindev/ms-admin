@@ -3,15 +3,12 @@
   padding-right: 25px;
   padding-left: 25px;
 }
-#usersList{
-  text-align: center;
-}
 .form-inline .btn{
   margin-top:5px;
 }
 .users{
-  margin-top: 20px;
-  width: 200px;
+  margin-top: 10px;
+  padding-left:25px;
 }
 #alertMessage{
   display: none;
@@ -42,13 +39,21 @@
     width: 400px;
   }
   .users{
-    margin-top: 40px;
+    position: absolute;
+    left: 48%;
   }
   .form-inline .btn{
     margin-top:0;
   }
+  .label-form{
+    display:block;
+    margin-right:120px;
+  }
+  .users{
+    padding-left:0;
+  }
   #addUserForm{
-    margin-left: 40%;
+    text-align: center;
   }
   #alertMessage{
     margin: auto;
