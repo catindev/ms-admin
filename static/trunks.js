@@ -100,6 +100,8 @@ const url = location.pathname;
         let addingFields = addTrunkForm.getElementsByTagName('input');
         newTrunkForm.classList.add('new-trunk');
         setTimeout(() => newTrunkForm.classList.remove('new-trunk'),400);
+    	addTrunkFieldset.disabled = false;
+	addTrunkBtn.disabled = true;
         for (var i = 0; i < addingFields.length; i++) {
           addingFields[i].value = '';
         }
