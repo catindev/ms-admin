@@ -32,14 +32,20 @@ const url = location.pathname;
         <div class="form-group">
         <input type="tel" class="form-control" name="name" value=${item.name}>
         </div>
-        <button onclick=clicked='edit' type="submit" class="btn btn-primary editBtn">
+        <button onclick=clicked='save' name=saveBtn type="submit" class="btn btn-primary saveBtn">
           Сохранить
         </button>
-        <button onclick=clicked='delete' type="submit" class="btn btn-danger deleteBtn">
-          Удалить
+        <button onclick=clicked='edit' name=editBtn type="submit" class="btn btn-danger editBtn">
+          Отключить
         </button>
         </fieldset>
-      </form>`
+      </form>`;
+      let form = document.getElementById(item.id);
+      let {phone,name,saveBtn,editBtn} = form;
+      if (!item.active) {
+        [phone,name,saveBtn].forEach((elem)=>elem.disabled = true);
+        editBtn.innerHTML = 'Включить';
+      }
     });
   })
   .catch(error => showMessage('alert-danger',error.message,editTrunkForm))
@@ -77,25 +83,25 @@ const url = location.pathname;
         `<form onsubmit=checkBtn(this,event) id=${id} class="form-group edit-form">
           <fieldset>
           <div class="form-group">
-          <input type="text" class="form-control" name="phone" value=${phone.value}>
+          <input disabled type="text" class="form-control" name="phone" value=${phone.value}>
           </div>
           <div class="form-group">
-          <input type="tel" class="form-control" name="name" value=${name.value}>
+          <input disabled type="tel" class="form-control" name="name" value=${name.value}>
           </div>
-          <button onclick=clicked='edit' type="submit" class="btn btn-primary editBtn">
+          <button disabled onclick=clicked='save' name='saveBtn' type="submit" class="btn btn-primary saveBtn">
             Сохранить
           </button>
-          <button onclick=clicked='delete' type="submit" class="btn btn-danger deleteBtn">
-            Удалить
+          <button onclick=clicked='edit' name='editBtn' type="submit" class="btn btn-danger editBtn">
+            Включить
           </button>
           </fieldset>
         </form>` + editTrunkForm.innerHTML;
-        newTrunkForm = document.getElementById(id);
+        let newTrunkForm = document.getElementById(id);
+        let addingFields = addTrunkForm.getElementsByTagName('input');
         newTrunkForm.classList.add('new-trunk');
         setTimeout(() => newTrunkForm.classList.remove('new-trunk'),400);
-        let addingFields = addTrunkForm.getElementsByTagName('input');
-        addTrunkFieldset.disabled = false;
-        addTrunkBtn.disabled = true;
+    	addTrunkFieldset.disabled = false;
+	addTrunkBtn.disabled = true;
         for (var i = 0; i < addingFields.length; i++) {
           addingFields[i].value = '';
         }
@@ -113,15 +119,16 @@ function checkBtn(form,event) {
   event.preventDefault();
   const saveMsg = document.getElementsByName('saveMsg')[0];
   const editTrunkFieldset = form.querySelector('fieldset');
+  const saveBtn = form.querySelector('.saveBtn');
+  const editBtn = form.querySelector('.editBtn');
   alertMessage.style.display = 'none';
   form['phone'].parentElement.classList.remove('has-error');
   form['name'].parentElement.classList.remove('has-error');
-  if (clicked === 'edit') {
+  if (clicked === 'save') {
     const { phone,name } = form;
-    const editBtn = form.querySelector('.editBtn');
     const body = JSON.stringify({phone:phone.value, name:name.value});
     editTrunkFieldset.disabled = true;
-    editBtn.innerHTML = 'Сохраняем...';
+    saveBtn.innerHTML = 'Сохраняем...';
     fetch(Config.API_HOST + url + '/'+ form.id + "?user_session=" + userSession, {
       method: "put",
       headers: { "Content-type": "application/json" },
@@ -138,20 +145,21 @@ function checkBtn(form,event) {
           //Время за которое сообщение "Сохранено" исчезнет при пересохранении
           setTimeout(() => {
             editTrunkFieldset.disabled = false;
-            editBtn.innerHTML = 'Сохранить';
+            saveBtn.innerHTML = 'Сохранить';
             saveMsg.parentNode.removeChild(saveMsg);
             editTrunkFieldset.innerHTML +=
             `<small name='saveMsg' class="text-muted">Сохранено</small>`
           },500);
         }else {
-            editBtn.innerHTML = 'Сохранить';
+            saveBtn.innerHTML = 'Сохранить';
             editTrunkFieldset.disabled = false;
             editTrunkFieldset.innerHTML +=
             `<small name='saveMsg' class="text-muted">Сохранено</small>`;
           }
       })
+
       .catch(error => {
-        editBtn.innerHTML = 'Сохранить';
+        saveBtn.innerHTML = 'Сохранить';
         showMessage('alert-danger',error.message,editTrunkFieldset);
         error.fields.forEach((name) =>{
           let field = form[name];
@@ -159,14 +167,22 @@ function checkBtn(form,event) {
         })
       });
 
-  }else if (clicked === 'delete') {
-      if( confirm('Удалить транк?') ){
-      const deleteBtn = form.querySelector('.deleteBtn');
+  }else if (clicked === 'edit') {
+      const { phone,name,saveBtn } = form;
+      let active;
       editTrunkFieldset.disabled = true;
-      deleteBtn.innerHTML = 'Удаляем...';
+      if (editBtn.innerHTML.trim() === 'Включить'){
+        editBtn.innerHTML = 'Включаем...';
+        active = true;
+      }else{
+        editBtn.innerHTML = 'Отключаем...';
+        active = false;
+      }
+      const body = JSON.stringify({active});
       fetch(Config.API_HOST + url + '/'+ form.id + "?user_session=" + userSession, {
-        method: "delete",
+        method: "put",
         headers: { "Content-type": "application/json" },
+        body
       })
         .then(response => response.json())
         .then(jsonResponse => {
@@ -174,15 +190,20 @@ function checkBtn(form,event) {
           return jsonResponse;
         })
         .then(response => {
-          deleteBtn.innerHTML = 'Удалить';
-          editTrunkFieldset.classList.add('delete-trunk');
-          setTimeout(() => form.style.display = 'none',400);
+          editTrunkFieldset.disabled = false;
+          let msg = form.querySelector('small');
+          if (msg) {msg.parentNode.removeChild(msg)};
+          if (editBtn.innerHTML === 'Включаем...'){
+            return editBtn.innerHTML = 'Отключить',
+                   [phone,name,saveBtn].forEach((elem) => elem.disabled=false);
+          }
+          editBtn.innerHTML = 'Включить';
+          [phone,name,saveBtn].forEach((elem) => elem.disabled=true);
         })
         .catch(error => {
-          deleteBtn.innerHTML = 'Удалить';
+          editBtn.innerHTML = 'Включить';
           showMessage('alert-danger',error.message,editTrunkFieldset);
-        })}
-        return false;
+        })
   };
 };
 function showMessage(messageType,message,fieldset) {
