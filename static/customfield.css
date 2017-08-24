@@ -1,0 +1,19 @@
+#parameterForm {
+  float: right;
+  width: 100%;
+  padding-right: 10%;
+  padding-left: 10%;
+}
+#alertMessage{
+  display: none;
+  margin-bottom: 10px;
+}
+@media screen and (min-width:768px){
+  #parameterForm{
+    width: 80%;
+    padding-right: 40%;
+  }
+  .containerForm{
+    margin-left:15%;
+  }
+}

@@ -1,0 +1,63 @@
+#addParameterForm{
+  margin-top: 20px;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+.form-inline .btn{
+  margin-top:5px;
+}
+.parameters{
+  margin-top: 10px;
+  padding-left:25px;
+}
+#alertMessage{
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+}
+.errorWrapper{
+  display: none;
+  background: white;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+#errorBlock{
+  display: block;
+  height: 100px;
+  background: url('/static/images/error.png') center no-repeat;
+  font-size: 17px;
+}
+.darken{
+  background: rgba(0,0,0,0.6);
+}
+@media screen and (min-width:768px){
+  .errorWrapper{
+    width: 400px;
+  }
+  .parameters{
+    position: absolute;
+    left: 48%;
+  }
+  .form-inline .btn{
+    margin-top:0;
+  }
+  .label-form{
+    display:block;
+    margin-right:150px;
+  }
+  .parameters{
+    padding-left:0;
+  }
+  #addParameterForm{
+    text-align: center;
+  }
+  #alertMessage{
+    margin: auto;
+    margin-top: 20px;
+    width: 25%
+  }
+}
