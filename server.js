@@ -31,6 +31,14 @@ app.get('/accounts/:accountID/trunks', function (request, response) {
   response.sendFile(__dirname + '/trunks.html');
 });
 
+app.get('/accounts/:accountID/customfields', function(request, response){
+  response.sendFile(__dirname + '/customfields.html');
+});
+
+app.get('/accounts/:accountID/customfields/:fieldID', function(request, response){
+  response.sendFile(__dirname + '/customfield.html');
+});
+
 app.get('/api/users/:session_id', function (request, response) {
   const { session_id } = request.params;
   if (session_id) response.json({ status: 200, username: 'Василий Пупкин' });
@@ -278,6 +286,76 @@ app.delete('/api/accounts/:accountID/trunks/:trunkID', function (request, respon
 
   response.json({
     status: 200,
+  });
+});
+
+app.get('/api/accounts/:accountID/customfields', function(request, response){
+  const { user_session } = request.query;
+  if (!user_session) return response.status(403).json({
+    status:403, message: 'Ошибка аутентификации',
+  });
+
+  response.json({
+     status: 200,
+      items:[
+        {
+          id: '111',
+          name: 'Пол',
+        },
+        {
+          id: '222',
+          name: 'Возраст',
+        }
+      ] 
+    });
+});
+
+app.post('/api/accounts/:accountID/customfields',function (request,response) {
+  const { user_session } = request.query;
+  const { name } = request.body;
+
+  if (!user_session) return response.status(403).json({
+    status: 403, message: 'Ошибка аутентификации',
+  });
+
+  if (!name) return response.status(400).json({
+    status:400, message: 'Имя параметра не заполнено',
+  });
+
+  response.json({
+    status:200,
+    id: 'Идентификатор',
+  });
+});
+
+app.get('/api/accounts/:accountID/customfields/:fieldID', function (request, response) {
+  const { user_session } = request.query;
+  if (!user_session) return response.status(403).json({
+    status:403, message: 'Ошибка аутентификации',
+  });
+
+  response.json({
+    status: 200,
+    id: '333',
+    name: 'Тестовый параметр',
+    list: ['Значение 1', 'Значение 2'],
+    type: 'select'
+  });
+});
+
+app.put('/api/accounts/:accountID/customfields/:fieldID', function (request, response) {
+  const { user_session } = request.query;
+  const {type} = request.body;
+  if (!user_session) return response.status(403).json({
+    status:403, message: 'Ошибка аутентификации',
+  });
+  if (type === 'multiselect') return response.status(400).json({
+    status:400, 
+    message: "Неправильно заполнен один из параметров",
+    fields: [ "type" ]
+  })
+  response.json({
+    status:200,
   });
 });
 

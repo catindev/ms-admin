@@ -16,6 +16,10 @@
     {
       title: "Транки",
       url: "/accounts/" + companyId + "/trunks"
+    },
+    {
+      title: "Параметры",
+      url: accountUrl + "/customfields"
     }
   ];
 

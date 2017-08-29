@@ -1,10 +1,10 @@
 (function() {
   const url = location.pathname;
   const sidebar = document.getElementById("sidebar");
-  const addUserForm = document.getElementById("addUserForm");
-  const field = document.querySelector("#addUserForm .form-control");
-  const btn = document.querySelector("#addUserForm .btn");
-  const usersList = document.getElementById("usersList");
+  const addParameterForm = document.getElementById("addParameterForm");
+  const field = document.querySelector("#addParameterForm .form-control");
+  const btn = document.querySelector("#addParameterForm .btn");
+  const parametersList = document.getElementById("parametersList");
   const errorBlock = document.querySelector(".errorWrapper");
   const errorMessage = document.getElementById("errorMessage");
   fetch(Config.API_HOST + url + "?user_session=" + userSession)
@@ -14,9 +14,9 @@
       return jsonResponse;
     })
     .then(({ items }) => {
-      items.forEach(user => {
-          usersList.innerHTML += 
-          `<li><a href = ${url +'/'+ user['id']}>${user['name']}</a></li>`;
+      items.forEach(parameter => {
+          parametersList.innerHTML += 
+          `<li><a href = ${url +'/'+ parameter['id']}>${parameter['name']}</a></li>`;
       });
     })
     .catch(error => {
@@ -31,7 +31,7 @@
       btn.disabled = true;
     }
   });
-  addUserForm.addEventListener("submit", function(event) {
+  addParameterForm.addEventListener("submit", function(event) {
     event.preventDefault();
     const body = JSON.stringify({ name: field.value });
     field.disabled = true;
@@ -47,8 +47,8 @@
         if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
         return jsonResponse;
       })
-      .then(userData => {
-        window.location.replace(url + "/" + userData.id);
+      .then(parameterData => {
+        window.location.replace(url + "/" + parameterData.id);
       })
       .catch(error => {
         alertMessage.innerHTML = error.message;

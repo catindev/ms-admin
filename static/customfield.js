@@ -1,38 +1,34 @@
 (function() {
-  const username = document.getElementById("username");
+  const parameterName = document.getElementById("parameterName");
   const url = location.pathname;
   const alertMessage = document.getElementById("alertMessage");
-  const userForm = document.getElementById("userForm");
-  const saveBtn = document.querySelector("#userForm .btn");
-  const fieldset = document.querySelector("#userForm fieldset");
+  const parameterForm = document.getElementById("parameterForm");
+  const saveBtn = document.querySelector("#parameterForm .btn");
+  const fieldset = document.querySelector("#parameterForm fieldset");
   const textarea = document.getElementById('textarea');
+  const select = document.getElementsByTagName('select')[0];
+  select.addEventListener('change',() => {
+    if (select.value !== 'text') return textarea.parentElement.style.display = 'block';
+    textarea.parentElement.style.display = 'none';
+  });
   fetch(Config.API_HOST + url + "?user_session=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
       if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
       return jsonResponse;
     })
-    .then(userData => {
-      username.innerHTML = userData.name;
-      for (key in userData) {
-        let fields = document.getElementsByName(key);
-        for (var i = 0; i < fields.length; i++) {
-          if (key === "phones") {
-            userData[key].forEach(phone => {
-              if (userData[key].indexOf(phone) === userData[key].length-1) {
-                return fields[i].value += phone;
-              } 
-              fields[i].value += phone + "\n";
-            });
-          } else if (key === "type") {
-            fields[i].querySelector(
-              `option[value=${userData[key]}]`
-            ).selected = true;
-          } else {
-            fields[i].value = userData[key];
-          }
+    .then(({type,list,name}) => {
+      parameterName.innerHTML = name;
+        var selected = document.querySelector(`option[value=${type}]`);
+        selected.selected = true;
+        if (selected.value === 'text') {
+          return textarea.parentElement.style.display = 'none';
         }
-      }
+        list.forEach(value => {
+              if (list.indexOf(value) === list.length-1) return textarea.value += value;
+              textarea.value += value + "\n";
+        });
+        
     })
     .catch(error => {
       alertMessage.innerHTML = error.message;
@@ -42,20 +38,19 @@
       alertMessage.classList.add("alert-danger");
     });
 
-    userForm.addEventListener("submit", function(event) {
+    parameterForm.addEventListener("submit", function(event) {
       event.preventDefault();
       alertMessage.style.display = "none";
       fieldset.disabled = true;
       saveBtn.innerHTML = "Сохраняем...";
-      const fields =  userForm.getElementsByClassName("form-control");
+      const fields =  parameterForm.getElementsByClassName("form-control");
       const body = {};
       for (var i = 0; i < fields.length; i++) {
-        // Вставляет в body имя поля и значение поля
         fields[i].parentElement.classList.remove("has-error");
-        if (fields[i].name === 'phones'){
+        if (fields[i].name === 'list'){
           let textareaValues = fields[i].value.split('\n');
-          body[fields[i].name] = textareaValues;
-        }else{
+          if (select.value !== 'text') body[fields[i].name] = textareaValues;
+        }else {
           body[fields[i].name] = fields[i].value;
         }
       }

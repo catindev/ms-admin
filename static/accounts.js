@@ -13,17 +13,8 @@
     .then(({items}) => {
       const accountsList = document.getElementById("accountsList");
       items.forEach(company => {
-        let li = document.createElement("li");
-        let a = document.createElement("a");
-        for (let companyData in company) {
-          if (companyData === "id") {
-            a.href = "/accounts/" + company["id"];
-          } else if (companyData === "name") {
-            a.innerHTML = company["name"];
-          }
-        }
-        accountsList.appendChild(li);
-        li.appendChild(a);
+        accountsList.innerHTML += 
+          `<li><a href = ${'/accounts/'+ company['id']}>${company['name']}</a></li>`;
       });
     })
     .catch(error => {
