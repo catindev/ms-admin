@@ -22,6 +22,7 @@ const url = location.pathname;
     return jsonResponse;
   })
   .then(({items}) => {
+    if (items.length === 0 ) return editTrunkForm.innerHTML = `<p class='noTrunks'>Транков нет</p>`;
     items.forEach(item => {
       editTrunkForm.innerHTML +=
       `<form onsubmit=checkBtn(this,event) id=${item.id} class="form-group edit-form">

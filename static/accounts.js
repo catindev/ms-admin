@@ -12,6 +12,7 @@
     })
     .then(({items}) => {
       const accountsList = document.getElementById("accountsList");
+      if (items.length === 0) return accountsList.innerHTML = `<li>Аккаунтов нет</li>`;
       items.forEach(company => {
         accountsList.innerHTML += 
           `<li><a href = ${'/accounts/'+ company['id']}>${company['name']}</a></li>`;
