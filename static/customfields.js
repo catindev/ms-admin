@@ -14,6 +14,7 @@
       return jsonResponse;
     })
     .then(({ items }) => {
+      if (items.length === 0) return parametersList.innerHTML = `<li>Параметров нет</li>`;
       items.forEach(parameter => {
           parametersList.innerHTML += 
           `<li><a href = ${url +'/'+ parameter['id']}>${parameter['name']}</a></li>`;
