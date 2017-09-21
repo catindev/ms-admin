@@ -6,16 +6,16 @@
   const addAccountForm = document.querySelector(".form-inline");
   fetch(Config.API_HOST + "/accounts?session_token=" + userSession)
     .then(response => response.json())
-    // .then(jsonResponse => {
-    //   if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
-    //   return jsonResponse;
-    // })
+    .then(jsonResponse => {
+      if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
+      return jsonResponse;
+    })
     .then(({items}) => {
       const accountsList = document.getElementById("accountsList");
       if (items.length === 0) return accountsList.innerHTML = `<li>Аккаунтов нет</li>`;
       items.forEach(company => {
         accountsList.innerHTML += 
-          `<li><a href = ${'/accounts/'+ company['id']}>${company['name']}</a></li>`;
+          `<li><a href = ${'/account/'+ company['id']}>${company['name']}</a></li>`;
       });
     })
     .catch(error => {
@@ -48,8 +48,8 @@
         if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
         return jsonResponse;
       })
-      .then(accountData => {
-        window.location.replace("/accounts/" + accountData.id);
+      .then(({ id }) => {
+        window.location.replace("/accounts/" + id);
       })
       .catch(error => {
           alertMessage.innerHTML = error.message;

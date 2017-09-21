@@ -16,10 +16,10 @@
       body
     })
       .then(response => response.json())
-      // .then(jsonResponse => {
-      //   if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
-      //   return jsonResponse;
-      // })
+      .then(jsonResponse => {
+        if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
+        return jsonResponse;
+      })
       .then( json => {
         console.log('sjon', json)
         const { token } = json

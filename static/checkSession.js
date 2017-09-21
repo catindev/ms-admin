@@ -8,10 +8,10 @@ if (userSession && location.pathname === "/") {
   exitBtn.addEventListener('click', () => Cookies.remove('session'));
   fetch(Config.API_HOST + "/session?session_token=" + userSession)
     .then(response => response.json())
-    // .then(jsonResponse => {
-    //   if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
-    //   return jsonResponse;
-    // })
+    .then(jsonResponse => {
+      if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
+      return jsonResponse;
+    })
     .then(userData => {
       const userInfo = {};
       for (let key in userData) {
