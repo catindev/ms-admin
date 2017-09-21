@@ -82,6 +82,10 @@ app.get('/api/accounts/:accountID', function (request, response) {
     maxWaitingTime: 12,
     maxAnswerTime: 120,
     targetQuestion: 'Клиент хотел купить?',
+    author: 'Василий',
+    created: '1 апреля 2017 в 18:30',
+    funnelSteps: ['Встреча', 'Договор'],
+    noTargetReasons: ['Ошиблись номером']
   });
 });
 

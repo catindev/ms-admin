@@ -1,21 +1,21 @@
 (function() {
   const url = location.href;
-  const accountUrl = location.pathname.match(/\accounts\/[0-9]+/g).join("");
+  const accountUrl = location.pathname.match(/\account\/[0-9]+/g).join("");
   const companyId = accountUrl.replace(/[^0-9]/g, "");
   const sidebarList = document.getElementById("sidebarList");
   const sidebarLinks = sidebarList.getElementsByTagName("a");
   const linksSettings = [
     {
       title: "Настройки аккаунта",
-      url: "/accounts/" + companyId
+      url: "/account/" + companyId
     },
     {
       title: "Пользователи",
-      url: "/accounts/" + companyId + "/users"
+      url: "/account/" + companyId + "/users"
     },
     {
       title: "Транки",
-      url: "/accounts/" + companyId + "/trunks"
+      url: "/account/" + companyId + "/trunks"
     },
     {
       title: "Параметры",
