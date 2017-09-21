@@ -14,6 +14,7 @@
       return jsonResponse;
     })
     .then(({ items }) => {
+      if (items.length === 0) return usersList.innerHTML = `<li>Пользователей нет</li>`;
       items.forEach(user => {
           usersList.innerHTML += 
           `<li><a href = ${url +'/'+ user['id']}>${user['name']}</a></li>`;
