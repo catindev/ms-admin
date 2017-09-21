@@ -1,3 +1,3 @@
 var Config = {
-  API_HOST: '/api'
+  API_HOST: 'http://api.mindsales-crm.com'
 };

@@ -4,12 +4,12 @@
   const errorBlock = document.querySelector(".errorWrapper");
   const errorMessage = document.getElementById('errorMessage');
   const addAccountForm = document.querySelector(".form-inline");
-  fetch(Config.API_HOST + "/accounts?user_session=" + userSession)
+  fetch(Config.API_HOST + "/accounts?session_token=" + userSession)
     .then(response => response.json())
-    .then(jsonResponse => {
-      if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
-      return jsonResponse;
-    })
+    // .then(jsonResponse => {
+    //   if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
+    //   return jsonResponse;
+    // })
     .then(({items}) => {
       const accountsList = document.getElementById("accountsList");
       items.forEach(company => {
@@ -37,7 +37,7 @@
     field.disabled = true;
     btn.disabled = true;
     btn.innerHTML = "Добавляем...";
-    fetch(Config.API_HOST + "/accounts?user_session=" + userSession, {
+    fetch(Config.API_HOST + "/accounts?session_token=" + userSession, {
       method: "post",
       headers: { "Content-type": "application/json" },
       body
