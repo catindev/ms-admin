@@ -44,7 +44,7 @@
       body[fields[i]["name"]] = fields[i].value;
     }
 
-    fetch(Config.API_HOST + url + "?user_session=" + userSession, {
+    fetch(Config.API_HOST + url + "?session_token=" + userSession, {
       method: "put",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(body)
