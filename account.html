@@ -50,6 +50,7 @@
       <div class='containerForm'>
         <form id="accountForm">
           <h3 id='accountName'></h3>
+          <p id='author' class="text-muted"></p>
           <div id="alertMessage" class="alert"></div>
           <fieldset>
             <legend class="fieldsetHeader">Настройки</legend>
@@ -63,7 +64,15 @@
             </div>
             <div class="form-group">
               <label class="label-form">Время разговора</label>
-              <input class="form-control" type="text" name="maxAnswerTime"\>
+              <input class="form-control" type="text" name="maxConversationTime"\>
+            </div>
+            <div class="form-group">
+              <label class="label-form">Этапы воронки</label>
+              <textarea class="form-control" rows="4" name="funnelSteps"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="label-form">Причины для нецелевых</label>
+              <textarea class="form-control" name="noTargetReasons"></textarea>
             </div>
             <div class="form-group">
               <label class="label-form">Вопрос</label>

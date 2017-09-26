@@ -21,7 +21,7 @@
             userData[key].forEach(phone => {
               if (userData[key].indexOf(phone) === userData[key].length-1) {
                 return fields[i].value += phone;
-              } 
+              }
               fields[i].value += phone + "\n";
             });
           } else if (key === "type") {
