@@ -79,8 +79,8 @@ app.get('/api/accounts/:accountID', function (request, response) {
     status: 200,
     id: '111',
     name: 'ТОО Рога и копыта',
-    maxWaitingTime: 12,
-    maxAnswerTime: 120,
+    maxWaitingTime: 12000,
+    maxConversationTime: 120000,
     targetQuestion: 'Клиент хотел купить?',
     author: 'Василий',
     created: '1 апреля 2017 в 18:30',
@@ -118,7 +118,7 @@ app.post('/api/accounts',function (request,response) {
 
   response.json({
     status:200,
-    id: '111',
+    id: '59c28264ee2f750c5848fde',
   });
 });
 
@@ -315,7 +315,7 @@ app.get('/api/accounts/:accountID/customfields', function(request, response){
           id: '222',
           name: 'Возраст',
         }
-      ] 
+      ]
     });
 });
 
@@ -359,7 +359,7 @@ app.put('/api/accounts/:accountID/customfields/:fieldID', function (request, res
     status:403, message: 'Ошибка аутентификации',
   });
   if (type === 'multiselect') return response.status(400).json({
-    status:400, 
+    status:400,
     message: "Неправильно заполнен один из параметров",
     fields: [ "type" ]
   })
