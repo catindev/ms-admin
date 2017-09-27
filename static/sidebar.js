@@ -1,8 +1,6 @@
 (function() {
-  const url = location.href;
   const accountUrl = location.pathname.match(/\accounts\/\d+\w+/gi).join("");
   const sidebarList = document.getElementById("sidebarList");
-  const sidebarLinks = sidebarList.getElementsByTagName("a");
   const linksSettings = [
     {
       title: "Настройки аккаунта",
@@ -22,15 +20,16 @@
     }
   ];
 
-  linksSettings.map(link => {
-    sidebarList.innerHTML +=
-       `<li>
-        <a class='sidebar__links' href=${link.url}>${link.title}</a>
-       </li>`;
-  });
-  for (var i = 0; i < sidebarLinks.length; i++) {
-    if (sidebarLinks[i].href === url) {
-      sidebarLinks[i].classList.add("sidebar__activeLink");
-    }
-  }
+  sidebarList.innerHTML = linksSettings
+    .map(({ title, url }) => {
+      const activeClass = '/' + url === location.pathname ? 'sidebar__activeLink' : '';
+
+      return `<li>
+        <a class='sidebar__links ${activeClass}' href=${url}>
+          ${title}
+        </a>
+      </li>`;        
+    })
+    .join('');
+
 })();
