@@ -15,27 +15,27 @@ app.get('/accounts', function (request, response) {
   response.sendFile(__dirname + '/accounts.html');
 });
 
-app.get('/account/:accountID', function (request, response) {
+app.get('/accounts/:accountID', function (request, response) {
   response.sendFile(__dirname + '/account.html');
 });
 
-app.get('/account/:accountID/users', function (request, response) {
+app.get('/accounts/:accountID/users', function (request, response) {
   response.sendFile(__dirname + '/users.html');
 });
 
-app.get('/account/:accountID/users/:userID', function (request, response) {
+app.get('/accounts/:accountID/users/:userID', function (request, response) {
   response.sendFile(__dirname + '/user.html');
 });
 
-app.get('/account/:accountID/trunks', function (request, response) {
+app.get('/accounts/:accountID/trunks', function (request, response) {
   response.sendFile(__dirname + '/trunks.html');
 });
 
-app.get('/account/:accountID/customfields', function(request, response){
+app.get('/accounts/:accountID/customfields', function(request, response){
   response.sendFile(__dirname + '/customfields.html');
 });
 
-app.get('/account/:accountID/customfields/:fieldID', function(request, response){
+app.get('/accounts/:accountID/customfields/:fieldID', function(request, response){
   response.sendFile(__dirname + '/customfield.html');
 });
 

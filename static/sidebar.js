@@ -1,6 +1,6 @@
 (function() {
   const url = location.href;
-  const accountUrl = location.pathname.match(/\account\/\d+\w+/gi).join("");
+  const accountUrl = location.pathname.match(/\accounts\/\d+\w+/gi).join("");
   const sidebarList = document.getElementById("sidebarList");
   const sidebarLinks = sidebarList.getElementsByTagName("a");
   const linksSettings = [

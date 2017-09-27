@@ -15,7 +15,7 @@
       if (items.length === 0) return accountsList.innerHTML = `<li>Аккаунтов нет</li>`;
       items.forEach(company => {
         accountsList.innerHTML += 
-          `<li><a href = ${'/account/'+ company['id']}>${company['name']}</a></li>`;
+          `<li><a href = ${'/accounts/'+ company['id']}>${company['name']}</a></li>`;
       });
     })
     .catch(error => {
@@ -38,7 +38,7 @@
     field.disabled = true;
     btn.disabled = true;
     btn.innerHTML = "Добавляем...";
-    fetch(Config.API_HOST + "/accounts?session_token=" + userSession, {
+    fetch(Config.API_HOST + "/account?session_token=" + userSession, {
       method: "post",
       headers: { "Content-type": "application/json" },
       body

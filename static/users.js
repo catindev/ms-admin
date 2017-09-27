@@ -7,7 +7,7 @@
   const usersList = document.getElementById("usersList");
   const errorBlock = document.querySelector(".errorWrapper");
   const errorMessage = document.getElementById("errorMessage");
-  fetch(Config.API_HOST + url + "?user_session=" + userSession)
+  fetch(Config.API_HOST + url + "?session_token=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
       if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
@@ -15,10 +15,9 @@
     })
     .then(({ items }) => {
       if (items.length === 0) return usersList.innerHTML = `<li>Пользователей нет</li>`;
-      items.forEach(user => {
-          usersList.innerHTML += 
-          `<li><a href = ${url +'/'+ user['id']}>${user['name']}</a></li>`;
-      });
+      usersList.innerHTML = items
+        .map(user => `<li><a href = ${url +'/'+ user['id']}>${user['name']}</a></li>`)
+        .join('');
     })
     .catch(error => {
       document.body.classList.add("darken");
@@ -38,7 +37,7 @@
     field.disabled = true;
     btn.disabled = true;
     btn.innerHTML = "Добавляем...";
-    fetch(Config.API_HOST + url + "?user_session=" + userSession, {
+    fetch(Config.API_HOST + url + "?session_token=" + userSession, {
       method: "post",
       headers: { "Content-type": "application/json" },
       body

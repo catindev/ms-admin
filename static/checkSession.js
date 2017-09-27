@@ -6,7 +6,7 @@ if (userSession && location.pathname === "/") {
   window.location.replace("/accounts");
 } else if (userSession && location.pathname !== "/") {
   exitBtn.addEventListener('click', () => Cookies.remove('session'));
-  fetch(Config.API_HOST + "/session?session_token=" + userSession)
+  fetch(Config.API_HOST + "/sessions?session_token=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
       if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
