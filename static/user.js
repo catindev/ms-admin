@@ -24,7 +24,7 @@
               }
               fields[i].value += phone + "\n";
             });
-          } else if (key === "type") {
+          } else if (key === "access") {
             fields[i].querySelector(
               `option[value=${userData[key]}]`
             ).selected = true;
