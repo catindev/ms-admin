@@ -4,6 +4,7 @@
   const alertMessage = document.getElementById("alertMessage");
   const errorMessage = document.getElementById("errorMessage");
   const accountForm = document.getElementById("accountForm");
+  const author = document.getElementById('author');
   const saveBtn = document.querySelector("#accountForm .btn");
   const fieldset = document.querySelector("#accountForm fieldset");
   fetch(Config.API_HOST + url + "?user_session=" + userSession)
@@ -14,13 +15,23 @@
     })
     .then(account => {
       accountName.innerHTML = account.name;
+      author.innerHTML = "Подключил " + account.author + " " + account.created;
       for (key in account) {
-        if (accountForm[key] && typeof accountForm[key] !== "string") {
           let fields = document.getElementsByName(key);
           for (let field = 0; field < fields.length; field++) {
-            fields[field].value = account[key];
+            if (key === 'maxWaitingTime' || key === 'maxConversationTime') {
+              fields[field].value = account[key]/1000;
+            }else if (key === "funnelSteps" || key === "noTargetReasons" ) {
+              account[key].forEach(item => {
+                if (account[key].indexOf(item) === account[key].length-1) {
+                  return fields[field].value += item;
+                }
+                fields[field].value += item + "\n";
+              })
+            }else {
+              fields[field].value = account[key];
+            }
           }
-        }
       }
     })
     .catch(error => {
@@ -36,14 +47,20 @@
     alertMessage.style.display = "none";
     fieldset.disabled = true;
     saveBtn.innerHTML = "Сохраняем...";
-    const fields = accountForm.getElementsByTagName("input");
+    const fields =  accountForm.getElementsByClassName("form-control");
     const body = {};
     for (var i = 0; i < fields.length; i++) {
       // Вставляет в body имя поля и значение поля
       fields[i].parentElement.classList.remove("has-error");
-      body[fields[i]["name"]] = fields[i].value;
+      if (fields[i].name === 'funnelSteps' || fields[i].name === 'noTargetReasons'){
+        let textareaValues = fields[i].value.split('\n');
+        body[fields[i].name] = textareaValues;
+      }else if (fields[i].name === 'maxWaitingTime' || fields[i].name === 'maxConversationTime') {
+        body[fields[i].name] = fields[i].value*1000;
+      }else{
+        body[fields[i].name] = fields[i].value;
+      }
     }
-
     fetch(Config.API_HOST + url + "?user_session=" + userSession, {
       method: "put",
       headers: { "Content-type": "application/json" },
