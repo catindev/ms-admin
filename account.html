@@ -47,41 +47,56 @@
           </ul>
         </div>
 
-      <div class='containerForm'>
-        <form id="accountForm">
-          <h3 id='accountName'></h3>
-          <p id='author' class="text-muted"></p>
-          <div id="alertMessage" class="alert"></div>
-          <fieldset>
-            <legend class="fieldsetHeader">Настройки</legend>
-            <div class="form-group">
-              <label class="label-form">Название компании</label>
-              <input class="form-control" type="text" name="name"\>
+
+        <ul class="nav nav-tabs">
+           <li class="active"><a data-toggle="tab" href="#accountSettings">Настройки</a></li>
+           <li><a data-toggle="tab" href="#resetPass">Сброс пароля</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="accountSettings" class="tab-pane fade in active">
+              <div class='containerForm'>
+                <form id="accountForm">
+                  <h3 id='accountName'></h3>
+                  <p id='author' class="text-muted"></p>
+                  <div id="alertMessage" class="alert"></div>
+                  <fieldset>
+                    <legend class="fieldsetHeader">Настройки</legend>
+                    <div class="form-group">
+                      <label class="label-form">Название компании</label>
+                      <input class="form-control" type="text" name="name"\>
+                    </div>
+                    <div class="form-group">
+                      <label class="label-form">Время ожидания</label>
+                      <input class="form-control" type="text" name="maxWaitingTime"\>
+                    </div>
+                    <div class="form-group">
+                      <label class="label-form">Время разговора</label>
+                      <input class="form-control" type="text" name="maxConversationTime"\>
+                    </div>
+                    <div class="form-group">
+                      <label class="label-form">Этапы воронки</label>
+                      <textarea class="form-control" rows="4" name="funnelSteps"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label class="label-form">Причины для нецелевых</label>
+                      <textarea class="form-control" name="noTargetReasons"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label class="label-form">Вопрос</label>
+                      <input class="form-control" type="text" name="targetQuestion"\>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                  </fieldset>
+                </form>
+              </div>
             </div>
-            <div class="form-group">
-              <label class="label-form">Время ожидания</label>
-              <input class="form-control" type="text" name="maxWaitingTime"\>
+            <div id="resetPass" class="tab-pane fade">
+              <button type="submit" class="btn btn-primary" id='reset'>Сбросить пароль</button>
             </div>
-            <div class="form-group">
-              <label class="label-form">Время разговора</label>
-              <input class="form-control" type="text" name="maxConversationTime"\>
-            </div>
-            <div class="form-group">
-              <label class="label-form">Этапы воронки</label>
-              <textarea class="form-control" rows="4" name="funnelSteps"></textarea>
-            </div>
-            <div class="form-group">
-              <label class="label-form">Причины для нецелевых</label>
-              <textarea class="form-control" name="noTargetReasons"></textarea>
-            </div>
-            <div class="form-group">
-              <label class="label-form">Вопрос</label>
-              <input class="form-control" type="text" name="targetQuestion"\>
-            </div>
-            <button type="submit" class="btn btn-primary">Сохранить</button>
-          </fieldset>
-        </form>
-      </div>
+          </div>
+
+
   <script src="static/config.js"></script>
   <script type="text/javascript" src='/static/js.cookie.js'></script>
   <script type="text/javascript" src='/static/checkSession.js'></script>
