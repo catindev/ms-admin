@@ -46,17 +46,25 @@
         </ul>
       </div>
 
-      <form id="addParameterForm" class="form-inline">
-          <label class="label-form">Новый Параметр</label>
-          <div class='form-group'>
-            <input class="form-control" type="text" placeholder="Имя пользователя">
-            <button type="submit" class="btn btn-primary">Добавить</button>
-          </div>
-      </form>
-      <div id="alertMessage" class="alert"></div>
-      <div class="parameters">
-        <h1>Параметры</h1>
-        <ul id='parametersList' class="nav nav-pills nav-stacked"></ul>
+      <div class="container-fluid">
+        <form id="addParameterForm" class="form-inline">
+            <label class="label-form">Новый Параметр</label>
+            <div class='form-group'>
+              <input class="form-control" type="text" placeholder="Имя пользователя">
+              <button type="submit" class="btn btn-primary">Добавить</button>
+            </div>
+        </form>
+        <div id="alertMessage" class="alert"></div>
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>Параметер</th>
+              </tr>
+            </thead>
+            <tbody id=parametersList>
+            </tbody>
+          </table>
       </div>
       <div class="errorWrapper">
           <fieldset id='errorBlock'><legend>Ошибка</legend></fieldset>

@@ -41,6 +41,9 @@ body{
 .form-inline .btn{
   margin-top: 10px;
 }
+.table-striped{
+  margin-top: 20px; 
+}
 .darken{
   background: rgba(0,0,0,0.6);
 }

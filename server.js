@@ -53,6 +53,12 @@ app.get('/api/accounts', function (request, response) {
     status:403, message: 'Ошибка аутентификации',
   });
 
+  /*
+  return response.json({
+    status: 200,
+    items:[]
+  });*/
+
   response.json({
     status: 200,
     items:[
@@ -74,9 +80,25 @@ app.get('/api/accounts/:accountID', function (request, response) {
     status: 200,
     id: '111',
     name: 'ТОО Рога и копыта',
-    maxWaitingTime: 12,
-    maxAnswerTime: 120,
+    maxWaitingTime: 12000,
+    maxConversationTime: 120000,
     targetQuestion: 'Клиент хотел купить?',
+    author: 'Василий',
+    created: '1 апреля 2017 в 18:30',
+    funnelSteps: ['Встреча', 'Договор'],
+    noTargetReasons: ['Ошиблись номером']
+  });
+});
+
+app.get('/api/accounts/:accountID/users/:userID/resetPassword', function (request, response) {
+  const { user_session } = request.query;
+  if (!user_session) return response.status(403).json({
+    status:403,message: 'Ошибка аутентификации',
+  })
+
+  response.json({
+    status:200,
+    password:"a43sadfyuiq"
   });
 });
 
@@ -109,7 +131,7 @@ app.post('/api/accounts',function (request,response) {
 
   response.json({
     status:200,
-    id: '111',
+    id: '59c28264ee2f750c5848fde',
   });
 });
 
@@ -306,7 +328,7 @@ app.get('/api/accounts/:accountID/customfields', function(request, response){
           id: '222',
           name: 'Возраст',
         }
-      ] 
+      ]
     });
 });
 
@@ -350,7 +372,7 @@ app.put('/api/accounts/:accountID/customfields/:fieldID', function (request, res
     status:403, message: 'Ошибка аутентификации',
   });
   if (type === 'multiselect') return response.status(400).json({
-    status:400, 
+    status:400,
     message: "Неправильно заполнен один из параметров",
     fields: [ "type" ]
   })
