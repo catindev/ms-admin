@@ -89,7 +89,7 @@ app.get('/api/accounts/:accountID', function (request, response) {
   });
 });
 
-app.get('/api/accounts/:accountID/resetPassword', function (request, response) {
+app.get('/api/accounts/:accountID/users/:userID/resetPassword', function (request, response) {
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
     status:403,message: 'Ошибка аутентификации',
