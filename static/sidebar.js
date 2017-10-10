@@ -26,8 +26,8 @@
 
   linksSettings.map(link => {
     sidebarList.innerHTML +=
-       `<li>
-        <a class='sidebar__links' href=${link.url}>${link.title}</a>
+       `<li class='nav-item'>
+        <a class='nav-link sidebar__links' href=${link.url}>${link.title}</a>
        </li>`;
   });
   for (var i = 0; i < sidebarLinks.length; i++) {

@@ -5,45 +5,36 @@
     <title>Аккаунт</title>
     <BASE href="/">
     <meta name="viewport" content="width=device-width initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/account.css">
     <link rel="stylesheet" href="static/sidebar.css">
   </head>
   <body>
 
-          <nav id='header' class="navbar navbar-inverse">
-          <div class="navbar-header">
-              <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-              <a href="#" class="navbar-brand">Mindsales</a>
-          </div>
-          <div id="navbarCollapse" class="collapse navbar-collapse">
-              <ul class="nav navbar-nav">
-                  <li><a href="/accounts/">Все аккануты</a></li>
-                  <li><a href="#">Пункт 2</a></li>
-                  <li><a href="#">Пункт 3</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" id='adminName'><span class="glyphicon glyphicon-user"></span></a></li>
-                <li><a href="" id='exitBtn'><span class="glyphicon glyphicon-log-out"></span> Выход</a></li>
-              </ul>
-          </div>
-      </nav>
+    <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Mindsales</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="#">Все аккаунты</a>
+        </div>
+        <div class="navbar-nav ml-auto">
+          <a class="nav-item nav-link" href="" id='adminName'></a>
+          <a class="nav-item nav-link" href="" id='exitBtn'>Выход</a>
+        </div>
+      </div>
+    </nav>
 
 
         <div class="navbar-header">
-            <button class='menuBtn btn-primary' type="button" data-target="#sidebar" data-toggle="collapse" class="navbar-toggle">
+            <button class='menuBtn btn-primary' type="button" data-target="#sidebar" data-toggle="collapse" class="navbar-toggler">
                 Меню
             </button>
         </div>
         <div id="sidebar" class="collapse navbar-collapse">
-          <ul id="sidebarList" class="nav nav-pills nav-stacked">
+          <ul id="sidebarList" class="nav flex-column">
           </ul>
         </div>
 
@@ -53,7 +44,7 @@
             <p id='author' class="text-muted"></p>
             <div id="alertMessage" class="alert"></div>
             <fieldset>
-              <legend class="fieldsetHeader">Настройки</legend>
+              <legend>Настройки</legend>
               <div class="form-group">
                 <label class="label-form">Название компании</label>
                 <input class="form-control" type="text" name="name"\>
@@ -88,5 +79,8 @@
   <script type="text/javascript" src='/static/checkSession.js'></script>
   <script type="text/javascript" src='/static/account.js'></script>
   <script type="text/javascript" src="/static/sidebar.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
   </body>
 </html>

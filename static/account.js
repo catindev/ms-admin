@@ -51,7 +51,7 @@
     const body = {};
     for (var i = 0; i < fields.length; i++) {
       // Вставляет в body имя поля и значение поля
-      fields[i].parentElement.classList.remove("has-error");
+      fields[i].classList.remove("is-invalid");
       if (fields[i].name === 'funnelSteps' || fields[i].name === 'noTargetReasons'){
         let textareaValues = fields[i].value.split('\n');
         body[fields[i].name] = textareaValues;
@@ -89,7 +89,7 @@
         if (error.status === 400) {
           error.fields.forEach(name => {
             let field = document.getElementsByName(name)[0];
-            field.parentElement.classList.add("has-error");
+            field.classList.add("is-invalid");
           });
         }
       });

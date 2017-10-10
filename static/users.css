@@ -1,8 +1,14 @@
 #addUserForm{
-  margin-top: 20px;
+  margin-top: 5px;
 }
 .form-inline .btn{
   margin-top:5px;
+  margin-left: 10px;
+}
+.formHeader{
+  margin-bottom: 0;
+  margin-top: 20px;
+  font-weight: bold;
 }
 #alertMessage{
   display: none;
@@ -38,17 +44,17 @@
   .form-inline .btn{
     margin-top:0;
   }
-  .label-form{
-    display:block;
-    margin-right:120px;
+  .formHeader{
+    margin-left: 47.8%;
   }
   .table-striped{
     position: absolute;
     left: 48%;
-    margin-top:50px;
-    width: 270px;
+    margin-top:40px;
+    width: 305px;
   }
   #addUserForm{
+    margin-left: 47.8%;
     text-align: center;
   }
   #alertMessage{
