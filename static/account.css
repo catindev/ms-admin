@@ -3,14 +3,14 @@
   width: 100%;
   padding-right: 10%;
   padding-left: 10%;
+  margin-top: 20px;
 }
 #alertMessage{
   display: none;
   margin-bottom: 0;
 }
-.fieldsetHeader{
-  padding-top: 10px;
-  margin-bottom: 15px;
+.text-muted{
+  font-size: 15px;  
 }
 @media screen and (min-width:768px){
   #accountForm{

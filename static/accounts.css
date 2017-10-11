@@ -1,15 +1,3 @@
-body{
-  background-color: #fff;
-}
-.accounts {
-  width: 100%;
-}
-.accounts__link {
-  color: inherit;
-}
-.navbar-inverse{
-  border-radius: 1px;
-}
 .label-form{
   font-size: 18px;
   font-weight: normal;
@@ -41,6 +29,14 @@ body{
 .form-inline .btn{
   margin-top: 10px;
 }
+.table-striped{
+  margin-top: 20px;
+}
+.form-inline .btn {
+  position: relative;
+  top:4px;
+  margin-left: 10px;
+}
 .darken{
   background: rgba(0,0,0,0.6);
 }
@@ -49,10 +45,9 @@ body{
     width: 400px;
   }
   .form-inline .btn{
-    margin-top:0;
-    margin-left: 5px;
+    margin-bottom:18px;
   }
-  .accounts{
-    padding-right: 80%;
+  .label-form{
+    margin-right: 20px;
   }
 }

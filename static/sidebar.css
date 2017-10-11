@@ -4,16 +4,13 @@
 }
 #sidebar{
   text-align: center;
-  background-color: #333;
+  background-color:#343a40 !important;
 }
 .sidebar__links{
   color:#fff;
 }
 .sidebar__activeLink{
   color: #23527c;
-  background:#fff !important;
-}
-.sidebar__links:focus{
   background:#fff !important;
 }
 .sidebar__links:hover{
@@ -35,6 +32,7 @@
     text-align: left;
     width: 20%;
     float: left;
+    display: block;
     margin-left: -15px;
     padding-right: 0;
     padding-top: 15px;
@@ -42,5 +40,7 @@
   }
   .sidebar__links{
     border-left: none;
+    font-size: 15px;
+    margin-left: 15px;
   }
 }

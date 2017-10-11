@@ -1,14 +1,8 @@
 #addParameterForm{
   margin-top: 20px;
-  padding-right: 25px;
-  padding-left: 25px;
 }
 .form-inline .btn{
   margin-top:5px;
-}
-.parameters{
-  margin-top: 10px;
-  padding-left:25px;
 }
 #alertMessage{
   display: none;
@@ -25,6 +19,20 @@
   left: 50%;
   transform: translate(-50%,-50%);
 }
+.table-striped{
+  width: 100%;
+}
+.formHeader{
+  position: relative;
+  top: 15px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.form-inline .btn{
+  margin-bottom:20px;
+  margin-left: 12px;
+  width: 35%;
+}
 #errorBlock{
   display: block;
   height: 100px;
@@ -38,10 +46,6 @@
   .errorWrapper{
     width: 400px;
   }
-  .parameters{
-    position: absolute;
-    left: 48%;
-  }
   .form-inline .btn{
     margin-top:0;
   }
@@ -49,10 +53,21 @@
     display:block;
     margin-right:150px;
   }
-  .parameters{
-    padding-left:0;
+  .table-striped{
+    position: absolute;
+    left: 47.8%;
+    margin-top:50px;
+    width: 309px;
+  }
+  .formHeader{
+    margin-left: 47.8%;
+  }
+  .form-inline .btn{
+    margin-bottom: 0;
+    width: 14.3%;
   }
   #addParameterForm{
+    margin-left: 47.8%;
     text-align: center;
   }
   #alertMessage{

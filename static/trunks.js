@@ -27,6 +27,7 @@ const url = location.pathname;
       editTrunkForm.innerHTML +=
       `<form onsubmit=checkBtn(this,event) id=${item.id} class="form-group edit-form">
         <fieldset>
+        <div class=row>
         <div class="form-group">
         <input type="text" class="form-control" name="phone" value=${item.phone}>
         </div>
@@ -39,6 +40,7 @@ const url = location.pathname;
         <button onclick=clicked='edit' name=editBtn type="submit" class="btn btn-danger editBtn">
           Отключить
         </button>
+        </div>
         </fieldset>
       </form>`;
       let form = document.getElementById(item.id);
@@ -83,6 +85,7 @@ const url = location.pathname;
         editTrunkForm.innerHTML =
         `<form onsubmit=checkBtn(this,event) id=${id} class="form-group edit-form">
           <fieldset>
+          <div class='row'>
           <div class="form-group">
           <input disabled type="text" class="form-control" name="phone" value=${phone.value}>
           </div>
@@ -95,6 +98,7 @@ const url = location.pathname;
           <button onclick=clicked='edit' name='editBtn' type="submit" class="btn btn-danger editBtn">
             Включить
           </button>
+          </div>
           </fieldset>
         </form>` + editTrunkForm.innerHTML;
         let newTrunkForm = document.getElementById(id);
@@ -120,6 +124,8 @@ function checkBtn(form,event) {
   event.preventDefault();
   const saveMsg = document.getElementsByName('saveMsg')[0];
   const editTrunkFieldset = form.querySelector('fieldset');
+  const editTrunkRow = form.getElementsByClassName('row')[0];
+  console.log(editTrunkRow);
   const saveBtn = form.querySelector('.saveBtn');
   const editBtn = form.querySelector('.editBtn');
   alertMessage.style.display = 'none';
@@ -148,13 +154,13 @@ function checkBtn(form,event) {
             editTrunkFieldset.disabled = false;
             saveBtn.innerHTML = 'Сохранить';
             saveMsg.parentNode.removeChild(saveMsg);
-            editTrunkFieldset.innerHTML +=
+            editTrunkRow.innerHTML +=
             `<small name='saveMsg' class="text-muted">Сохранено</small>`
           },500);
         }else {
             saveBtn.innerHTML = 'Сохранить';
             editTrunkFieldset.disabled = false;
-            editTrunkFieldset.innerHTML +=
+            editTrunkRow.innerHTML +=
             `<small name='saveMsg' class="text-muted">Сохранено</small>`;
           }
       })

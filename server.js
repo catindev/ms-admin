@@ -53,11 +53,12 @@ app.get('/api/accounts', function (request, response) {
     status:403, message: 'Ошибка аутентификации',
   });
 
+  /*
   return response.json({
     status: 200,
     items:[]
-  });
-
+  });*/
+  
   response.json({
     status: 200,
     items:[

@@ -15,10 +15,16 @@
     })
     .then(({ items }) => {
       if (items.length === 0) return parametersList.innerHTML = `<li>Параметров нет</li>`;
-      items.forEach(parameter => {
-          parametersList.innerHTML += 
-          `<li><a href = ${url +'/'+ parameter['id']}>${parameter['name']}</a></li>`;
-      });
+      let counter = 0;
+      parametersList.innerHTML = items.reduce( (result,parameter) => {
+        counter += 1;
+        return result + `
+        <tr>
+          <td>${counter}</td>
+          <td><a href = ${url +'/'+ parameter['id']}>${parameter['name']}</a></td>
+        </tr>
+        `
+      },"");
     })
     .catch(error => {
       document.body.classList.add("darken");
