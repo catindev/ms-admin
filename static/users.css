@@ -2,7 +2,7 @@
   margin-top: 5px;
 }
 .form-inline .btn{
-  margin-top:5px;
+  margin-bottom:16px;
   margin-left: 10px;
 }
 .formHeader{
@@ -41,11 +41,11 @@
   .errorWrapper{
     width: 400px;
   }
-  .form-inline .btn{
-    margin-top:0;
-  }
   .formHeader{
     margin-left: 47.8%;
+  }
+  .form-inline .btn{
+    margin-bottom: 0;
   }
   .table-striped{
     position: absolute;

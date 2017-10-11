@@ -3,7 +3,7 @@
   width: 100%;
   padding-right: 10%;
   padding-left: 10%;
-}
+  }
 #alertMessage{
   display: none;
   margin-bottom: 10px;
@@ -15,10 +15,11 @@
   margin-bottom: 0;
 }
 .nav-tabs{
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 #reset{
-  margin-left: 34%;
+  margin-left: 31%;
   margin-top: 20px;
 }
 @media screen and (min-width:768px){
@@ -27,7 +28,7 @@
     padding-right: 40%;
   }
   .nav-tabs{
-    width: 75%;
+    width: 50%;
     height: 50px;
     position: relative;
     top:10px;
@@ -35,11 +36,11 @@
     border-bottom: 0;
   }
   #reset{
-    width: 225px;
+    width: 251px;
     margin-left:280px;
   }
   #alertPassword{
-    width: 225px;
+    width: 251px;
     margin-left: 40.5%;
   }
   .containerForm{
