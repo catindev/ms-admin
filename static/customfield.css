@@ -1,6 +1,7 @@
 #parameterForm {
   float: right;
   width: 100%;
+  margin-top: 20px;
   padding-right: 10%;
   padding-left: 10%;
 }

@@ -22,6 +22,17 @@
 .table-striped{
   width: 100%;
 }
+.formHeader{
+  position: relative;
+  top: 15px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.form-inline .btn{
+  margin-bottom:20px;
+  margin-left: 12px;
+  width: 35%;
+}
 #errorBlock{
   display: block;
   height: 100px;
@@ -44,11 +55,19 @@
   }
   .table-striped{
     position: absolute;
-    left: 48%;
+    left: 47.8%;
     margin-top:50px;
-    width: 270px;
+    width: 309px;
+  }
+  .formHeader{
+    margin-left: 47.8%;
+  }
+  .form-inline .btn{
+    margin-bottom: 0;
+    width: 14.3%;
   }
   #addParameterForm{
+    margin-left: 47.8%;
     text-align: center;
   }
   #alertMessage{
