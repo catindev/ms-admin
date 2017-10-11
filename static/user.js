@@ -120,5 +120,4 @@
         alertPassword.classList.add('alert-danger');
       });
     });
-
 })();
