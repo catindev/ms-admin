@@ -4,7 +4,8 @@
   const errorBlock = document.querySelector(".errorWrapper");
   const errorMessage = document.getElementById('errorMessage');
   const addAccountForm = document.querySelector(".form-inline");
-  fetch(Config.API_HOST + "/accounts?user_session=" + userSession)
+
+  fetch(Config.API_HOST + "/accounts?session_token=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
       if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
@@ -30,6 +31,7 @@
       errorMessage.innerHTML = error.message;
       errorBlock.style.display = 'block';
     });
+
   btn.disabled = true;
   field.addEventListener("input", function() {
     btn.disabled = false;
@@ -40,11 +42,13 @@
 
   addAccountForm.addEventListener("submit", function(event) {
     event.preventDefault();
+    
     const body = JSON.stringify({ name: field.value });
     field.disabled = true;
     btn.disabled = true;
     btn.innerHTML = "Добавляем...";
-    fetch(Config.API_HOST + "/accounts?user_session=" + userSession, {
+
+    fetch(Config.API_HOST + "/accounts?session_token=" + userSession, {
       method: "post",
       headers: { "Content-type": "application/json" },
       body
