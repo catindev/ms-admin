@@ -10,7 +10,7 @@
       login: login.value,
       password: password.value
     });
-    fetch(Config.API_HOST + "/login", {
+    fetch(Config.API_HOST + "/sessions", {
       method: "post",
       headers: { "Content-type": "application/json" },
       body
@@ -20,21 +20,17 @@
         if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
         return jsonResponse;
       })
-      .then(sessionData => {
+      .then(({ token }) => {
         const expires = new Date(new Date().getTime() + 31536000000);
-        Cookies.set("user_session", sessionData.session, { expires });
+        Cookies.set("user_session", token, { expires });
         window.location.replace("/accounts");
       })
       .catch(error => {
         errorMessage.style.display = "block";
         errorMessage.innerHTML = error.message;
-        errorShake();
+        const loginContainer = document.getElementById("loginContainer");
+        loginContainer.classList.add("shake");
+        setTimeout(() => loginContainer.classList.remove("shake"), 1000);
       });
   });
-
-  function errorShake() {
-    const loginContainer = document.getElementById("loginContainer");
-    loginContainer.classList.add("shake");
-    setTimeout(() => loginContainer.classList.remove("shake"), 1000);
-  }
 })();

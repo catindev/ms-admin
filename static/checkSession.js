@@ -2,9 +2,12 @@ const userSession = Cookies.get("user_session");
 const adminName = document.getElementById("adminName");
 const errorBlock = document.querySelector(".errorWrapper");
 const exitBtn = document.getElementById('exitBtn');
-if (userSession && location.pathname === "/") {
-  window.location.replace("/accounts");
-} else if (userSession && location.pathname !== "/") {
+
+if (userSession && location.pathname === "/") window.location.replace("/accounts");
+
+else if (!userSession && location.pathname !== '/') window.location.replace("/");
+
+else if (userSession && location.pathname !== "/") {
   exitBtn.addEventListener('click', () => Cookies.remove('user_session'));
   fetch(Config.API_HOST + "/users/" + userSession)
     .then(response => response.json())
@@ -24,6 +27,4 @@ if (userSession && location.pathname === "/") {
       errorBlock.style.display = "block";
       errorBlock.innerHTML = error.message;
     });
-} else if (!userSession && location.pathname !== '/'){
-  window.location.replace("/");
 }
