@@ -25,6 +25,9 @@ hr{
   border-color:rgb(128,128,128);
   margin-top:200px;
 }
+.editBtn{
+  width: 105.5px;
+}
 #alertMessage{
   display: none;
 }
@@ -89,6 +92,7 @@ hr{
     margin-top:0;
   }
   #add{
+    width: 220px !important;
     position: relative;
     top:30px;
     left: 10px;
