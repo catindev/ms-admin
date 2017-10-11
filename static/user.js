@@ -8,7 +8,7 @@
   const textarea = document.getElementById('textarea');
   const reset = document.getElementById('reset');
   const alertPassword = document.getElementById('alertPassword');
-  fetch(Config.API_HOST + url + "?user_session=" + userSession)
+  fetch(Config.API_HOST + url + "?session_token=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
       if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
@@ -61,7 +61,7 @@
           body[fields[i].name] = fields[i].value;
         }
       }
-      fetch(Config.API_HOST + url + "?user_session=" + userSession, {
+      fetch(Config.API_HOST + url + "?session_token=" + userSession, {
         method: "put",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(body)
@@ -99,7 +99,7 @@
       alertPassword.display = 'none';
       reset.disabled = true;
       reset.innerHTML = 'Сбрасываем...';
-      fetch(Config.API_HOST + url + '/resetPassword' + "?user_session=" + userSession)
+      fetch(Config.API_HOST + url + '/resetPassword' + "?session_token=" + userSession)
       .then(response => response.json())
       .then(jsonResponse => {
       if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
