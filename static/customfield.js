@@ -11,21 +11,21 @@
     if (select.value !== 'text') return textarea.parentElement.style.display = 'block';
     textarea.parentElement.style.display = 'none';
   });
-  fetch(Config.API_HOST + url + "?user_session=" + userSession)
+  fetch(Config.API_HOST + url + "?session_token=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
       if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
       return jsonResponse;
     })
-    .then(({type,list,name}) => {
+    .then(({type,items,name}) => {
       parameterName.innerHTML = name;
         var selected = document.querySelector(`option[value=${type}]`);
         selected.selected = true;
         if (selected.value === 'text') {
           return textarea.parentElement.style.display = 'none';
         }
-        list.forEach(value => {
-              if (list.indexOf(value) === list.length-1) return textarea.value += value;
+        items.forEach(value => {
+              if (items.indexOf(value) === items.length-1) return textarea.value += value;
               textarea.value += value + "\n";
         });
 
@@ -54,7 +54,7 @@
           body[fields[i].name] = fields[i].value;
         }
       }
-      fetch(Config.API_HOST + url + "?user_session=" + userSession, {
+      fetch(Config.API_HOST + url + "?session_token=" + userSession, {
         method: "put",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(body)

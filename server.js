@@ -31,11 +31,11 @@ app.get('/accounts/:accountID/trunks', function (request, response) {
   response.sendFile(__dirname + '/trunks.html');
 });
 
-app.get('/accounts/:accountID/customfields', function(request, response){
+app.get('/accounts/:accountID/params', function(request, response){
   response.sendFile(__dirname + '/customfields.html');
 });
 
-app.get('/accounts/:accountID/customfields/:fieldID', function(request, response){
+app.get('/accounts/:accountID/params/:paramID', function(request, response){
   response.sendFile(__dirname + '/customfield.html');
 });
 
@@ -311,7 +311,7 @@ app.delete('/api/accounts/:accountID/trunks/:trunkID', function (request, respon
   });
 });
 
-app.get('/api/accounts/:accountID/customfields', function(request, response){
+app.get('/api/accounts/:accountID/params', function(request, response){
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
     status:403, message: 'Ошибка аутентификации',
@@ -332,7 +332,7 @@ app.get('/api/accounts/:accountID/customfields', function(request, response){
     });
 });
 
-app.post('/api/accounts/:accountID/customfields',function (request,response) {
+app.post('/api/accounts/:accountID/params',function (request,response) {
   const { user_session } = request.query;
   const { name } = request.body;
 
@@ -350,7 +350,7 @@ app.post('/api/accounts/:accountID/customfields',function (request,response) {
   });
 });
 
-app.get('/api/accounts/:accountID/customfields/:fieldID', function (request, response) {
+app.get('/api/accounts/:accountID/params/:fieldID', function (request, response) {
   const { user_session } = request.query;
   if (!user_session) return response.status(403).json({
     status:403, message: 'Ошибка аутентификации',
@@ -365,7 +365,7 @@ app.get('/api/accounts/:accountID/customfields/:fieldID', function (request, res
   });
 });
 
-app.put('/api/accounts/:accountID/customfields/:fieldID', function (request, response) {
+app.put('/api/accounts/:accountID/params/:fieldID', function (request, response) {
   const { user_session } = request.query;
   const {type} = request.body;
   if (!user_session) return response.status(403).json({
