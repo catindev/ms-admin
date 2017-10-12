@@ -15,7 +15,7 @@ const url = location.pathname;
     numberField.value = numberField.value.replace(/\D/,'')
   });
   let clicked = '';
-  fetch(Config.API_HOST + url + "?user_session=" + userSession)
+  fetch(Config.API_HOST + url + "?session_token=" + userSession)
   .then(response => response.json())
   .then(jsonResponse => {
     if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
@@ -71,7 +71,7 @@ const url = location.pathname;
     addTrunkForm.phone.parentElement.classList.remove('has-error');
     addTrunkForm.name.parentElement.classList.remove('has-error');
     const body = JSON.stringify({ phone: phone.value, name:name.value });
-    fetch(Config.API_HOST + url+"?user_session=" + userSession,{
+    fetch(Config.API_HOST + url+"?session_token=" + userSession,{
       method: "post",
       headers: { "Content-type": "application/json" },
       body
@@ -136,7 +136,7 @@ function checkBtn(form,event) {
     const body = JSON.stringify({phone:phone.value, name:name.value});
     editTrunkFieldset.disabled = true;
     saveBtn.innerHTML = 'Сохраняем...';
-    fetch(Config.API_HOST + url + '/'+ form.id + "?user_session=" + userSession, {
+    fetch(Config.API_HOST + url + '/'+ form.id + "?session_token=" + userSession, {
       method: "put",
       headers: { "Content-type": "application/json" },
       body
@@ -186,7 +186,7 @@ function checkBtn(form,event) {
         active = false;
       }
       const body = JSON.stringify({active});
-      fetch(Config.API_HOST + url + '/'+ form.id + "?user_session=" + userSession, {
+      fetch(Config.API_HOST + url + '/'+ form.id + "?session_token=" + userSession, {
         method: "put",
         headers: { "Content-type": "application/json" },
         body
