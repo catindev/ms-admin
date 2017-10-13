@@ -42,6 +42,13 @@
 .darken{
   background: rgba(0,0,0,0.6);
 }
+@media screen and (max-width:338px ) {
+  .form-inline .btn{
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+}
 @media screen and (min-width:768px){
   .errorWrapper{
     width: 400px;
@@ -64,7 +71,7 @@
   }
   .form-inline .btn{
     margin-bottom: 0;
-    width: 14.3%;
+    width: 16%;
   }
   #addParameterForm{
     margin-left: 47.8%;
