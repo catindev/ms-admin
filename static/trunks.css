@@ -5,11 +5,11 @@
   padding-right: 30px;
 }
 #addTrunkForm .btn{
-  margin-top: 10px;
+  padding-top: 10px;
   margin-bottom: 10px;
 }
 #addTrunkForm{
-  margin-top: 20px;
+  padding-top: 20px;
 }
 #addTrunkForm .row{
   padding-left: 15px;
@@ -41,9 +41,10 @@ hr{
   transition: all 0.6s;
   opacity: 0;
 }
-.noTrunks{
+#noTrunks{
+  display: none;
   position:absolute;
-  left:55%
+  left:40%
 }
 .row{
   display: block !important;
@@ -83,6 +84,9 @@ hr{
   }
  .form-group{
     margin-left: 15px;
+  }
+  #noTrunks{
+    left:55%
   }
   #addTrunkForm .btn{
     margin-top: 0;

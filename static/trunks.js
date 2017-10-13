@@ -8,6 +8,7 @@ const url = location.pathname;
   const addTrunkFieldset = addTrunkForm.querySelector('fieldset');
   const addTrunkFields = addTrunkForm.getElementsByTagName('input');
   const numberField = document.getElementById('phone');
+  const noTrunks = document.getElementById('noTrunks');
   numberField.addEventListener('keyup', () => {
     numberField.value = numberField.value.replace(/\D/,'')
   });
@@ -22,7 +23,7 @@ const url = location.pathname;
     return jsonResponse;
   })
   .then(({items}) => {
-    if (items.length === 0 ) return editTrunkForm.innerHTML = `<p class='noTrunks'>Транков нет</p>`;
+    if (items.length === 0 ) return noTrunks.style.display='block';
     items.forEach(item => {
       editTrunkForm.innerHTML +=
       `<form onsubmit=checkBtn(this,event) id=${item.id} class="form-group edit-form">
@@ -82,6 +83,7 @@ const url = location.pathname;
         return jsonResponse;
       })
       .then(({id}) => {
+        noTrunks.style.display = 'none';
         editTrunkForm.innerHTML =
         `<form onsubmit=checkBtn(this,event) id=${id} class="form-group edit-form">
           <fieldset>
