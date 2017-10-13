@@ -1,11 +1,10 @@
 #userForm {
-  float: right;
   width: 100%;
-  padding-right: 10%;
-  padding-left: 10%;
-  }
+  padding-right: 20%;
+}
 #alertMessage{
   display: none;
+  text-align: center;
   margin-bottom: 10px;
 }
 #alertPassword{
@@ -19,28 +18,33 @@
   margin-bottom: 20px;
 }
 #reset{
-  margin-left: 31%;
-=======
-  margin-top: 20px;
+  width: 251px;
+  margin-left: 15%;
 }
-#reset{
-  margin-left: 34%;
-  width: 50%;
-  height: 50px;
-  position: relative;
-  top:10px;
-  left: 21.7%;
-  border-bottom: 0;
-  }
-  #reset{
-    width: 251px;
-    margin-left:280px;
+#alertPassword{
+  width: 251px;
+  margin-left: 15%;
+  margin-bottom: 20px;
+}
+.containerForm{
+  margin-left:15%;
+}
+@media screen and (min-width: 769px) {
+  #userForm {
+    float: none;
+    width: 60%;
+    margin: 0 auto;
+    padding-right:150px;
+    padding-left: 150px;
   }
   #alertPassword{
-    width: 251px;
-    margin-left: 40.5%;
+    width: 250px;
+    margin-left: 43.9%;
+    margin-bottom: 20px;
   }
-  .containerForm{
-    margin-left:15%;
+  #reset{
+    position: relative;
+    left: 25%;
+    margin-left: 0;
   }
 }
