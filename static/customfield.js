@@ -18,8 +18,9 @@
       return jsonResponse;
     })
     .then(({type,list,name}) => {
-      parameterName.innerHTML = name;
-        var selected = document.querySelector(`option[value=${type}]`);
+        parameterName.innerHTML = name;
+        document.forms[0].elements.name.value = name;
+        let selected = document.querySelector(`option[value=${type}]`);
         selected.selected = true;
         if (selected.value === 'text') {
           return textarea.parentElement.style.display = 'none';
