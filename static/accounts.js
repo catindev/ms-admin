@@ -12,17 +12,19 @@
     })
     .then(({items}) => {
       const accountsList = document.getElementById("accountsList");
-      if (items.length === 0) return accountsList.innerHTML = `<li>Аккаунтов нет</li>`;
+      if (items.length > 0){
+      noAccounts.style.display = 'none';
+      accountsTable.style.display = 'table';
       let counter = 0;
       accountsList.innerHTML = items.reduce( (result,company) => {
         counter += 1;
         return result + `
         <tr>
-          <td>${counter}</td>
+          <td class='tableCell'>${counter}</td>
           <td><a href = ${'/accounts/'+ company['id']}>${company['name']}</a></td>
         </tr>
         `
-      },"");
+      },"")}
     })
     .catch(error => {
       addAccountForm.style.display = 'none';

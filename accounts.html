@@ -25,26 +25,29 @@
       </div>
     </nav>
 
-    <nav class="container-fluid">
-      <form class="form-inline" style="margin-top:20px;margin-bottom:20px">
+    <div class="container-fluid">
+      <h1 class="label-form">Новый аккаунт</h1>
+      <form class="form-inline">
           <div class="form-group">
-            <label class="label-form">Новый аккаунт</label>
             <input class="form-control" type="text" placeholder="Название аккаунта">
           </div>
           <button type="submit" class="btn btn-primary">Добавить</button>
       </form>
       <div id="alertMessage" class="alert"></div>
-      <table class="table table-striped table-bordered">
+      <table id='accountsTable' class="table table-striped table-bordered">
         <thead>
           <tr>
-            <th>№</th>
+            <th class="tableCell">№</th>
             <th>Аккаунт</th>
           </tr>
         </thead>
         <tbody id=accountsList>
         </tbody>
       </table>
-    </nav>
+      <div class="noAccWrapper">
+        <p id='noAccounts'>Аккаунтов нет</p>
+      </div>
+    </div>
     <div class="errorWrapper">
         <fieldset id='errorBlock'><legend>Ошибка</legend></fieldset>
         <p id="errorMessage"></p>

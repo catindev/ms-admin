@@ -44,7 +44,10 @@ hr{
 #noTrunks{
   display: none;
   position:absolute;
-  left:40%
+  color: darkgray;
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
 }
 .row{
   display: block !important;

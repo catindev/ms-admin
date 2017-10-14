@@ -40,7 +40,23 @@
 .darken{
   background: rgba(0,0,0,0.6);
 }
-
+.tableCell{
+  display: none;
+}
+#accountsTable{
+  display: none;
+}
+#noAccounts{
+  border-top: 2px solid darkgray;
+  padding-top: 20px;
+  color: darkgray;
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+}
+.noAccWrapper{
+  padding-top: 30px;
+}
 @media screen and (max-width:338px ) {
   .form-inline .btn{
     margin-left: 0;
@@ -58,5 +74,8 @@
   }
   .label-form{
     margin-right: 20px;
+  }
+  .tableCell{
+    display: table-cell;
   }
 }

@@ -42,6 +42,23 @@
 .darken{
   background: rgba(0,0,0,0.6);
 }
+.tableCell{
+  display: none;
+}
+#noParamWrapper{
+  padding-top: 30px;
+}
+#noParameters{
+  border-top: 2px solid darkgray;
+  padding-top: 20px;
+  color: darkgray;
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+}
+#parametersTable{
+  display: none;
+}
 @media screen and (max-width:338px ) {
   .form-inline .btn{
     margin-left: 0;
@@ -72,6 +89,9 @@
   .form-inline .btn{
     margin-bottom: 0;
     width: 16%;
+  }
+  .tableCell{
+    display: table-cell;
   }
   #addParameterForm{
     margin-left: 47.8%;

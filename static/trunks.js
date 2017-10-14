@@ -133,11 +133,13 @@ function checkBtn(form,event) {
   alertMessage.style.display = 'none';
   form['phone'].parentElement.classList.remove('has-error');
   form['name'].parentElement.classList.remove('has-error');
+
   if (clicked === 'save') {
     const { phone,name } = form;
     const body = JSON.stringify({phone:phone.value, name:name.value});
     editTrunkFieldset.disabled = true;
     saveBtn.innerHTML = 'Сохраняем...';
+
     fetch(Config.API_HOST + url + '/'+ form.id + "?user_session=" + userSession, {
       method: "put",
       headers: { "Content-type": "application/json" },
