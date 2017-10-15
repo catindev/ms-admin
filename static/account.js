@@ -7,6 +7,7 @@
   const author = document.getElementById('author');
   const saveBtn = document.querySelector("#accountForm .btn");
   const fieldset = document.querySelector("#accountForm fieldset");
+
   fetch(Config.API_HOST + url + "?user_session=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
@@ -61,6 +62,7 @@
         body[fields[i].name] = fields[i].value;
       }
     }
+
     fetch(Config.API_HOST + url + "?user_session=" + userSession, {
       method: "put",
       headers: { "Content-type": "application/json" },
@@ -94,4 +96,5 @@
         }
       });
   });
+
 })();

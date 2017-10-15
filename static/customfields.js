@@ -47,10 +47,11 @@
 
   addParameterForm.addEventListener("submit", function(event) {
     event.preventDefault();
-    const body = JSON.stringify({ name: field.value });
     field.disabled = true;
     btn.disabled = true;
     btn.innerHTML = "Добавляем...";
+    const body = JSON.stringify({ name: field.value });
+    
     fetch(Config.API_HOST + url + "?user_session=" + userSession, {
       method: "post",
       headers: { "Content-type": "application/json" },
@@ -74,4 +75,5 @@
         field.disabled = false;
       });
   });
+
 })();

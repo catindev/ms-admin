@@ -7,10 +7,12 @@
   const fieldset = document.querySelector("#parameterForm fieldset");
   const textarea = document.getElementById('textarea');
   const select = document.getElementsByTagName('select')[0];
+
   select.addEventListener('change',() => {
     if (select.value !== 'text') return textarea.parentElement.style.display = 'block';
     textarea.parentElement.style.display = 'none';
   });
+
   fetch(Config.API_HOST + url + "?user_session=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
@@ -41,9 +43,11 @@
 
     parameterForm.addEventListener("submit", function(event) {
       event.preventDefault();
+
       alertMessage.style.display = "none";
       fieldset.disabled = true;
       saveBtn.innerHTML = "Сохраняем...";
+
       const fields =  parameterForm.getElementsByClassName("form-control");
       const body = {};
       for (var i = 0; i < fields.length; i++) {
@@ -55,6 +59,7 @@
           body[fields[i].name] = fields[i].value;
         }
       }
+
       fetch(Config.API_HOST + url + "?user_session=" + userSession, {
         method: "put",
         headers: { "Content-type": "application/json" },

@@ -1,4 +1,5 @@
 const url = location.pathname;
+
 (function() {
   const accountUrl = location.pathname.match(/\accounts\/[0-9]+/g).join("");
   const editTrunkForm = document.getElementById('editTrunkForm');
@@ -9,13 +10,17 @@ const url = location.pathname;
   const addTrunkFields = addTrunkForm.getElementsByTagName('input');
   const numberField = document.getElementById('phone');
   const noTrunks = document.getElementById('noTrunks');
+
   numberField.addEventListener('keyup', () => {
     numberField.value = numberField.value.replace(/\D/,'')
   });
+
   numberField.addEventListener('keydown',() => {
     numberField.value = numberField.value.replace(/\D/,'')
   });
+
   let clicked = '';
+
   fetch(Config.API_HOST + url + "?user_session=" + userSession)
   .then(response => response.json())
   .then(jsonResponse => {
@@ -44,6 +49,7 @@ const url = location.pathname;
         </div>
         </fieldset>
       </form>`;
+
       let form = document.getElementById(item.id);
       let {phone,name,saveBtn,editBtn} = form;
       if (!item.active) {
@@ -53,7 +59,9 @@ const url = location.pathname;
     });
   })
   .catch(error => showMessage('alert-danger',error.message,editTrunkForm))
+
   addTrunkBtn.disabled = true;
+
   addTrunkForm.addEventListener('input',function () {
     let empty;
     for (var i = 0; i < addTrunkFields.length; i++) {
@@ -64,6 +72,7 @@ const url = location.pathname;
     if (empty) return addTrunkBtn.disabled = true;
     return addTrunkBtn.disabled = false;
   })
+
   addTrunkForm.addEventListener('submit', (event) =>{
     event.preventDefault();
     addTrunkFieldset.disabled = true;
@@ -72,6 +81,7 @@ const url = location.pathname;
     addTrunkForm.phone.parentElement.classList.remove('has-error');
     addTrunkForm.name.parentElement.classList.remove('has-error');
     const body = JSON.stringify({ phone: phone.value, name:name.value });
+
     fetch(Config.API_HOST + url+"?user_session=" + userSession,{
       method: "post",
       headers: { "Content-type": "application/json" },
@@ -107,8 +117,8 @@ const url = location.pathname;
         let addingFields = addTrunkForm.getElementsByTagName('input');
         newTrunkForm.classList.add('new-trunk');
         setTimeout(() => newTrunkForm.classList.remove('new-trunk'),400);
-    	addTrunkFieldset.disabled = false;
-	addTrunkBtn.disabled = true;
+    	  addTrunkFieldset.disabled = false;
+	      addTrunkBtn.disabled = true;
         for (var i = 0; i < addingFields.length; i++) {
           addingFields[i].value = '';
         }
@@ -121,13 +131,14 @@ const url = location.pathname;
         })
       });
   });
+
 })();
+
 function checkBtn(form,event) {
   event.preventDefault();
   const saveMsg = document.getElementsByName('saveMsg')[0];
   const editTrunkFieldset = form.querySelector('fieldset');
   const editTrunkRow = form.getElementsByClassName('row')[0];
-  console.log(editTrunkRow);
   const saveBtn = form.querySelector('.saveBtn');
   const editBtn = form.querySelector('.editBtn');
   alertMessage.style.display = 'none';
@@ -168,7 +179,6 @@ function checkBtn(form,event) {
             `<small name='saveMsg' class="text-muted">Сохранено</small>`;
           }
       })
-
       .catch(error => {
         saveBtn.innerHTML = 'Сохранить';
         showMessage('alert-danger',error.message,editTrunkFieldset);
@@ -190,6 +200,7 @@ function checkBtn(form,event) {
         active = false;
       }
       const body = JSON.stringify({active});
+
       fetch(Config.API_HOST + url + '/'+ form.id + "?user_session=" + userSession, {
         method: "put",
         headers: { "Content-type": "application/json" },
@@ -217,6 +228,7 @@ function checkBtn(form,event) {
         })
   };
 };
+
 function showMessage(messageType,message,fieldset) {
   fieldset.disabled = false;
   if (messageType === 'alert-success') {

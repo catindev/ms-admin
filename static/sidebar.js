@@ -1,8 +1,6 @@
 (function() {
   const url = location.href;
   const accountUrl = location.pathname.match(/\accounts\/\d+\w+/gi).join("");
-  //const companyId = accountUrl.replace(/[^0-9]/g, "");
-  //const accountUrl = location.pathname;
   const sidebarList = document.getElementById("sidebarList");
   const sidebarLinks = sidebarList.getElementsByTagName("a");
   const linksSettings = [
@@ -30,6 +28,7 @@
         <a class='nav-link sidebar__links' href=${link.url}>${link.title}</a>
        </li>`;
   });
+
   for (var i = 0; i < sidebarLinks.length; i++) {
     if (sidebarLinks[i].href === url) {
       sidebarLinks[i].classList.add("sidebar__activeLink");

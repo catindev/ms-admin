@@ -4,6 +4,7 @@
   const errorBlock = document.querySelector(".errorWrapper");
   const errorMessage = document.getElementById('errorMessage');
   const addAccountForm = document.querySelector(".form-inline");
+
   fetch(Config.API_HOST + "/accounts?user_session=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
@@ -32,7 +33,9 @@
       errorMessage.innerHTML = error.message;
       errorBlock.style.display = 'block';
     });
+
   btn.disabled = true;
+
   field.addEventListener("input", function() {
     btn.disabled = false;
     if (field.value.length === 0) {
@@ -69,4 +72,5 @@
           field.disabled = false;
       });
   });
+
 })();

@@ -8,6 +8,7 @@
   const textarea = document.getElementById('textarea');
   const reset = document.getElementById('reset');
   const alertPassword = document.getElementById('alertPassword');
+
   fetch(Config.API_HOST + url + "?user_session=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
@@ -61,6 +62,7 @@
           body[fields[i].name] = fields[i].value;
         }
       }
+
       fetch(Config.API_HOST + url + "?user_session=" + userSession, {
         method: "put",
         headers: { "Content-type": "application/json" },
@@ -120,4 +122,5 @@
         alertPassword.classList.add('alert-danger');
       });
     });
+
 })();

@@ -7,6 +7,7 @@
   const usersList = document.getElementById("usersList");
   const errorBlock = document.querySelector(".errorWrapper");
   const errorMessage = document.getElementById("errorMessage");
+
   fetch(Config.API_HOST + url + "?user_session=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
@@ -33,13 +34,16 @@
       errorMessage.innerHTML = error.message;
       errorBlock.style.display = "block";
     });
+
   btn.disabled = true;
+
   field.addEventListener("input", function() {
     btn.disabled = false;
     if (field.value.length === 0) {
       btn.disabled = true;
     }
   });
+
   addUserForm.addEventListener("submit", function(event) {
     event.preventDefault();
     const body = JSON.stringify({ name: field.value });
@@ -69,4 +73,5 @@
         field.disabled = false;
       });
   });
+
 })();
