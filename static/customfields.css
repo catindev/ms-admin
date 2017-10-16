@@ -1,13 +1,11 @@
-#addParameterForm{
-  margin-top: 20px;
-}
-.form-inline .btn{
-  margin-top:5px;
-}
 #alertMessage{
   display: none;
   text-align: center;
   margin-top: 20px;
+}
+.label-form{
+  font-size: 18px;
+  font-weight: normal;
 }
 .errorWrapper{
   display: none;
@@ -22,16 +20,11 @@
 .table-striped{
   width: 100%;
 }
-.formHeader{
-  position: relative;
-  top: 15px;
-  margin-top: 20px;
-  font-weight: bold;
+.container-form{
+  padding: 20px 10px 40px;
 }
-.form-inline .btn{
-  margin-bottom:20px;
-  margin-left: 12px;
-  width: 35%;
+.table-container{
+  padding: 0 10px 0;
 }
 #errorBlock{
   display: block;
@@ -59,43 +52,30 @@
 #parametersTable{
   display: none;
 }
-@media screen and (max-width:338px ) {
-  .form-inline .btn{
-    margin-left: 0;
-    margin-top: 0;
-    margin-bottom: 20px;
+
+@media screen and (max-width:328px) {
+  .col-auto .btn{
+    margin-top: 10px;
   }
 }
+
 @media screen and (min-width:768px){
   .errorWrapper{
     width: 400px;
   }
-  .form-inline .btn{
-    margin-top:0;
-  }
-  .label-form{
-    display:block;
-    margin-right:150px;
-  }
   .table-striped{
     position: absolute;
-    left: 47.8%;
-    margin-top:50px;
-    width: 309px;
+    left: 47.5%;
+    width: 313px;
   }
   .formHeader{
     margin-left: 47.8%;
   }
-  .form-inline .btn{
-    margin-bottom: 0;
-    width: 16%;
-  }
   .tableCell{
     display: table-cell;
   }
-  #addParameterForm{
-    margin-left: 47.8%;
-    text-align: center;
+  .container-form{
+    padding-left: 47.5%;
   }
   #alertMessage{
     margin: auto;
