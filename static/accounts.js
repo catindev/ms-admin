@@ -1,9 +1,9 @@
 (function() {
-  const field = document.querySelector(".form-inline .form-control");
-  const btn = document.querySelector(".form-inline .btn");
+  const field = document.querySelector(".form-row .form-control");
+  const btn = document.querySelector(".form-row .btn");
   const errorBlock = document.querySelector(".errorWrapper");
   const errorMessage = document.getElementById('errorMessage');
-  const addAccountForm = document.querySelector(".form-inline");
+  const addAccountForm = document.querySelector(".form-row");
 
   fetch(Config.API_HOST + "/accounts?user_session=" + userSession)
     .then(response => response.json())
