@@ -31,8 +31,8 @@ hr{
 #alertMessage{
   display: none;
 }
-.delete-trunk{
-  animation: delete-trunk-animation 0.4s linear;
+.text-muted{
+  height: 10px;
 }
 .new-trunk{
   animation: new-trunk-animation 0.5s linear;

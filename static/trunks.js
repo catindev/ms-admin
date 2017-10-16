@@ -94,25 +94,27 @@ const url = location.pathname;
       })
       .then(({id}) => {
         noTrunks.style.display = 'none';
-        editTrunkForm.innerHTML =
-        `<form onsubmit=checkBtn(this,event) id=${id} class="form-group edit-form">
-          <fieldset>
-          <div class='row'>
-          <div class="form-group">
-          <input disabled type="text" class="form-control" name="phone" value=${phone.value}>
-          </div>
-          <div class="form-group">
-          <input disabled type="tel" class="form-control" name="name" value=${name.value}>
-          </div>
-          <button disabled onclick=clicked='save' name='saveBtn' type="submit" class="btn btn-primary saveBtn">
-            Сохранить
-          </button>
-          <button onclick=clicked='edit' name='editBtn' type="submit" class="btn btn-danger editBtn">
-            Включить
-          </button>
-          </div>
-          </fieldset>
-        </form>` + editTrunkForm.innerHTML;
+        const template =`
+          <form onsubmit=checkBtn(this,event) id=${id} class="form-group edit-form">
+            <fieldset>
+            <div class='row'>
+            <div class="form-group">
+            <input disabled type="text" class="form-control" name="phone" value=${phone.value}>
+            </div>
+            <div class="form-group">
+            <input disabled type="tel" class="form-control" name="name" value=${name.value}>
+            </div>
+            <button disabled onclick=clicked='save' name='saveBtn' type="submit" class="btn btn-primary saveBtn">
+              Сохранить
+            </button>
+            <button onclick=clicked='edit' name='editBtn' type="submit" class="btn btn-danger editBtn">
+              Включить
+            </button>
+            <p name='saveMsg' class="text-muted saveMsg">Сохранено</p>
+            </div>
+            </fieldset>
+          </form>`;
+        editTrunkForm.insertAdjacentHTML('afterbegin',template);
         let newTrunkForm = document.getElementById(id);
         let addingFields = addTrunkForm.getElementsByTagName('input');
         newTrunkForm.classList.add('new-trunk');
@@ -135,19 +137,22 @@ const url = location.pathname;
 })();
 
 function checkBtn(form,event) {
+  form['phone'].parentElement.classList.remove('has-error');
   event.preventDefault();
-  const saveMsg = document.getElementsByName('saveMsg')[0];
+  const saveMsg = form.getElementsByClassName('text-muted')[0];
   const editTrunkFieldset = form.querySelector('fieldset');
-  const editTrunkRow = form.getElementsByClassName('row')[0];
   const saveBtn = form.querySelector('.saveBtn');
   const editBtn = form.querySelector('.editBtn');
+
   alertMessage.style.display = 'none';
-  form['phone'].parentElement.classList.remove('has-error');
   form['name'].parentElement.classList.remove('has-error');
 
   if (clicked === 'save') {
+    const saveMsgs = Array.from(document.getElementsByClassName('text-muted'));
     const { phone,name } = form;
     const body = JSON.stringify({phone:phone.value, name:name.value});
+
+    saveMsgs.forEach( (item) => { item.style.opacity = 0 });
     editTrunkFieldset.disabled = true;
     saveBtn.innerHTML = 'Сохраняем...';
 
@@ -162,22 +167,12 @@ function checkBtn(form,event) {
         return jsonResponse;
       })
       .then(response => {
-        if (saveMsg) {
-          saveMsg.classList.add('saveMsg');
           //Время за которое сообщение "Сохранено" исчезнет при пересохранении
           setTimeout(() => {
             editTrunkFieldset.disabled = false;
+            saveMsg.style.opacity = 1;
             saveBtn.innerHTML = 'Сохранить';
-            saveMsg.parentNode.removeChild(saveMsg);
-            editTrunkRow.innerHTML +=
-            `<small name='saveMsg' class="text-muted">Сохранено</small>`
           },500);
-        }else {
-            saveBtn.innerHTML = 'Сохранить';
-            editTrunkFieldset.disabled = false;
-            editTrunkRow.innerHTML +=
-            `<small name='saveMsg' class="text-muted">Сохранено</small>`;
-          }
       })
       .catch(error => {
         saveBtn.innerHTML = 'Сохранить';
