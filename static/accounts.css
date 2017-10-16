@@ -22,10 +22,6 @@
   background: url('/static/images/error.png') center no-repeat;
   font-size: 17px;
 }
-#errorMessage{
-  display: none;
-  margin-top:15px;
-}
 .container-form{
   padding: 20px 10px 20px;
 }
