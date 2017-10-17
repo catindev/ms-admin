@@ -1,37 +1,34 @@
-#addTrunkForm,#editTrunkForm {
-  float: right;
+.form-header{
+  padding-bottom: 10px;
+}
+#addTrunkForm {
   width: 100%;
-  padding-left: 25px;
-  padding-right: 30px;
-}
-#addTrunkForm .btn{
-  padding-top: 10px;
-  margin-bottom: 10px;
-}
-#addTrunkForm{
-  padding-top: 20px;
+  padding: 20px 100px 80px 100px;
 }
 #addTrunkForm .row{
   padding-left: 15px;
   padding-right: 15px;
 }
-.edit-form{
-  margin-left: 15px;
-  margin-bottom: 30px !important;
+#editTrunkForm{
+  padding: 20px 100px 20px 100px;
 }
 hr{
-  clear: both;
+  position: relative;
   width: 100%;
-  border-color:rgb(128,128,128);
-  margin-top:200px;
+  border-color: black;
 }
-.editBtn{
-  width: 105.5px;
+.form-row{
+  display: block;
 }
 #alertMessage{
   display: none;
 }
+.col-auto:first-child{
+  padding-bottom: 10px;
+}
 .text-muted{
+  display: inline-flex;
+  padding: 7px;
   height: 10px;
 }
 .new-trunk{
@@ -44,6 +41,7 @@ hr{
 #noTrunks{
   display: none;
   position:absolute;
+  left: 38%;
   color: darkgray;
   font-weight: bold;
   font-size: 25px;
@@ -52,12 +50,15 @@ hr{
 .row{
   display: block !important;
 }
-.row .text-muted{
-  margin-left: 5px;
-  margin-top: 7px;
+.btns{
+  display: flex !important;
+  padding:15px 5.5px 50px !important;;
 }
-.fix-header{
-  margin-right: 15px;
+.btns>button{
+  min-width: 150px;
+}
+.editBtn{
+  margin-left: 5px !important;
 }
 @keyframes new-trunk-animation {
   0%{
@@ -67,36 +68,44 @@ hr{
     transform: scale(1);
   }
 }
-@keyframes delete-trunk-animation {
-  0%{
-    transform:scale(1);
-  }
-  100%{
-    transform: scale(0);
-  }
-}
-@media screen and (min-width:768px){
+@media screen and (min-width:1024px){
   #addTrunkForm,#editTrunkForm{
-    width:66%;
-  }
-  #editTrunkForm{
-    margin-right: 15px;
+    float: right;
+    width:70%;
   }
   #addTrunkForm{
-    margin-bottom: 20px;
+    padding: 20px;
+    padding-bottom: 50px;
   }
- .form-group{
-    margin-left: 15px;
+  #editTrunkForm{
+    padding: 50px 20px 20px 20px;
+  }
+  .form-group{
+    padding-left: 15px;
+  }
+  .form-row{
+    display: flex;
+  }
+  .text-muted{
+    padding-top: 7px;
+  }
+  .btns{
+    padding-top: 0 !important;
+  }
+  .col-auto:nth-child(2){
+    padding-left: 10px !important;
   }
   #noTrunks{
-    left:55%
+    left:50%
   }
   #addTrunkForm .btn{
     margin-top: 0;
-    width: 210px;
+    width: 305px !important;
   }
-  .btn{
-    margin-top:0;
+  hr{
+    width: 70%;
+    top:220px;
+    left: 120px;
   }
   #add{
     width: 220px !important;
@@ -105,12 +114,8 @@ hr{
     left: 10px;
     height: 40px;
   }
-  #editTrunkForm .btn{
-    margin-left: 10px;
-  }
   #addTrunkForm .row{
-    padding-left:0;
-    padding-right:0;
+    padding: 0;
   }
   .row{
     display: flex !important;
@@ -118,23 +123,5 @@ hr{
   #alertMessage{
     text-align: center;
     width: 397px;
-  }
-  hr{
-    width: 100%;
-    margin-bottom: 40px;
-    clear: none;
-  }
-  .edit-form input[type='text']{
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-@media screen and (min-width:768px) and (max-width:1023px){
-  #addTrunkForm,#editTrunkForm{
-    width:80%;
-  }
-  input{
-    width:150px !important;
-  }
   }
 }

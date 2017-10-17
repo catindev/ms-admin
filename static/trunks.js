@@ -92,18 +92,21 @@ const url = location.pathname;
         if (jsonResponse.status !== 200) throw jsonResponse;
         return jsonResponse;
       })
+
+
+
       .then(({id}) => {
         noTrunks.style.display = 'none';
         const template =`
-          <form onsubmit=checkBtn(this,event) id=${id} class="form-group edit-form">
-            <fieldset>
-            <div class='row'>
-            <div class="form-group">
+          <fieldset>
+          <form onsubmit=checkBtn(this,event) id=${id} class="form-row">
+            <div class="col-auto">
             <input disabled type="text" class="form-control" name="phone" value=${phone.value}>
             </div>
-            <div class="form-group">
+            <div class="col-auto">
             <input disabled type="tel" class="form-control" name="name" value=${name.value}>
             </div>
+            <div class='btns'>
             <button disabled onclick=clicked='save' name='saveBtn' type="submit" class="btn btn-primary saveBtn">
               Сохранить
             </button>
@@ -112,8 +115,8 @@ const url = location.pathname;
             </button>
             <p name='saveMsg' class="text-muted saveMsg">Сохранено</p>
             </div>
-            </fieldset>
-          </form>`;
+          </form>
+          </fieldset>`;
         editTrunkForm.insertAdjacentHTML('afterbegin',template);
         let newTrunkForm = document.getElementById(id);
         let addingFields = addTrunkForm.getElementsByTagName('input');
@@ -140,7 +143,7 @@ function checkBtn(form,event) {
   form['phone'].parentElement.classList.remove('has-error');
   event.preventDefault();
   const saveMsg = form.getElementsByClassName('text-muted')[0];
-  const editTrunkFieldset = form.querySelector('fieldset');
+  const editTrunkFieldset = form.parentElement;
   const saveBtn = form.querySelector('.saveBtn');
   const editBtn = form.querySelector('.editBtn');
 
