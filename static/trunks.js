@@ -29,35 +29,36 @@ const url = location.pathname;
   })
   .then(({items}) => {
     if (items.length === 0 ) return noTrunks.style.display='block';
-    items.forEach(item => {
-      editTrunkForm.innerHTML +=
-      `<form onsubmit=checkBtn(this,event) id=${item.id} class="form-group edit-form">
+    editTrunkForm.innerHTML = items.reduce((result,item) => {
+      return result + `
         <fieldset>
-        <div class=row>
-        <div class="form-group">
-        <input type="text" class="form-control" name="phone" value=${item.phone}>
-        </div>
-        <div class="form-group">
-        <input type="tel" class="form-control" name="name" value=${item.name}>
-        </div>
-        <button onclick=clicked='save' name=saveBtn type="submit" class="btn btn-primary saveBtn">
-          Сохранить
-        </button>
-        <button onclick=clicked='edit' name=editBtn type="submit" class="btn btn-danger editBtn">
-          Отключить
-        </button>
-        </div>
-        </fieldset>
-      </form>`;
+        <form onsubmit=checkBtn(this,event) id=${items.id} class="form-row">
+          <div class="col-auto">
+          <input type="text" class="form-control" name="phone" value=${item.phone}>
+          </div>
+          <div class="col-auto">
+          <input type="tel" class="form-control" name="name" value=${item.name}>
+          </div>
+          <div class='btns'>
+          <button onclick=clicked='save' name='saveBtn' type="submit" class="btn btn-primary saveBtn">
+            Сохранить
+          </button>
+          <button onclick=clicked='edit' name='editBtn' type="submit" class="btn btn-danger editBtn">
+            Включить
+          </button>
+          <p name='saveMsg' class="text-muted saveMsg">Сохранено</p>
+          </div>
+        </form>
+        </fieldset>`
 
-      let form = document.getElementById(item.id);
-      let {phone,name,saveBtn,editBtn} = form;
-      if (!item.active) {
-        [phone,name,saveBtn].forEach((elem)=>elem.disabled = true);
-        editBtn.innerHTML = 'Включить';
-      }
-    });
-  })
+        let form = document.getElementById(item.id);
+        let {phone,name,saveBtn,editBtn} = form;
+        if (!item.active) {
+          [phone,name,saveBtn].forEach((elem)=>elem.disabled = true);
+          editBtn.innerHTML = 'Включить';
+        }
+    },'');
+    })
   .catch(error => showMessage('alert-danger',error.message,editTrunkForm))
 
   addTrunkBtn.disabled = true;
