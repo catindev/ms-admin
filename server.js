@@ -229,7 +229,25 @@ app.get('/api/accounts/:accountID/trunks', function (request, response) {
   response.json({
     status: 200,
     items:[
-    ],
+       {
+          id: '111',
+          name: 'Google',
+          phone: '+77770007722',
+          active: true
+        },
+        {
+          id: '222',
+          name: 'Яндекс',
+          phone: '+77058816622',
+          active: true,
+        },
+        {
+          id: '333',
+          name: 'Instagram',
+          phone: '+7701113456',
+          active: false
+        },
+      ],
   });
 });
 

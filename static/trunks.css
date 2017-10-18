@@ -3,14 +3,14 @@
 }
 #addTrunkForm {
   width: 100%;
-  padding: 20px 100px 80px 100px;
+  padding: 20px 100px 80px 10px;
 }
 #addTrunkForm .row{
   padding-left: 15px;
   padding-right: 15px;
 }
 #editTrunkForm{
-  padding: 20px 100px 20px 100px;
+  padding: 20px 100px 20px 10px;
 }
 hr{
   position: relative;
