@@ -19,8 +19,6 @@ const url = location.pathname;
     numberField.value = numberField.value.replace(/\D/,'')
   });
 
-  let clicked = '';
-
   fetch(Config.API_HOST + url + "?user_session=" + userSession)
   .then(response => response.json())
   .then(jsonResponse => {
@@ -32,18 +30,18 @@ const url = location.pathname;
     items.forEach(item => {
         editTrunkForm.innerHTML +=
         `<fieldset>
-          <form onsubmit=checkBtn(this,event) id=${item.id} class="form-row">
+          <form id=${item.id} class="form-row">
             <div class="col-auto">
             <input type="text" class="form-control" name="phone" value=${item.phone}>
             </div>
             <div class="col-auto">
             <input type="tel" class="form-control" name="name" value=${item.name}>
             </div>
-            <div class='btns'>
-            <button onclick=clicked='save' name='saveBtn' type="submit" class="btn btn-primary saveBtn">
+            <div class='btns' onclick=checkBtn(event)>
+            <button name='saveBtn' type="submit" class="btn btn-primary saveBtn">
               Сохранить
             </button>
-            <button onclick=clicked='edit' name='editBtn' type="submit" class="btn btn-danger editBtn">
+            <button name='editBtn' type="submit" class="btn btn-danger editBtn">
               Отключить
             </button>
             <p name='saveMsg' class="text-muted saveMsg">Сохранено</p>
@@ -93,31 +91,29 @@ const url = location.pathname;
         if (jsonResponse.status !== 200) throw jsonResponse;
         return jsonResponse;
       })
-
-
-
       .then(({id}) => {
         noTrunks.style.display = 'none';
         const template =`
           <fieldset>
-          <form onsubmit=checkBtn(this,event) id=${id} class="form-row">
+          <form  id=${id} class="form-row">
             <div class="col-auto">
             <input disabled type="text" class="form-control" name="phone" value=${phone.value}>
             </div>
             <div class="col-auto">
             <input disabled type="tel" class="form-control" name="name" value=${name.value}>
             </div>
-            <div class='btns'>
-            <button disabled onclick=clicked='save' name='saveBtn' type="submit" class="btn btn-primary saveBtn">
+            <div class='btns' onclick=checkBtn(event)>
+            <button disabled ' name='saveBtn' type="submit" class="btn btn-primary saveBtn">
               Сохранить
             </button>
-            <button onclick=clicked='edit' name='editBtn' type="submit" class="btn btn-danger editBtn">
+            <button  name='editBtn' type="submit" class="btn btn-danger editBtn">
               Включить
             </button>
             <p name='saveMsg' class="text-muted saveMsg">Сохранено</p>
             </div>
           </form>
           </fieldset>`;
+
         editTrunkForm.insertAdjacentHTML('afterbegin',template);
         let newTrunkForm = document.getElementById(id);
         let addingFields = addTrunkForm.getElementsByTagName('input');
@@ -140,18 +136,20 @@ const url = location.pathname;
 
 })();
 
-function checkBtn(form,event) {
-  form['phone'].parentElement.classList.remove('has-error');
-  form['name'].parentElement.classList.remove('has-error');
+function checkBtn(event) {
   event.preventDefault();
+  const form = event.target.form;
   const saveMsg = form.getElementsByClassName('text-muted')[0];
   const editTrunkFieldset = form.parentElement;
   const saveBtn = form.querySelector('.saveBtn');
   const editBtn = form.querySelector('.editBtn');
 
+  form['phone'].parentElement.classList.remove('has-error');
+  form['name'].parentElement.classList.remove('has-error');
+
   alertMessage.style.display = 'none';
 
-  if (clicked === 'save') {
+  if (event.target.name === 'saveBtn') {
     const saveMsgs = Array.from(document.getElementsByClassName('text-muted'));
     const { phone,name } = form;
     const body = JSON.stringify({phone:phone.value, name:name.value});
@@ -162,7 +160,7 @@ function checkBtn(form,event) {
 
     requestOnEdit(saveBtn,saveBtn.innerHTML,body,editTrunkFieldset,form);
 
-  }else if (clicked === 'edit') {
+  }else if (event.target.name === 'editBtn') {
       const { phone,name,saveBtn } = form;
       let active;
       editTrunkFieldset.disabled = true;
