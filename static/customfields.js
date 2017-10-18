@@ -7,6 +7,7 @@
   const parametersList = document.getElementById("parametersList");
   const errorBlock = document.querySelector(".errorWrapper");
   const errorMessage = document.getElementById("errorMessage");
+
   fetch(Config.API_HOST + url + "?user_session=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
@@ -14,36 +15,43 @@
       return jsonResponse;
     })
     .then(({ items }) => {
-      if (items.length === 0) return parametersList.innerHTML = `<li>Параметров нет</li>`;
-      let counter = 0;
-      parametersList.innerHTML = items.reduce( (result,parameter) => {
-        counter += 1;
+      if (items.length > 0){
+        noParameters.style.display = 'none';
+        parametersTable.style.display = 'table';
+        let counter = 0;
+        parametersList.innerHTML = items.reduce( (result,parameter) => {
+            counter += 1;
         return result + `
         <tr>
-          <td>${counter}</td>
+          <td class="tableCell">${counter}</td>
           <td><a href = ${url +'/'+ parameter['id']}>${parameter['name']}</a></td>
         </tr>
         `
-      },"");
+    },"");
+      }
     })
     .catch(error => {
       document.body.classList.add("darken");
       errorMessage.innerHTML = error.message;
       errorBlock.style.display = "block";
     });
+
   btn.disabled = true;
+
   field.addEventListener("input", function() {
     btn.disabled = false;
     if (field.value.length === 0) {
       btn.disabled = true;
     }
   });
+
   addParameterForm.addEventListener("submit", function(event) {
     event.preventDefault();
-    const body = JSON.stringify({ name: field.value });
     field.disabled = true;
     btn.disabled = true;
     btn.innerHTML = "Добавляем...";
+    const body = JSON.stringify({ name: field.value });
+    
     fetch(Config.API_HOST + url + "?user_session=" + userSession, {
       method: "post",
       headers: { "Content-type": "application/json" },
@@ -67,4 +75,5 @@
         field.disabled = false;
       });
   });
+
 })();

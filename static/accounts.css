@@ -22,32 +22,44 @@
   background: url('/static/images/error.png') center no-repeat;
   font-size: 17px;
 }
-#errorMessage{
-  display: none;
-  margin-top:15px;
+.container-form{
+  padding: 20px 10px 20px;
 }
-.form-inline .btn{
-  margin-top: 10px;
-}
-.table-striped{
-  margin-top: 20px;
-}
-.form-inline .btn {
-  position: relative;
-  top:4px;
-  margin-left: 10px;
+.table-container{
+  padding: 0 10px 0 10px;
 }
 .darken{
   background: rgba(0,0,0,0.6);
 }
+.tableCell{
+  display: none;
+}
+#accountsTable{
+  display: none;
+}
+#noAccounts{
+  border-top: 2px solid darkgray;
+  padding-top: 20px;
+  color: darkgray;
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+}
+.noAccWrapper{
+  padding-top: 30px;
+}
+
+@media screen and (max-width:328px) {
+  .col-auto .btn{
+    margin-top: 10px;
+  }
+}
+
 @media screen and (min-width:1024px) {
   .errorWrapper{
     width: 400px;
   }
-  .form-inline .btn{
-    margin-bottom:18px;
-  }
-  .label-form{
-    margin-right: 20px;
+  .tableCell{
+    display: table-cell;
   }
 }

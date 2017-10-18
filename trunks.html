@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="static/sidebar.css">
   </head>
   <body>
+
     <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Mindsales</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,19 +38,17 @@
     </div>
 
     <form id='addTrunkForm'>
-      <h3  class="fix-header"style="margin-bottom:25px">Транки</h3>
+      <h3  class="form-header">Транки</h3>
       <div id='alertMessage' class="alert"></div>
       <h4 class="fix-header">Добавить транк</h4>
         <fieldset>
           <div class="row">
             <div class="form-group">
               <label>Номер</label>
-              <br>
               <input type="tel" class="form-control" id='phone' name="phone">
             </div>
             <div class="form-group">
               <label>Название</label>
-              <br>
               <input type="text" class="form-control" id='name' name="name">
             </div>
             <button id='add' type="submit" class="btn btn-primary">Добавить транк</button>
@@ -57,7 +56,8 @@
         </fieldset>
       </form>
       <hr>
-      <div id='editTrunkForm' class="form-inline">
+      <div id='editTrunkForm'>
+        <p id='noTrunks'>Транков нет</p>
       </div>
 
     <script src="static/config.js"></script>

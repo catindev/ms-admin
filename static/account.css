@@ -1,24 +1,27 @@
+.containerForm{
+  padding-top: 30px;
+}
 #accountForm {
   float: right;
   width: 100%;
   padding-right: 10%;
   padding-left: 10%;
-  margin-top: 20px;
 }
 #alertMessage{
   display: none;
-  margin-bottom: 0;
+  margin-bottom: 15px;
 }
 .text-muted{
-  font-size: 15px;  
+  font-size: 15px;
+  margin-top: 10px;
 }
 @media screen and (min-width:768px){
   #accountForm{
-    width: 80%;
-    padding-right: 42.5%;
-    margin-top: 10px;
+    width: 60%;
+    margin: 0 auto;
+    padding-right: 50px;
   }
   .containerForm{
-    margin-left:15%;
+    width: 80%;
   }
 }

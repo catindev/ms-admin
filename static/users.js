@@ -7,6 +7,7 @@
   const usersList = document.getElementById("usersList");
   const errorBlock = document.querySelector(".errorWrapper");
   const errorMessage = document.getElementById("errorMessage");
+
   fetch(Config.API_HOST + url + "?user_session=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
@@ -14,30 +15,35 @@
       return jsonResponse;
     })
     .then(({ items }) => {
-      if (items.length === 0) return usersList.innerHTML = `<li>Пользователей нет</li>`;
-      let counter = 0;
-      usersList.innerHTML = items.reduce( (result,user) => {
-        counter += 1;
+      if (items.length > 0){
+        noUsers.style.display = 'none';
+        usersTable.style.display = 'table';
+        let counter = 0;
+        usersList.innerHTML = items.reduce( (result,user) => {
+            counter += 1;
         return result + `
         <tr>
-          <td>${counter}</td>
+          <td class="tableCell">${counter}</td>
           <td><a href = ${url +'/'+ user['id']}>${user['name']}</a></td>
         </tr>`;
 
-      },"");
+    },"");}
     })
     .catch(error => {
       document.body.classList.add("darken");
       errorMessage.innerHTML = error.message;
       errorBlock.style.display = "block";
     });
+
   btn.disabled = true;
+
   field.addEventListener("input", function() {
     btn.disabled = false;
     if (field.value.length === 0) {
       btn.disabled = true;
     }
   });
+
   addUserForm.addEventListener("submit", function(event) {
     event.preventDefault();
     const body = JSON.stringify({ name: field.value });
@@ -67,4 +73,5 @@
         field.disabled = false;
       });
   });
+
 })();
