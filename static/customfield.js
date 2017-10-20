@@ -13,13 +13,13 @@
     textarea.parentElement.style.display = 'none';
   });
 
-  fetch(Config.API_HOST + url + "?user_session=" + userSession)
+  fetch(Config.API_HOST + url + "?session_token=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
       if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
       return jsonResponse;
     })
-    .then(({type,list,name}) => {
+    .then(({type,items,name}) => {
         parameterName.innerHTML = name;
         document.forms[0].elements.name.value = name;
         let selected = document.querySelector(`option[value=${type}]`);
@@ -27,8 +27,8 @@
         if (selected.value === 'text') {
           return textarea.parentElement.style.display = 'none';
         }
-        list.forEach(value => {
-              if (list.indexOf(value) === list.length-1) return textarea.value += value;
+        items.forEach(value => {
+              if (items.indexOf(value) === items.length-1) return textarea.value += value;
               textarea.value += value + "\n";
         });
 
@@ -60,7 +60,7 @@
         }
       }
 
-      fetch(Config.API_HOST + url + "?user_session=" + userSession, {
+      fetch(Config.API_HOST + url + "?session_token=" + userSession, {
         method: "put",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(body)

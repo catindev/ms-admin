@@ -18,7 +18,7 @@
     },
     {
       title: "Параметры",
-      url: accountUrl + "/customfields"
+      url: accountUrl + "/params"
     }
   ];
 

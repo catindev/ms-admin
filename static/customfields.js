@@ -8,7 +8,7 @@
   const errorBlock = document.querySelector(".errorWrapper");
   const errorMessage = document.getElementById("errorMessage");
 
-  fetch(Config.API_HOST + url + "?user_session=" + userSession)
+  fetch(Config.API_HOST + url + "?session_token=" + userSession)
     .then(response => response.json())
     .then(jsonResponse => {
       if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
@@ -52,7 +52,7 @@
     btn.innerHTML = "Добавляем...";
     const body = JSON.stringify({ name: field.value });
     
-    fetch(Config.API_HOST + url + "?user_session=" + userSession, {
+    fetch(Config.API_HOST + url + "?session_token=" + userSession, {
       method: "post",
       headers: { "Content-type": "application/json" },
       body
