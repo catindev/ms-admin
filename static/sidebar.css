@@ -29,18 +29,16 @@
     display: none;
   }
   #sidebar{
-    text-align: left;
+    text-align: center;
     width: 20%;
     float: left;
     display: block;
     margin-left: -15px;
     padding-right: 0;
-    padding-top: 15px;
     height: 100vw !important;
   }
   .sidebar__links{
     border-left: none;
     font-size: 15px;
-    margin-left: 15px;
   }
 }
