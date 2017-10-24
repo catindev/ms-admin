@@ -10,6 +10,7 @@
   padding-right: 15px;
 }
 #editTrunkForm{
+  border-top: 2px solid grey;
   padding: 20px 100px 20px 10px;
 }
 hr{
@@ -35,6 +36,8 @@ hr{
   animation: new-trunk-animation 0.5s linear;
 }
 .saveMsg{
+  width: 30px;
+  font-size: 15px;
   transition: all 0.6s;
   opacity: 0;
 }
@@ -55,7 +58,7 @@ hr{
   padding:15px 5.5px 50px !important;;
 }
 .btns>button{
-  min-width: 150px;
+  min-width: 125px;
 }
 .editBtn{
   margin-left: 5px !important;
@@ -68,10 +71,11 @@ hr{
     transform: scale(1);
   }
 }
+
 @media screen and (min-width:1024px){
   #addTrunkForm,#editTrunkForm{
     float: right;
-    width:70%;
+    width:80%;
   }
   #addTrunkForm{
     padding: 20px;
@@ -103,9 +107,9 @@ hr{
     width: 305px !important;
   }
   hr{
-    width: 70%;
+    width:800px;
     top:220px;
-    left: 120px;
+    left: 100px;
   }
   #add{
     width: 220px !important;
@@ -123,5 +127,12 @@ hr{
   #alertMessage{
     text-align: center;
     width: 397px;
+  }
+}
+
+@media screen (min-width:1024px ) and (max-width:1250px) {
+  hr{
+    width: 40px;
+    left: 0;
   }
 }
