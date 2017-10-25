@@ -112,8 +112,6 @@ hr{
     margin-top: 0;
     width: 260px !important;
   }
-  .trunksContainer{
-  }
   hr{
     width:800px;
     top:220px;
@@ -134,7 +132,6 @@ hr{
   }
   #alertMessage{
     text-align: center;
-
     width: 397px;
   }
 }

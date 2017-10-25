@@ -2,14 +2,18 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const checkSession = require('./checkSession');
 
 app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(checkSession);
 
-app.get('/', function (request, response) {
-  response.sendFile(__dirname + '/index.html');
-});
+
+app.get('/', function (request,response) {
+  response.sendFile(__dirname + '/login.html');
+})
 
 app.get('/accounts', function (request, response) {
   response.sendFile(__dirname + '/accounts.html');
