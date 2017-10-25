@@ -6,7 +6,6 @@
     const saveBtn = document.querySelector("#userForm .btn");
     const fieldset = document.querySelector("#userForm fieldset");
     const textarea = document.getElementById('textarea');
-    const reset = document.getElementById('reset');
     const alertPassword = document.getElementById('alertPassword');
 
     fetch(Config.API_HOST + url + "?session_token=" + userSession)
@@ -94,35 +93,6 @@
                         field.parentElement.classList.add("is-invalid");
                     });
                 }
-            });
-    });
-
-    reset.addEventListener('click', () => {
-        alertPassword.display = 'none';
-        reset.disabled = true;
-        reset.innerHTML = 'Сбрасываем...';
-        fetch(Config.API_HOST + url + '/reset.password?session_token=' + userSession, {
-                method: "put",
-                headers: { "Content-type": "application/json" }
-            })
-            .then(response => response.json())
-            .then(jsonResponse => {
-                if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
-                return jsonResponse;
-            })
-            .then(({ password }) => {
-                reset.disabled = false;
-                reset.innerHTML = 'Сбросить пароль';
-                alertPassword.innerHTML = `
-              <p>Пароль сброшен.</p>
-              <p>Новый пароль: ${password}</p>`;
-                alertPassword.style.display = 'block';
-                alertPassword.classList.add('alert-success');
-            })
-            .catch(error => {
-                alertPassword.innerHTML = error.message;
-                alertPassword.style.display = 'block';
-                alertPassword.classList.add('alert-danger');
             });
     });
 

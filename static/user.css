@@ -14,13 +14,8 @@
   text-align: center;
   margin-bottom: 0;
 }
-.nav-tabs{
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-#reset{
-  width: 251px;
-  margin-left: 15%;
+.containerForm{
+  padding-top: 20px;
 }
 #alertPassword{
   width: 251px;
@@ -36,11 +31,6 @@
     width: 250px;
     margin-left: 43.9%;
     margin-bottom: 20px;
-  }
-  #reset{
-    position: relative;
-    left: 25%;
-    margin-left: 0;
   }
   .containerForm{
     width: 85%;
