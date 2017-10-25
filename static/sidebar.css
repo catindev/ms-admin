@@ -29,7 +29,7 @@
     display: none;
   }
   #sidebar{
-    text-align: center;
+    text-align:left;
     width: 20%;
     float: left;
     display: block;
@@ -39,6 +39,7 @@
   }
   .sidebar__links{
     border-left: none;
+    margin-left: 15px;
     font-size: 15px;
   }
 }
