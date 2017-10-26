@@ -10,13 +10,12 @@
   padding-right: 15px;
 }
 #editTrunkForm{
-  border-top: 2px solid grey;
   padding: 20px 10px 20px 10px;
 }
 hr{
   position: relative;
   width: 100%;
-  border-color: black;
+  border:1.2px solid grey;
 }
 .form-row{
   display: block;
@@ -113,9 +112,9 @@ hr{
     width: 260px !important;
   }
   hr{
-    width:800px;
+    width: 800px;
     top:220px;
-    left: 100px;
+    left: 80px;
   }
   #add{
     width: 220px !important;
@@ -149,5 +148,9 @@ hr{
 @media screen and (min-width:1230px){
   .trunksContainer{
     padding-left: 16%;
+  }
+  hr{
+    width: 1090px;
+    left: 20px;
   }
 }
