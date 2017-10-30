@@ -60,7 +60,7 @@
           body[fields[i].name] = fields[i].value;
         }
       }
-      console.log(body);
+      
       fetch(Config.API_HOST + url + "?session_token=" + userSession, {
         method: "put",
         headers: { "Content-type": "application/json" },
