@@ -27,6 +27,7 @@
         if (selected.value === 'text') {
           return textarea.parentElement.style.display = 'none';
         }
+
         items.forEach(value => {
               if (items.indexOf(value) === items.length-1) return textarea.value += value;
               textarea.value += value + "\n";
@@ -54,12 +55,12 @@
         fields[i].classList.remove("is-invalid");
         if (fields[i].name === 'list'){
           let textareaValues = fields[i].value.split('\n');
-          if (select.value !== 'text') body[fields[i].name] = textareaValues;
+          if (select.value !== 'text') body['items'] = textareaValues;
         }else {
           body[fields[i].name] = fields[i].value;
         }
       }
-
+      console.log(body);
       fetch(Config.API_HOST + url + "?session_token=" + userSession, {
         method: "put",
         headers: { "Content-type": "application/json" },
