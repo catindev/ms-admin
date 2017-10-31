@@ -1,7 +1,6 @@
 #userForm {
   width: 100%;
-  padding-right: 10%;
-  padding-left: 10%;
+  padding: 0 10% 70px 10%;
 }
 #alertMessage{
   display: none;
