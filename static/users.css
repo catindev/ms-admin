@@ -53,7 +53,7 @@
   display: none;
 }
 
-@media screen and (max-width:328px) {
+@media screen and (max-width:353px) {
   .col-auto .btn{
     margin-top: 10px;
   }
