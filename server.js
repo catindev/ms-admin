@@ -7,8 +7,8 @@ const checkSession = require('./checkSession');
 app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(checkSession);
+app.use(cookieParser())
+app.use(checkSession)
 
 
 app.get('/', function (request,response) {
