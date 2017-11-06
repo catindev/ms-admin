@@ -25,8 +25,8 @@
         return result + `
         <tr>
           <td>${counter}</td>
-          <td>${item.type}</td>
           <td>${item.when}</td>
+          <td>${item.type}</td>
           <td>${item.what}</td>
           <td>${payload}</td>
         </tr>
