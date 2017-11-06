@@ -7,6 +7,10 @@
   display: none;
   margin-bottom: 10px;
 }
+#journal{
+  display: none;
+}
+
 @media screen and (min-width:768px){
   #parameterForm{
     width: 80%;

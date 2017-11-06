@@ -81,6 +81,7 @@ const url = location.pathname;
         addTrunkForm.name.parentElement.classList.remove('has-error');
         const body = JSON.stringify({ phone: phone.value, name: name.value });
 
+
         fetch(Config.API_HOST + url + "?session_token=" + userSession, {
                 method: "post",
                 headers: { "Content-type": "application/json" },
@@ -97,10 +98,10 @@ const url = location.pathname;
           <fieldset>
           <form  id=${id} class="form-row">
             <div class="col-auto">
-            <input disabled type="text" class="form-control" name="phone" value=${phone.value}>
+            <input disabled type="text" class="form-control" name="phone" value='${phone.value}'>
             </div>
             <div class="col-auto">
-            <input disabled type="tel" class="form-control" name="name" value=${name.value}>
+            <input disabled type="tel" class="form-control" name="name" value='${name.value}'>
             </div>
             <div class='btns' onclick=checkBtn(event)>
             <button disabled ' name='saveBtn' type="submit" class="btn btn-primary saveBtn">

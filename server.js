@@ -19,6 +19,10 @@ app.get('/accounts', function (request, response) {
   response.sendFile(__dirname + '/accounts.html');
 });
 
+app.get('/journal', function (request,response) {
+  response.sendFile(__dirname + '/journal.html')
+})
+
 app.get('/accounts/:accountID', function (request, response) {
   response.sendFile(__dirname + '/account.html');
 });
