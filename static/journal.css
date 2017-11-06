@@ -7,6 +7,14 @@
 #header{
   min-width: 900px;
 }
+#emptyJournal{
+  padding-top: 20px;
+  border-top: 3px solid grey;
+  font-weight: bold;
+  color: grey;
+  font-size: 20px;
+  text-align: center;
+}
 #alertMessage{
   width: 300px;
   margin: 0 auto;
