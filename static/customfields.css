@@ -52,6 +52,9 @@
 #parametersTable{
   display: none;
 }
+#journal{
+  display: none;
+}
 
 @media screen and (max-width:353px) {
   .col-auto .btn{

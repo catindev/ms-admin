@@ -21,6 +21,10 @@
   margin-left: 15%;
   margin-bottom: 20px;
 }
+#journal{
+  display: none;
+}
+
 @media screen and (min-width: 1024px) {
   #userForm {
     width: 60%;

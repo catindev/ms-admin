@@ -1,0 +1,41 @@
+#journal, #journalTable{
+  display: none;
+}
+#journalTable{
+  min-width: 900px;
+}
+#header{
+  min-width: 900px;
+}
+#alertMessage{
+  width: 300px;
+  margin: 0 auto;
+  display: none;
+}
+.errorWrapper{
+  display: none;
+  background: white;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+#errorBlock{
+  display: block;
+  height: 100px;
+  background: url('../static/images/error.png') center no-repeat;
+}
+#errorMessage{
+  font-size: 20px;
+}
+
+.darken{
+  background: rgba(0,0,0,0.6);
+}
+
+@media screen and (min-width:1024px) {
+  .errorWrapper{
+    width: 400px;
+}
