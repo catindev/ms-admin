@@ -10,10 +10,10 @@ const exitBtn = document.getElementById('exitBtn');
             return jsonResponse;
         })
         .then(userData => {
-            if (location.pathname === '/journal' && userData.access !== 'partner') {
+            if (location.pathname === '/journal' && userData.access !== 'admin') {
               throw Error('Доступ закрыт');
             }
-            if (userData.access === 'partner') {
+            if (userData.access === 'admin') {
               journal.style.display = 'block';
             }
 
