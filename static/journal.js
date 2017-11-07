@@ -12,7 +12,7 @@
     if (items.length > 0) {
       if (items.length > 5) cleanBtnWrap.style.display = 'block';
 
-      journalTable.style.display = 'block';
+      journalTable.style.display = 'table';
       emptyJournal.style.display = 'none';
 
       data.innerHTML = items.reduce( (result,item) => {
