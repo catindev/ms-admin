@@ -32,10 +32,10 @@ const url = location.pathname;
                     `<fieldset>
           <form id=${item.id} class="form-row">
             <div class="col-auto">
-            <input type="text" class="form-control" name="phone" value=${item.phone}>
+            <input type="text" class="form-control" name="phone" value='${item.phone}'>
             </div>
             <div class="col-auto">
-            <input type="tel" class="form-control" name="name" value=${item.name}>
+            <input type="tel" class="form-control" name="name" value='${item.name}'>
             </div>
             <div class='btns' onclick=checkBtn(event)>
             <button name='saveBtn' type="submit" class="btn btn-primary saveBtn">
@@ -97,10 +97,10 @@ const url = location.pathname;
           <fieldset>
           <form  id=${id} class="form-row">
             <div class="col-auto">
-            <input disabled type="text" class="form-control" name="phone" value=${phone.value}>
+            <input disabled type="text" class="form-control" name="phone" value='${phone.value}'>
             </div>
             <div class="col-auto">
-            <input disabled type="tel" class="form-control" name="name" value=${name.value}>
+            <input disabled type="tel" class="form-control" name="name" value='${name.value}'>
             </div>
             <div class='btns' onclick=checkBtn(event)>
             <button disabled ' name='saveBtn' type="submit" class="btn btn-primary saveBtn">
