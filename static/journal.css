@@ -1,0 +1,76 @@
+#journal, #journalTable{
+  display: none;
+}
+#journalTable{
+  min-width: 900px;
+}
+#header{
+  min-width: 1125px;
+}
+#emptyJournal{
+  min-width: 775px;
+  padding-top: 20px;
+  border-top: 3px solid grey;
+  font-weight: bold;
+  color: grey;
+  font-size: 20px;
+  text-align: center;
+}
+th:first-child{
+  padding-right: 40px;
+}
+th:nth-child(2){
+  padding-right: 200px;
+}
+th:nth-child(3){
+  padding-right: 150px;
+}
+th:nth-child(4){
+  padding-right: 200px;
+}
+.cleanBtnWrap{
+  min-width: 100%;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  display: none;
+}
+#cleanBtn{
+  width: 100%;
+}
+#alertMessage{
+  width: 300px;
+  margin: 0 auto;
+  display: none;
+}
+.errorWrapper{
+  display: none;
+  background: white;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+#errorBlock{
+  display: block;
+  height: 100px;
+  background: url('../static/images/error.png') center no-repeat;
+}
+#errorMessage{
+  font-size: 20px;
+}
+
+.darken{
+  background: rgba(0,0,0,0.6);
+}
+
+#cleanBtn {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width:1024px) {
+  .errorWrapper{
+    width: 400px;
+}

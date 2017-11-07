@@ -19,7 +19,7 @@
 #errorBlock{
   display: block;
   height: 100px;
-  background: url('/static/images/error.png') center no-repeat;
+  background: url('../static/images/error.png') center no-repeat;
   font-size: 17px;
 }
 .container-form{
@@ -47,6 +47,9 @@
 }
 .noAccWrapper{
   padding-top: 30px;
+}
+#journal{
+  display: none;
 }
 
 @media screen and (max-width:353px) {

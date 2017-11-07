@@ -10,6 +10,13 @@ const exitBtn = document.getElementById('exitBtn');
             return jsonResponse;
         })
         .then(userData => {
+            if (location.pathname === '/journal' && userData.access !== 'admin') {
+              throw Error('Доступ закрыт');
+            }
+            if (userData.access === 'admin') {
+              journal.style.display = 'block';
+            }
+
             const userInfo = {};
             for (let key in userData) {
                 if (key !== "status") {
@@ -19,6 +26,7 @@ const exitBtn = document.getElementById('exitBtn');
             adminName.innerHTML += " " + userData.login;
         })
         .catch(error => {
+            document.body.classList.add('darken')
             errorBlock.style.display = "block";
-            errorBlock.innerHTML = error.message;
+            errorMessage.innerHTML = error.message;
         });
