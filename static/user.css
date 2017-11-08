@@ -1,4 +1,4 @@
-#userForm {
+#userForm, #addNumForm {
   width: 100%;
   padding: 0 10% 70px 10%;
 }
@@ -25,8 +25,19 @@
   display: none;
 }
 
+
+#addNumForm{
+  border-bottom:2px solid grey;
+  padding-bottom: 40px;
+}
+
+#addBtn{
+  width: 123px;
+  margin-top: 15px;
+}
+
 @media screen and (min-width: 1024px) {
-  #userForm {
+  #userForm, #addNumForm {
     width: 60%;
     margin: 0 auto;
   }
@@ -35,6 +46,17 @@
     margin-left: 43.9%;
     margin-bottom: 20px;
   }
+
+  #addBtn{
+    margin-top: 0;
+  }
+
+  .numField{
+    margin-right: 5px;
+    display: inline-block !important;
+    width: 70%;
+  }
+
   .containerForm{
     width: 85%;
     position: relative;

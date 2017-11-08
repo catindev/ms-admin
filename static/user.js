@@ -19,14 +19,7 @@
             for (key in userData) {
                 let fields = document.getElementsByName(key);
                 for (var i = 0; i < fields.length; i++) {
-                    if (key === "phones") {
-                        userData[key].forEach(phone => {
-                            if (userData[key].indexOf(phone) === userData[key].length - 1) {
-                                return fields[i].value += phone;
-                            }
-                            fields[i].value += phone + "\n";
-                        });
-                    } else if (key === "type") {
+                   if (key === "type") {
                         fields[i].querySelector(
                             `option[value=${userData[key]}]`
                         ).selected = true;
@@ -54,12 +47,7 @@
         for (var i = 0; i < fields.length; i++) {
             // Вставляет в body имя поля и значение поля
             fields[i].classList.remove("is-invalid");
-            if (fields[i].name === 'phones') {
-                let textareaValues = fields[i].value.split('\n');
-                body[fields[i].name] = textareaValues;
-            } else {
-                body[fields[i].name] = fields[i].value;
-            }
+            body[fields[i].name] = fields[i].value;
         }
 
         fetch(Config.API_HOST + url + "?session_token=" + userSession, {
