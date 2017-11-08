@@ -1,7 +1,16 @@
-#userForm, #addNumForm {
+#userForm, #addNumForm, .editNumForm{
   width: 100%;
   padding: 0 10% 70px 10%;
 }
+
+.editNumForm{
+  padding-top: 40px;
+}
+
+.editNumForm button{
+  margin-top: 10px;
+}
+
 #alertMessage{
   display: none;
   text-align: center;
@@ -25,19 +34,22 @@
   display: none;
 }
 
-
 #addNumForm{
   border-bottom:2px solid grey;
   padding-bottom: 40px;
 }
 
 #addBtn{
-  width: 123px;
+  min-width: 118px;
   margin-top: 15px;
 }
 
+.editNumForm button{
+  min-width: 55px;
+}
+
 @media screen and (min-width: 1024px) {
-  #userForm, #addNumForm {
+  #userForm, #addNumForm , .editNumForm{
     width: 60%;
     margin: 0 auto;
   }
@@ -51,6 +63,9 @@
     margin-top: 0;
   }
 
+  .editNumForm button{
+    margin-top: 0;
+  }
   .numField{
     margin-right: 5px;
     display: inline-block !important;
