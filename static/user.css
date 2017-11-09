@@ -3,24 +3,25 @@
   padding: 0 10% 70px 10%;
 }
 
+.editNumForm:first-child{
+  padding-top:40px;
+}
+
 .editNumForm{
-  padding-top: 40px;
+  padding: 20px 10% 0px 10%;
 }
 
 .editNumForm button{
   margin-top: 10px;
 }
 
-#alertMessage{
-  display: none;
+#alertMessage,#numMessage{
+  display:none;
   text-align: center;
   margin-bottom: 10px;
 }
-#alertPassword{
-  display: none;
-  margin-top: 20px;
-  text-align: center;
-  margin-bottom: 0;
+#numMessage{
+  margin-top: 30px;
 }
 .containerForm{
   padding-top: 20px;
@@ -40,12 +41,12 @@
 }
 
 #addBtn{
-  min-width: 118px;
+  min-width: 125px;
   margin-top: 15px;
 }
 
 .editNumForm button{
-  min-width: 55px;
+  min-width: 60px;
 }
 
 span{
@@ -67,19 +68,29 @@ span::after{
 }
 
 .saveMsg{
+  opacity: 0;
+  transition: opacity 1s;
   position: relative;
   top:6px;
+}
+
+.new-num{
+  animation: new-num-animation 0.5s linear;
+}
+
+@keyframes new-num-animation {
+  0%{
+    transform: scale(0);
+  }
+  100%{
+    transform: scale(1);
+  }
 }
 
 @media screen and (min-width: 1024px) {
   #userForm, #addNumForm , .editNumForm{
     width: 60%;
     margin: 0 auto;
-  }
-  #alertPassword{
-    width: 250px;
-    margin-left: 43.9%;
-    margin-bottom: 20px;
   }
 
   .saveMsg{
