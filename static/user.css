@@ -48,6 +48,29 @@
   min-width: 55px;
 }
 
+span{
+  font-size: 17px;
+  width: 2px;
+  font-weight:bold;
+  border-radius:4px;
+  background-color: limeGreen;
+}
+
+.delBtn{
+  font-weight: bold;
+  font-size: 17px;
+  text-align: center;
+}
+
+span::after{
+  content: '✅';
+}
+
+.saveMsg{
+  position: relative;
+  top:6px;
+}
+
 @media screen and (min-width: 1024px) {
   #userForm, #addNumForm , .editNumForm{
     width: 60%;
@@ -57,6 +80,10 @@
     width: 250px;
     margin-left: 43.9%;
     margin-bottom: 20px;
+  }
+
+  .saveMsg{
+    top: 0;
   }
 
   #addBtn{
