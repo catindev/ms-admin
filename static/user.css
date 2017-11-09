@@ -50,7 +50,6 @@
 }
 
 span{
-  font-size: 17px;
   width: 2px;
   font-weight:bold;
   border-radius:4px;
@@ -69,7 +68,7 @@ span::after{
 
 .saveMsg{
   opacity: 0;
-  transition: opacity 1s;
+  transition: opacity 1.5s;
   position: relative;
   top:6px;
 }

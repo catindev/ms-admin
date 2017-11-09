@@ -1,6 +1,6 @@
+const url = location.pathname;
 (function() {
     const username = document.getElementById("username");
-    const url = location.pathname;
     const alertMessage = document.getElementById("alertMessage");
     const numMessage = document.getElementById('numMessage');
     const userForm = document.getElementById("userForm");
@@ -147,19 +147,80 @@
       })
 
     })
+
     function insertNumber(phone) {
         const template = `
-        <form class="editNumForm">
+        <form class="editNumForm" id=${phone}>
           <fieldset>
-            <div class="">
-              <input class='numField form-control' type="text" name="phone" value="${phone}">
-              <button type="button" name="button" class="btn btn-primary saveBtn"><span></span></button>
-              <button type="button" name="button" class="btn btn-danger delBtn">X</button>
+            <div>
+              <input onkeyup='numberValidate(this)' onkeydown= 'numberValidate(this)'
+                    class='numField form-control' type="text"
+                    name="phone" value="${phone}">
+              <div style='display:inline' onclick='requestOnEditPhone(event)'>
+              <button type="button" name="save" class="btn btn-primary saveBtn"><span></span></button>
+              <button type="button" name="delete" class="btn btn-danger delBtn">X</button>
               <small class="saveMsg text-muted">Сохранено</small>
+              </div>
             </div>
           </fieldset>
         </form>`;
         editNumbers.insertAdjacentHTML('afterbegin',template);
     }
 
+
 })();
+
+function numberValidate(phone) {
+  phone.value = phone.value.replace(/[^+0-9]/gim,'');
+}
+
+function requestOnEditPhone(event) {
+    //parentElement нужен для того чтобы узнать,имя или форму,если нажато на span
+    const name = event.target.name ? event.target.name : event.target.parentElement.name;
+    const form = event.target.form ? event.target.form : event.target.parentElement.form;
+
+
+    const editNumFieldset = form.querySelector('fieldset');
+    const saveMsgs = Array.from(document.getElementsByClassName('saveMsg'));
+    const fields = Array.from(editNumbers.getElementsByTagName('input'));
+
+    saveMsgs.forEach(item => {
+      item.style.opacity = 0;
+    })
+
+    fields.forEach(item => {
+      item.classList.remove('is-invalid');
+    })
+
+    editNumFieldset.disabled = true;
+
+    if (name === 'save') {
+      const saveMsg = form.querySelector('.saveMsg');
+      const { phone } = form;
+      const body = JSON.stringify({ number:form.id,newNumber:phone.value })
+
+      fetch(Config.API_HOST+url + '/edit.number?session_token=' + userSession, {
+        method: 'put',
+        headers: {'Content-type':'application/json'},
+        body
+      })
+      .then(response => response.json())
+      .then(jsonResponse =>{
+        if (jsonResponse.status !== 200) throw new Error(jsonResponse.message);
+        return jsonResponse;
+      })
+      .then(data => {
+        editNumFieldset.disabled = false;
+        saveMsg.style.opacity = 1;
+      })
+      .catch(error => {
+        phone.classList.add('is-invalid');
+        editNumFieldset.disabled = false;
+        numMessage.innerHTML = error.message;
+        numMessage.style.display = 'block';
+      })
+
+    }else {
+        console.log('delete');
+    }
+}
