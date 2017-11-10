@@ -21,10 +21,10 @@ const url = location.pathname;
 
     addBtn.disabled = true;
     phone.addEventListener('input', () => {
-      if (phone.value.length === 0) {
-        addBtn.disabled = true;
-      }else{
-        addBtn.disabled = false;
+      if (phone.value.length <= 1) {
+        return addBtn.disabled = true;
+      }else {
+        return addBtn.disabled = false;
       }
     })
 
@@ -36,9 +36,12 @@ const url = location.pathname;
         })
         .then(userData => {
             username.innerHTML = userData.name;
-            userData.phones.forEach(phone => {
-              insertNumber(phone);
-            })
+            if (userData.phones.length > 0) {
+              noNumbers.style.display = 'none';
+              userData.phones.forEach(phone => {
+                insertNumber(phone);
+              })
+            }
             for (key in userData) {
                 let fields = document.getElementsByName(key);
                 for (var i = 0; i < fields.length; i++) {
@@ -112,6 +115,7 @@ const url = location.pathname;
       const fieldset = addNumForm.getElementsByTagName('fieldset')[0];
       const editNumForms = document.getElementsByClassName('editNumForm');
 
+      phone.classList.remove('is-invalid');
       numMessage.style.display = 'none';
       fieldset.disabled = true;
       addBtn.innerHTML = 'Добавляем...'
@@ -141,6 +145,7 @@ const url = location.pathname;
       })
       .catch(error => {
         addBtn.innerHTML = 'Добавить';
+        phone.classList.add('is-invalid');
         fieldset.disabled = false;
         numMessage.innerHTML = error.message;
         numMessage.style.display = 'block';
@@ -220,7 +225,37 @@ function requestOnEditPhone(event) {
         numMessage.style.display = 'block';
       })
 
-    }else {
-        console.log('delete');
+    }else if (name === 'delete'){
+      const body = JSON.stringify({ number:form.id });
+
+      fetch(Config.API_HOST+url + '/remove.number?session_token=' + userSession, {
+        method: 'put',
+        headers: {'Content-type':'application/json'},
+        body
+      })
+      .then(response => response.json())
+      .then(jsonResponse =>{
+        if (jsonResponse.status !== 200) throw new Error(jsonResponse.message);
+        return jsonResponse;
+      })
+      .then(data => {
+        editNumFieldset.disabled = false;
+        form.classList.add('delete-num');
+        setTimeout( () => {
+          form.parentElement.removeChild(form)
+          if (document.getElementsByClassName('editNumForm').length === 0){
+            noNumbers.style.display = 'block';
+          }
+        },700)
+
+
+      })
+      .catch(error => {
+        phone.classList.add('is-invalid');
+        editNumFieldset.disabled = false;
+        numMessage.innerHTML = error.message;
+        numMessage.style.display = 'block';
+      })
+
     }
 }

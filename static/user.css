@@ -49,7 +49,7 @@
   min-width: 60px;
 }
 
-span{
+.editNumForm span{
   width: 2px;
   font-weight:bold;
   border-radius:4px;
@@ -62,7 +62,7 @@ span{
   text-align: center;
 }
 
-span::after{
+.editNumForm span::after{
   content: '✅';
 }
 
@@ -73,8 +73,22 @@ span::after{
   top:6px;
 }
 
+#noNumbers{
+  font-size:20px;
+  font-weight: bold;
+  color:grey;
+  padding-top: 30px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-60%);
+}
+
 .new-num{
   animation: new-num-animation 0.5s linear;
+}
+
+.delete-num{
+  animation: delete-num-animation 0.7s linear;
 }
 
 @keyframes new-num-animation {
@@ -82,6 +96,15 @@ span::after{
     transform: scale(0);
   }
   100%{
+    transform: scale(1);
+  }
+}
+
+@keyframes delete-num-animation {
+  100%{
+    transform: scale(0);
+  }
+  0%{
     transform: scale(1);
   }
 }
@@ -107,6 +130,10 @@ span::after{
     margin-right: 5px;
     display: inline-block !important;
     width: 70%;
+  }
+
+  #noNumbers{
+    transform: translateX(-90%);
   }
 
   .containerForm{
