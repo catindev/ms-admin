@@ -11,6 +11,8 @@ const url = location.pathname;
     const addNumForm = document.getElementById('addNumForm');
     const { phone } = addNumForm;
 
+    addBtn.disabled = true;
+
     phone.addEventListener('keydown', () => {
       phone.value = phone.value.replace(/\D/,'');
     });
@@ -19,7 +21,6 @@ const url = location.pathname;
       phone.value = phone.value.replace(/\D/,'');
     });
 
-    addBtn.disabled = true;
     phone.addEventListener('input', () => {
       if (phone.value.length <= 1) {
         return addBtn.disabled = true;
@@ -142,6 +143,7 @@ const url = location.pathname;
         setTimeout(() => editForm.classList.remove('new-num'),400);
         addBtn.innerHTML = 'Добавить';
         fieldset.disabled = false;
+        addBtn.disabled = true;
         phone.value = '';
       })
       .catch(error => {
