@@ -1,17 +1,27 @@
-#userForm {
+#userForm, #addNumForm, .editNumForm{
   width: 100%;
   padding: 0 10% 70px 10%;
 }
-#alertMessage{
-  display: none;
+
+.editNumForm:first-child{
+  padding-top:40px;
+}
+
+.editNumForm{
+  padding: 20px 10% 0px 10%;
+}
+
+.editNumForm button{
+  margin-top: 10px;
+}
+
+#alertMessage,#numMessage{
+  display:none;
   text-align: center;
   margin-bottom: 10px;
 }
-#alertPassword{
-  display: none;
-  margin-top: 20px;
-  text-align: center;
-  margin-bottom: 0;
+#numMessage{
+  margin-top: 30px;
 }
 .containerForm{
   padding-top: 20px;
@@ -25,16 +35,107 @@
   display: none;
 }
 
+#addNumForm{
+  border-bottom:2px solid grey;
+  padding-bottom: 40px;
+}
+
+#addBtn{
+  min-width: 125px;
+  margin-top: 15px;
+}
+
+.editNumForm button{
+  min-width: 60px;
+}
+
+.editNumForm span{
+  width: 2px;
+  font-weight:bold;
+  border-radius:4px;
+  background-color: limeGreen;
+}
+
+.delBtn{
+  font-weight: bold;
+  font-size: 17px;
+  text-align: center;
+}
+
+.editNumForm span::after{
+  content: '✅';
+}
+
+.saveMsg{
+  opacity: 0;
+  transition: opacity 1.5s;
+  position: relative;
+  top:6px;
+}
+
+#noNumbers{
+  font-size:20px;
+  font-weight: bold;
+  color:grey;
+  padding-top: 30px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-60%);
+}
+
+.new-num{
+  animation: new-num-animation 0.5s linear;
+}
+
+.delete-num{
+  animation: delete-num-animation 0.7s linear;
+}
+
+@keyframes new-num-animation {
+  0%{
+    transform: scale(0);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+@keyframes delete-num-animation {
+  100%{
+    transform: scale(0);
+  }
+  0%{
+    transform: scale(1);
+  }
+}
+
 @media screen and (min-width: 1024px) {
-  #userForm {
+  #userForm, #addNumForm , .editNumForm{
     width: 60%;
     margin: 0 auto;
   }
-  #alertPassword{
-    width: 250px;
-    margin-left: 43.9%;
-    margin-bottom: 20px;
+
+  .saveMsg{
+    top: 0;
   }
+
+  #addBtn{
+    margin-top: 0;
+  }
+
+  .editNumForm button{
+    margin-top: 0;
+  }
+  .numField{
+    margin-right: 5px;
+    display: inline-block !important;
+    width: 70%;
+  }
+
+  #noNumbers{
+    transform: translateX(-90%);
+  }
+
   .containerForm{
     width: 85%;
     position: relative;
