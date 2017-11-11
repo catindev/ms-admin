@@ -19,12 +19,23 @@
         counter++;
         let payload = '';
         if (typeof item.payload === 'object') {
+          /*
           payload += 'response: ' + item.payload.response;
           payload += "<br/>params: { "
           Object.keys(item.payload.params).forEach(elem => {
             payload += ' ' + elem + ' : ' + item.payload.params[elem] + ','
           })
-          payload += ' }'
+          payload += ' }'*/
+          let c = 0
+          for (key in item.payload){
+            if (item.payload[key] === 'object') {
+              payload += key + " " + JSON.stringify(item.payload[key]);
+            }else {
+              payload += key + ` : ${item.payload[key]} ` + '</br>';
+            }
+          }
+
+
         }else if (typeof item.payload === 'string') {
           payload += item.payload;
         }
