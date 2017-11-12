@@ -122,7 +122,7 @@
 
 @media screen and (min-width: 1024px) {
   #userForm, #addNumForm , .editNumForm{
-    width: 72%;
+    width: 74%;
     margin: 0 auto;
   }
 
