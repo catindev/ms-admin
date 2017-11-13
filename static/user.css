@@ -50,7 +50,6 @@
 }
 
 .editNumForm span{
-  width: 2px;
   font-weight:bold;
   border-radius:4px;
   background-color: limeGreen;
@@ -59,7 +58,13 @@
 .delBtn{
   font-weight: bold;
   font-size: 17px;
-  text-align: center;
+  height: 38px;
+  position: relative;
+  bottom: 1px;
+}
+
+.delBtn::after{
+  content: 'X';
 }
 
 .editNumForm span::after{
@@ -71,6 +76,12 @@
   transition: opacity 1.5s;
   position: relative;
   top:6px;
+}
+
+.saveBtn{
+  position: relative;
+  bottom: 1px;
+  height: 38px;
 }
 
 #noNumbers{
@@ -111,7 +122,7 @@
 
 @media screen and (min-width: 1024px) {
   #userForm, #addNumForm , .editNumForm{
-    width: 60%;
+    width: 74%;
     margin: 0 auto;
   }
 
@@ -124,7 +135,7 @@
   }
 
   .editNumForm button{
-    margin-top: 0;
+    margin-top: 0 !important;
   }
   .numField{
     margin-right: 5px;
@@ -140,5 +151,11 @@
     width: 85%;
     position: relative;
     left: 15%;
+  }
+}
+
+@media screen and (min-width:1318px) {
+  #userForm, #addNumForm , .editNumForm{
+    width: 60%;
   }
 }

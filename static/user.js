@@ -11,6 +11,8 @@ const url = location.pathname;
     const addNumForm = document.getElementById('addNumForm');
     const { phone } = addNumForm;
 
+    addBtn.disabled = true;
+
     phone.addEventListener('keydown', () => {
       phone.value = phone.value.replace(/\D/,'');
     });
@@ -19,7 +21,6 @@ const url = location.pathname;
       phone.value = phone.value.replace(/\D/,'');
     });
 
-    addBtn.disabled = true;
     phone.addEventListener('input', () => {
       if (phone.value.length <= 1) {
         return addBtn.disabled = true;
@@ -137,10 +138,12 @@ const url = location.pathname;
 
         const editForm = editNumForms[0];
 
+        noNumbers.style.display = 'none';
         editForm.classList.add('new-num');
         setTimeout(() => editForm.classList.remove('new-num'),400);
         addBtn.innerHTML = 'Добавить';
         fieldset.disabled = false;
+        addBtn.disabled = true;
         phone.value = '';
       })
       .catch(error => {
@@ -163,7 +166,7 @@ const url = location.pathname;
                     name="phone" value="${phone}">
               <div style='display:inline' onclick='requestOnEditPhone(event)'>
               <button type="button" name="save" class="btn btn-primary saveBtn"><span></span></button>
-              <button type="button" name="delete" class="btn btn-danger delBtn">X</button>
+              <button type="button" name="delete" class="btn btn-danger delBtn"></button>
               <small class="saveMsg text-muted">Сохранено</small>
               </div>
             </div>
@@ -193,12 +196,12 @@ function requestOnEditPhone(event) {
       item.style.opacity = 0;
     })
 
+
     fields.forEach(item => {
       item.classList.remove('is-invalid');
     })
 
     editNumFieldset.disabled = true;
-
     if (name === 'save') {
       const saveMsg = form.querySelector('.saveMsg');
       const { phone } = form;
