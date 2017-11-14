@@ -24,6 +24,17 @@
   border: none;
   outline: none;
 }
+
+.icons{
+  padding-top: 20px;
+  text-align: center;
+}
+.icons__link{
+  padding:20px 10px 20px 10px !important;
+}
+.icons__img{
+  width: 50px !important;
+}
 @media screen and (min-width:1024px){
   .menuBtn{
     display: none;

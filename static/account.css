@@ -26,4 +26,7 @@
   .containerForm{
     width: 80%;
   }
+  .icons{
+    display: none;
+  }
 }
