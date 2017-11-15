@@ -209,7 +209,7 @@ function requestOnEdit(btn, btnTitle, body, fieldset, form, trunkStatus, element
             }
         })
         .catch(error => {
-            btnTitle === 'Cохнраняем...' ? btn.innerHTML = 'Сохранить' : btn.innerHTML = 'Включить';
+            btnTitle === 'Cохраняем...' ? btn.innerHTML = 'Сохранить' : btn.innerHTML = 'Включить';
             showMessage('alert-danger', error.message, fieldset);
         })
 }
