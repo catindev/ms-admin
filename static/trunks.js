@@ -72,8 +72,8 @@ const url = location.pathname;
         data.innerHTML = stats.forEach(item => {
           return `
           <tr>
-            <td>${item.name}</td>
-            <td>${item.customers}</td>
+            <td>${item['name']}</td>
+            <td>${item['customers']}</td>
           </tr>
           `
         })
