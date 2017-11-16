@@ -59,7 +59,7 @@ const url = location.pathname;
         })
         .catch(error => showMessage('alert-danger', error.message, editTrunkForm))
 
-    fetch(Config.API_HOST + url + '/stats?session_token='+userSession)
+    fetch(Config.API_HOST + url + `/stats?session_token=${userSession}`)
     .then(response => response.json())
     .then(jsonResponse => {
       if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
@@ -69,14 +69,14 @@ const url = location.pathname;
       if (stats.length > 0) {
         emptyTable.style.display = 'none';
         statistics.style.display = 'table';
-        data.innerHTML = stats.forEach(item => {
-          return `
+        data.innerHTML = stats.reduce((result,item) => {
+          return result +`
           <tr>
             <td>${item['name']}</td>
             <td>${item['customers']}</td>
           </tr>
           `
-        })
+        },'')
       }
     })
     .catch(error => {
