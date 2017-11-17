@@ -18,6 +18,9 @@
 #editTrunkForm{
   padding: 20px 10px 20px 10px;
 }
+#statTabs{
+  display: none;
+}
 #errorMessage{
   display: none;
   margin-top: 20px;
