@@ -1,6 +1,12 @@
 .form-header{
   padding-bottom: 10px;
 }
+.table-container{
+  padding:15px 10px 0 10px;
+}
+.nav-tabs{
+  padding-top: 30px;
+}
 #addTrunkForm {
   width: 100%;
   padding: 20px 10px 80px 10px;
@@ -11,6 +17,21 @@
 }
 #editTrunkForm{
   padding: 20px 10px 20px 10px;
+}
+#errorMessage{
+  display: none;
+  margin-top: 20px;
+}
+#emptyTable{
+  margin-top: 10px;
+  padding-top: 10px;
+  color:grey;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+#statistics{
+  display: none;
 }
 hr{
   position: relative;
@@ -91,6 +112,11 @@ hr{
   }
   #editTrunkForm{
     padding: 50px 20px 20px 20px;
+  }
+  .table-container{
+    width: 81%;
+    padding: 15px 0 0 0;
+    float: right;
   }
   .form-group{
     padding-left: 15px;

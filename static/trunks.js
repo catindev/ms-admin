@@ -19,7 +19,7 @@ const url = location.pathname;
         numberField.value = numberField.value.replace(/\D/, '')
     });
 
-    fetch(Config.API_HOST + url + "?session_token=" + userSession)
+    fetch(Config.API_HOST + url + `?session_token=${userSession}`)
         .then(response => response.json())
         .then(jsonResponse => {
             if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
@@ -58,6 +58,33 @@ const url = location.pathname;
             })
         })
         .catch(error => showMessage('alert-danger', error.message, editTrunkForm))
+
+    fetch(Config.API_HOST + url + `/stats?session_token=${userSession}`)
+    .then(response => response.json())
+    .then(jsonResponse => {
+      if (jsonResponse.status !== 200) throw Error(jsonResponse.message);
+      return jsonResponse;
+    })
+    .then(({stats}) => {
+      if (stats.length > 0) {
+        emptyTable.style.display = 'none';
+        statistics.style.display = 'table';
+        data.innerHTML = stats.reduce((result,item) => {
+          return result +`
+          <tr>
+            <td>${item['name']}</td>
+            <td>${item['customers']}</td>
+          </tr>
+          `
+        },'')
+      }
+    })
+    .catch(error => {
+      errorMessage.classList.add('alert-danger');
+      errorMessage.innerHTML = error.message;
+      errorMessage.style.display = 'block';
+    })
+
 
     addTrunkBtn.disabled = true;
 
@@ -209,7 +236,7 @@ function requestOnEdit(btn, btnTitle, body, fieldset, form, trunkStatus, element
             }
         })
         .catch(error => {
-            btnTitle === 'Cохнраняем...' ? btn.innerHTML = 'Сохранить' : btn.innerHTML = 'Включить';
+            btnTitle === 'Cохраняем...' ? btn.innerHTML = 'Сохранить' : btn.innerHTML = 'Включить';
             showMessage('alert-danger', error.message, fieldset);
         })
 }
