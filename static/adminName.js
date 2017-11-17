@@ -10,7 +10,7 @@ const exitBtn = document.getElementById('exitBtn');
             return jsonResponse;
         })
         .then(userData => {
-            if (location.pathname === '/journal' && userData.access === 'admin') {
+            if (location.pathname === '/journal' && userData.access !== 'admin') {
               throw Error('Доступ закрыт');
             }
             if (url.includes('/trunks') && userData.access === 'admin'){
