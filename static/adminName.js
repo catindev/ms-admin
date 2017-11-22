@@ -13,7 +13,7 @@ const exitBtn = document.getElementById('exitBtn');
             if (location.pathname === '/journal' && userData.access !== 'admin') {
               throw Error('Доступ закрыт');
             }
-            if (url.includes('/trunks') && userData.access === 'admin'){
+            if (location.pathname.includes('/trunks') && userData.access === 'admin'){
               statTabs.style.display = 'flex';
             }
             if (userData.access === 'admin') {
