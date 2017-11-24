@@ -7,9 +7,7 @@ input[type="password"] {
   font-size: 16px;
 }
 
-#errorMessage {
-  display: none;
-}
+
 
 #loginContainer {
   padding-top: 25px;

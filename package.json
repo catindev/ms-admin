@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "webpack -p webpack.config.js --watch & nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,19 @@
   },
   "homepage": "https://github.com/catindev/ms-admin#readme",
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
+    "css-loader": "^0.28.7",
     "express": "^4.15.3",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.8.1"
   }
 }
