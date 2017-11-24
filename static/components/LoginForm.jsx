@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TextInput from './TextInput.jsx';
+import Button from './Button.jsx';
 
 export default class LoginForm extends Component {
     constructor(props){
@@ -40,9 +41,10 @@ export default class LoginForm extends Component {
                 window.location.replace("/accounts");
             })
             .catch(error => {
+
                 this.setState({
                     error:'block',
-                    errorMsg: error.message
+                    errorMsg: error.message,
                 });
 
                 this.errorShake();
@@ -54,6 +56,7 @@ export default class LoginForm extends Component {
         const state = this.state;
         state[event.target.name] = event.target.value;
         this.setState(state);
+
     }
 
     errorShake() {
@@ -83,6 +86,7 @@ export default class LoginForm extends Component {
   }
 }
 
+
 class HeaderForm extends Component {
   render() {
     return (
@@ -98,10 +102,10 @@ class HeaderForm extends Component {
 
 class BodyForm extends Component {
   render() {
-    return (
+      return (
       <div>
         <div className="card-body">
-        <div style={{display: (this.props.display)}} className="alert alert-danger">
+        <div style={{ display: (this.props.display) }} className="alert alert-danger">
             {this.props.errorMsg}
         </div>
           <form>
@@ -121,7 +125,11 @@ class BodyForm extends Component {
                   value = {this.props.password}
                   onChange={this.props.setValue}
               />
-            <button type="submit" className="btn btn-primary">Войти</button>
+            <Button
+                type='submit'
+                btnClass='btn-primary'
+                title='Войти'
+            />
             </form>
           </div>
       </div>
