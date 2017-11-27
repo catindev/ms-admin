@@ -32,6 +32,12 @@
 .icons__link{
   padding:20px 10px 20px 10px !important;
 }
+.icons__link--active{
+  background-color: #343a40;
+}
+.icons__img--active{
+  filter: invert(100%);
+}
 .icons__img{
   width: 50px !important;
 }
