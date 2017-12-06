@@ -71,7 +71,7 @@ export default class LoginForm extends Component {
            id="loginContainer"
            onSubmit={this.handleSubmit}
       >
-        <div class="card card-default">
+        <div className="card card-default">
           <HeaderForm />
           <BodyForm
               display={this.state.error}
@@ -90,7 +90,7 @@ export default class LoginForm extends Component {
 class HeaderForm extends Component {
   render() {
     return (
-      <div class="card-header">
+      <div className="card-header">
         <h4>
           <strong>Вход в админку</strong>
         </h4>
@@ -112,7 +112,7 @@ class BodyForm extends Component {
               <TextInput
                   type = 'text'
                   label = 'Логин'
-                  class = 'form-control'
+                  className = 'form-control'
                   name = 'login'
                   value = {this.props.login}
                   onChange={this.props.setValue}
@@ -120,7 +120,7 @@ class BodyForm extends Component {
               <TextInput
                   type = 'password'
                   label = 'Пароль'
-                  class = 'form-control'
+                  className = 'form-control'
                   name = 'password'
                   value = {this.props.password}
                   onChange={this.props.setValue}
