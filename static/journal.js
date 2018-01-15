@@ -1,5 +1,6 @@
 (function () {
   const cleanBtnWrap = document.querySelector('.cleanBtnWrap');
+  const preloader = document.getElementById('preloader');
 
   fetch('http://papi.mindsales-crm.com/log')
   .then(response => response.json())
@@ -14,6 +15,7 @@
 
       journalTable.style.display = 'table';
       emptyJournal.style.display = 'none';
+      preloader.style.display = 'none';
 
       data.innerHTML = items.reduce( (result,item) => {
         counter++;
@@ -41,6 +43,9 @@
         </tr>
         `
       },'')
+    }else{
+      preloader.style.display = 'none';
+      emptyJournal.style.display = 'block';
     }
   })
   .catch(error => {
